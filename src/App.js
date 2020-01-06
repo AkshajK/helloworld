@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link, Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 import logo from './logo.svg';
 import './App.css';
+import Login from './login'
 //Daniel Sun is here
 // Firebase App (the core Firebase SDK) is always required and must be listed first
 import * as firebase from "firebase/app";
@@ -106,6 +108,35 @@ class App extends React.Component {
       <div id="header"> 
         <h1 id="logo">Logo</h1> 
         <input type="text" placeholder="Search.." id="search" />
+        <Router>
+          <div class = "topnav">
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            </ul>
+
+            <hr />
+
+            {/*
+              A <Switch> looks through all its children <Route>
+              elements and renders the first one whose path
+              matches the current URL. Use a <Switch> any time
+              you have multiple routes, but you want only one
+              of them to render at a time
+            */}
+            <Switch>
+              <Route exact path="/">
+              </Route>
+              <Route path="/login">
+                <Login />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
       </div>
       <div id="class bubbles">
         <ul>
