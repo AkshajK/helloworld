@@ -10,8 +10,8 @@ class App extends React.Component {
     }
   }
   render() {
-    const classesList = this.props.classes
-    .slice(len(this.props.classes)-10, len(this.props.classes))
+    const classesList = this.state.classes
+    .slice(this.state.classes.length-10, this.state.classes.length)
     .map(function(name) { 
         return <button id={name}>{name}</button>
     })
