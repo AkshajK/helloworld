@@ -15,9 +15,12 @@ import "firebase/firestore";
 class App extends React.Component {
   constructor () {
     super()
+    const self = this 
+    var classeslist = ["6.08", "6.033", "11.111", "11.125", "21M.600"]
     this.state = {
-      classes: ["6.08", "6.033", "11.111", "11.125", "21M.600"],
-      class: "6.08"
+      classes: classeslist,
+      class: "6.08",
+      people: {"6.08": [], "6.033": [], "11.111": [], "11.125": [], "21M.600": []}
     }
     const firebaseConfig = {
       apiKey: "AIzaSyDVdohGwcKZibRusfG6IGCq3CBFCVGdka0",
@@ -35,46 +38,69 @@ class App extends React.Component {
       firebase.initializeApp(firebaseConfig);
     }
     
-    this.db = firebase.firestore();
-  }
-  render() {
-    const self = this
-    const handleClick = function (name) {
-      self.setState({class: name});
-     
-    }
-    const classesList = this.state.classes
-    .slice(this.state.classes.length-10, this.state.classes.length)
-    .map(function (name) { 
-        return <button id={name} onClick={() => handleClick(name)}>{name}</button>
-    })
-
-    var listOfPeopleLi = []
+    self.db = firebase.firestore();
     
-    const listOfPeople = self.db
+  }
+
+  componentDidMount() {
+    var i;
+    const self = this
+    for(i = 0; i < self.state.classes.length; i++) {
+      let curArr = []
+      const index = i;
+      const listofscores = self.db
       .collection("classes")
-      .doc(this.state.class)
+      .doc(self.state.classes[i])
       .collection("ListOfPeople")
       .orderBy("name", "asc")
       .get()
-      .then(function(querySnapshot) {
+      .then((querySnapshot) => {
         querySnapshot.forEach(function(doc) {
           // doc.data() is never undefined for query doc snapshots
           console.log(doc.id, " => ", doc.data());
   
           var data = doc.data()
 
-          listOfPeopleLi.push(data.name)
+          curArr.push(data.name)
+          
           console.log(data.name + "<--")
         });
-      }).then(function() {
-        console.log("got all scores")
+      }).then(() => {
+        // TODO copy over the individual keys and values from state.people
+        var newPeople = this.state.people
+        console.log(index)
+        newPeople[this.state.classes[index]] = curArr
+        console.log(newPeople[this.state.classes[index]])
+        console.log(curArr.length)
+        this.setState({people: newPeople}, () => {
+          console.log("setState callback")
+          console.log(self.state.people[self.state.classes[index]])
+        })
+        //console.log("got all people")
+      })
+    }
+
+  }
+
+  render() {
+    console.log("rendering");
+    console.log("state is: ", this.state)
+    const self = this
+    const handleClick = function (name) {
+      self.setState({class: name})
+      console.log("set class to " + name)
+     
+    }
+    const classesList = self.state.classes
+    .slice(self.state.classes.length-10, self.state.classes.length)
+    .map(function (name) { 
+        return <button id={name} onClick={() => handleClick(name)}>{name}</button>
     })
 
-    const listOfPeopleLiHTML = listOfPeopleLi.map(function (name) { 
+    const listOfPeopleLi = self.state.people[self.state.class].map(function (name) { 
       return <li id={name}>{name}</li>
     })
-    //console.log("abc" + listOfPeopleLiHTML)
+  
     return (
       <div>
       <div id="header"> 
@@ -89,7 +115,7 @@ class App extends React.Component {
       <div id="body">
         <div id="class header"> </div>
         <ul id="list of people"> 
-          {listOfPeopleLiHTML}
+          {listOfPeopleLi}
         </ul> 
       </div>
       </div>
