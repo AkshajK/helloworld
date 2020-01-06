@@ -21,15 +21,15 @@ class App extends React.Component {
       classes: ["6.08", "6.033", "11.111", "11.125", "21M.600"],
       class: "6.08"
     }
-    var firebaseConfig = {
-      apiKey: "api-key",
-      authDomain: "project-id.firebaseapp.com",
-      databaseURL: "https://project-id.firebaseio.com",
-      projectId: "project-id",
-      storageBucket: "project-id.appspot.com",
-      messagingSenderId: "sender-id",
-      appId: "app-id",
-      measurementId: "G-measurement-id",
+    const firebaseConfig = {
+      apiKey: "AIzaSyDVdohGwcKZibRusfG6IGCq3CBFCVGdka0",
+      authDomain: "schedule-comparator.firebaseapp.com",
+      databaseURL: "https://schedule-comparator.firebaseio.com",
+      projectId: "schedule-comparator",
+      storageBucket: "schedule-comparator.appspot.com",
+      messagingSenderId: "521939045676",
+      appId: "1:521939045676:web:6cdf2357f23e33e58fb089",
+      measurementId: "G-V4VQ51GDDZ"
     };
     
     // Initialize Firebase
