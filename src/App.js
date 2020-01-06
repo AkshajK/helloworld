@@ -35,25 +35,46 @@ class App extends React.Component {
       firebase.initializeApp(firebaseConfig);
     }
     
-    var db = firebase.firestore();
+    this.db = firebase.firestore();
   }
   render() {
     const self = this
     const handleClick = function (name) {
-      self.setState({class: name})
+      self.setState({class: name});
+     
     }
     const classesList = this.state.classes
     .slice(this.state.classes.length-10, this.state.classes.length)
     .map(function (name) { 
-        return <button id={name} onClick={handleClick}>{name}</button>
+        return <button id={name} onClick={() => handleClick(name)}>{name}</button>
     })
 
+    var listOfPeopleLi = []
     
-    // const listOfPeople = db
-    //   .collection(this.state.class)
-    //   .orderBy("name", "incr")
-    //   .get()
-    //   .
+    const listOfPeople = self.db
+      .collection("classes")
+      .doc(this.state.class)
+      .collection("ListOfPeople")
+      .orderBy("name", "asc")
+      .get()
+      .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+          // doc.data() is never undefined for query doc snapshots
+          console.log(doc.id, " => ", doc.data());
+  
+          var data = doc.data()
+
+          listOfPeopleLi.push(data.name)
+          console.log(data.name + "<--")
+        });
+      }).then(function() {
+        console.log("got all scores")
+    })
+
+    const listOfPeopleLiHTML = listOfPeopleLi.map(function (name) { 
+      return <li id={name}>{name}</li>
+    })
+    //console.log("abc" + listOfPeopleLiHTML)
     return (
       <div>
       <div id="header"> 
@@ -67,9 +88,9 @@ class App extends React.Component {
       </div>
       <div id="body">
         <div id="class header"> </div>
-        <ol id="list of people"> 
-          
-        </ol> 
+        <ul id="list of people"> 
+          {listOfPeopleLiHTML}
+        </ul> 
       </div>
       </div>
     );
