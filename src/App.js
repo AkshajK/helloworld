@@ -12,11 +12,14 @@ import "firebase/analytics";
 import "firebase/auth";
 import "firebase/firestore";
 
+var db = firebase.firestore();
+
 class App extends React.Component {
   constructor () {
     super()
     this.state = {
-      classes: ["6.08", "6.033", "11.111", "11.125", "21M.600"]
+      classes: ["6.08", "6.033", "11.111", "11.125", "21M.600"],
+      class: "6.08"
     }
     var firebaseConfig = {
       apiKey: "api-key",
@@ -36,9 +39,19 @@ class App extends React.Component {
     const classesList = this.state.classes
     .slice(this.state.classes.length-10, this.state.classes.length)
     .map(function(name) { 
-        return <button id={name}>{name}</button>
+        return <button id={name} onClick={handleClick(name)}>{name}</button>
     })
 
+    const self = this
+    const handleClick = function(name) {
+      self.setState({class: name})
+    }
+
+    const listOfPeople = db
+      .collection(this.state.class)
+      .orderBy("name", "incr")
+      .get()
+      .
     return (
       <div>
       <div id="header"> 
@@ -52,7 +65,9 @@ class App extends React.Component {
       </div>
       <div id="body">
         <div id="class header"> </div>
-        <div id="list of people"> </div>
+        <ol id="list of people"> 
+          
+        </ol> 
       </div>
       </div>
     );
