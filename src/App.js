@@ -25,7 +25,8 @@ class App extends React.Component {
       classeslist: classeslist,
       classes: ["6.08", "6.033"],
       class: "6.08",
-      people: {"6.08": [], "6.033": [], "11.111": [], "11.125": [], "21M.600": []}
+      people: {"6.08": [], "6.033": [], "11.111": [], "11.125": [], "21M.600": []},
+      name: "Joe Mama"
     }
     const firebaseConfig = {
       apiKey: "AIzaSyDVdohGwcKZibRusfG6IGCq3CBFCVGdka0",
@@ -106,17 +107,21 @@ class App extends React.Component {
     const listOfPeopleLi = self.state.people[self.state.class].map(function (name) { 
       return <li id={name}>{name}</li>
     })
-  
-    
 
     const optionList = self.state.classeslist.map(function (name) { 
       return <option value={name}>{name}</option>
     })
     
+    const handleAdd = function () {
+      console.log("Added " + self.state.name + " to " + self.state.class)
+    }
+
+    const addClass = (<button onClick={() => handleAdd()}>Add {self.state.class}</button>)
+
+
     return (
       <div>
       <div id="header"> 
-        
 
         <Router>
           <div class = "topnav">
@@ -141,7 +146,7 @@ class App extends React.Component {
           </div>
         </Router>
 
-        <h1 id="logo">Logo</h1>
+          <h1 id="logo">Welcome {self.state.name}!</h1>
         
         <Searchbar />
       </div>
@@ -151,6 +156,9 @@ class App extends React.Component {
         </ul>
       </div>
       <div id="body">
+        <div>
+          {addClass}
+        </div>
         <div id="class header"> </div>
         <ul id="list of people"> 
           {listOfPeopleLi}
