@@ -33,6 +33,15 @@ export default class SearchExampleStandard extends Component {
   handleResultSelect = (e, { result }) =>
     this.setState({ value: result.title });
 
+  handleKeyPress = (e) => {
+    console.log("ih"+e.charCode)
+    if(e.charCode === 13) {
+        console.log("hi")
+        this.props.updateClass(this.state.value)
+    }
+    
+  };
+
   handleSearchChange = (e, { value }) => {
     this.setState({ isLoading: true, value });
 
@@ -63,6 +72,7 @@ export default class SearchExampleStandard extends Component {
             })}
             results={results}
             value={value}
+            onKeyPress={this.handleKeyPress}
             {...this.props}
           />
         </Grid.Column>

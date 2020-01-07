@@ -54,19 +54,27 @@ class App extends React.Component {
       classes: ["6.08", "6.033"],
       class: "6.08",
       people: {"6.08": [], "6.033": [], "11.111": [], "11.125": [], "21M.600": []},
-      user: "Joe Mama"
+      user: "Joe Mama",
+      searchQuery: ""
     }
+    this.updateClass = (classtoadd) => {
+      var newlist = this.state.classes.slice()
+      newlist.push(classtoadd) 
+      this.setState({classes: newlist
+      })
+
+    };
   }
 
   componentDidMount() {
     var i;
     const self = this
-    for(i = 0; i < self.state.classes.length; i++) {
+    for(i = 0; i < self.state.classeslist.length; i++) {
       let curArr = []
       const index = i;
       const listofscores = db
       .collection("classes")
-      .doc(self.state.classes[i])
+      .doc(self.state.classeslist[index])
       .collection("ListOfPeople")
       .orderBy("name", "asc")
       .get()
@@ -85,12 +93,12 @@ class App extends React.Component {
         // TODO copy over the individual keys and values from state.people
         var newPeople = this.state.people
         console.log(index)
-        newPeople[this.state.classes[index]] = curArr
-        console.log(newPeople[this.state.classes[index]])
+        newPeople[this.state.classeslist[index]] = curArr
+        console.log(newPeople[this.state.classeslist[index]])
         console.log(curArr.length)
         this.setState({people: newPeople}, () => {
           console.log("setState callback")
-          console.log(self.state.people[self.state.classes[index]])
+          console.log(self.state.people[self.state.classeslist[index]])
         })
         //console.log("got all people")
       })
@@ -142,6 +150,31 @@ class App extends React.Component {
 
     const addClass = (<button onClick={() => this.handleAddClass()}>Add {self.state.class}</button>)
 
+    
+  
+    const handleInputChange = (e) => {
+      console.log("handling input change")
+      this.setState({
+        searchQuery: e.target.value
+      }, () => {
+        console.log(e.target.value)
+      });
+
+    }
+  
+    const handleEnter = (e) => {
+      console.log(e.keyCode + " aaa")
+      if(e.keyCode === 13) {
+        console.log("hi")
+        const val = this.state.searchQuery
+        this.setState({
+          classes: this.state.classes.slice().push(val)
+        });
+        //this.setState({
+         // searchQuery: ""
+        //});
+      }
+    }
 
     return (
       <div>
@@ -172,7 +205,7 @@ class App extends React.Component {
 
           <h1 id="logo">Welcome {self.state.user}!</h1>
         
-        <Searchbar />
+        <Searchbar updateClass={this.updateClass} />
       </div>
       <div id="class bubbles">
         <ul>
