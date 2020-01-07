@@ -7,7 +7,7 @@ export default function Login(props) {
   const [password, setPassword] = useState("");
 
   function validateForm() {
-    return email.length > 0 && password.length > 0;
+    return email.length > 8 && password.length > 0 && email.indexOf("@mit.edu")>=0;
   }
 
   function handleSubmit(event) {
