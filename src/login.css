@@ -1,0 +1,10 @@
+/* Add a black background color to the top navigation */
+.Login {
+    background-color: #333;
+    overflow: hidden;
+    float: left;
+    color: #f2f2f2;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 14px;
+  }
