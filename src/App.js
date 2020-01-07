@@ -4,6 +4,7 @@ import { Link, Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 import logo from './logo.svg';
 import './App.css';
 import Login from './login'
+import Register from './register'
 import Searchbar from "./searchbar"
 // Firebase App (the core Firebase SDK) is always required and must be listed first
 import * as firebase from "firebase/app";
@@ -165,6 +166,16 @@ class App extends React.Component {
               </Route>
               <Route path="/login">
                 <Login />
+              </Route>
+            </Switch>
+
+
+            <a><Link to="/register">Register</Link></a>
+            <Switch>
+              <Route exact path="/">
+              </Route>
+              <Route path="/register">
+                <Register />
               </Route>
             </Switch>
           </div>

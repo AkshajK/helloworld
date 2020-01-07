@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import "./login.css";
 
-export default function Login(props) {
+export default function Register(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -34,8 +34,16 @@ export default function Login(props) {
             type="password"
           />
         </FormGroup>
+        <FormGroup controlId="password" bsSize="large">
+          <FormLabel>Repeat Password </FormLabel>
+          <FormControl
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            type="password"
+          />
+        </FormGroup>
         <Button block bsSize="large" disabled={!validateForm()} type="submit">
-          Login
+          Register
         </Button>
       </form>
     </div>
