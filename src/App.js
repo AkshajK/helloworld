@@ -4,6 +4,7 @@ import { Link, Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 import logo from './logo.svg';
 import './App.css';
 import Login from './login'//Daniel Sun is here
+import Searchbar from "./searchbar"
 // Firebase App (the core Firebase SDK) is always required and must be listed first
 import * as firebase from "firebase/app";
 
@@ -115,7 +116,6 @@ class App extends React.Component {
     return (
       <div>
       <div id="header"> 
-        <h1 id="logo">Logo</h1>
         
 
         <Router>
@@ -147,6 +147,10 @@ class App extends React.Component {
             </Switch>
           </div>
         </Router>
+
+        <h1 id="logo">Logo</h1>
+        
+        <Searchbar />
       </div>
       <div id="class bubbles">
         <ul>
