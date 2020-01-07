@@ -152,6 +152,7 @@ class App extends React.Component {
           <div class = "topnav">
             <a><Link to="/">Home</Link></a>
             <a><Link to="/login">Login</Link></a>
+            <a><Link to="/register">Register</Link></a>
 
 
             {/*
@@ -167,17 +168,12 @@ class App extends React.Component {
               <Route path="/login">
                 <Login />
               </Route>
-            </Switch>
-
-
-            <a><Link to="/register">Register</Link></a>
-            <Switch>
-              <Route exact path="/">
-              </Route>
               <Route path="/register">
                 <Register />
               </Route>
             </Switch>
+
+
           </div>
         </Router>
 
