@@ -1,22 +1,73 @@
 import React, { useState } from "react";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import "./login.css";
+// Firebase App (the core Firebase SDK) is always required and must be listed first
+import * as firebase from "firebase/app";
+
+// If you enabled Analytics in your project, add the Firebase SDK for Analytics
+import "firebase/analytics";
+
+// Add the Firebase products that you want to use
+import "firebase/auth";
+import "firebase/firestore";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDVdohGwcKZibRusfG6IGCq3CBFCVGdka0",
+    authDomain: "schedule-comparator.firebaseapp.com",
+    databaseURL: "https://schedule-comparator.firebaseio.com",
+    projectId: "schedule-comparator",
+    storageBucket: "schedule-comparator.appspot.com",
+    messagingSenderId: "521939045676",
+    appId: "1:521939045676:web:6cdf2357f23e33e58fb089",
+    measurementId: "G-V4VQ51GDDZ"
+};
+
+// Initialize Firebase
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+}
+
+const db = firebase.firestore();
 
 export default function Register(props) {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
 
   function validateForm() {
-    return email.length > 8 && password.length > 0 && email.indexOf("@mit.edu")>=0;
+    return email.length > 8 && name.length> 0 && password.length > 0 && email.indexOf("@mit.edu")>0;
   }
 
   function handleSubmit(event) {
+    let kerb = email.substring(0, email.indexOf('@'))
+    db.collection("users").doc(kerb).set({
+      name: name,
+      kerb: kerb,
+      password: password,
+      classes: []
+    })
+    .then(function() {
+        console.log("Added " + name + " to database")
+    }.bind(this))
+    .catch(function(error) {
+        console.error("Error writing document: ", error);
+    });
     event.preventDefault();
   }
 
   return (
     <div className="Login">
       <form onSubmit={handleSubmit}>
+        <FormGroup controlId="name" bsSize="large">
+          <FormLabel>Full Name </FormLabel>
+          <FormControl
+            autoFocus
+            type="name"
+            value={name}
+            onChange={e => setName(e.target.value)}
+          />
+        </FormGroup>
         <FormGroup controlId="email" bsSize="large">
           <FormLabel>Email </FormLabel>
           <FormControl
@@ -37,8 +88,8 @@ export default function Register(props) {
         <FormGroup controlId="password" bsSize="large">
           <FormLabel>Repeat Password </FormLabel>
           <FormControl
-            value={password}
-            onChange={e => setPassword(e.target.value)}
+            value={password2}
+            onChange={e => setPassword2(e.target.value)}
             type="password"
           />
         </FormGroup>
