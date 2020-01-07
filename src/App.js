@@ -120,16 +120,9 @@ class App extends React.Component {
 
         <Router>
           <div class = "topnav">
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-            </ul>
+            <a><Link to="/">Home</Link></a>
+            <a><Link to="/login">Login</Link></a>
 
-            <hr />
 
             {/*
               A <Switch> looks through all its children <Route>
