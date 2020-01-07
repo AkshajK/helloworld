@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Select from 'react-select';
 import logo from './logo.svg';
 import './App.css';
 //Daniel Sun is here
@@ -16,9 +17,11 @@ class App extends React.Component {
   constructor () {
     super()
     const self = this 
+    // update with actual list
     var classeslist = ["6.08", "6.033", "11.111", "11.125", "21M.600"]
     this.state = {
-      classes: classeslist,
+      classeslist: classeslist,
+      classes: ["6.08", "6.033"],
       class: "6.08",
       people: {"6.08": [], "6.033": [], "11.111": [], "11.125": [], "21M.600": []}
     }
@@ -83,6 +86,7 @@ class App extends React.Component {
   }
 
   render() {
+    
     console.log("rendering");
     console.log("state is: ", this.state)
     const self = this
@@ -101,11 +105,28 @@ class App extends React.Component {
       return <li id={name}>{name}</li>
     })
   
+    
+
+    const optionList = self.state.classeslist.map(function (name) { 
+      return <option value={name}>{name}</option>
+    })
+    
     return (
       <div>
       <div id="header"> 
-        <h1 id="logo">Logo</h1> 
-        <input type="text" placeholder="Search.." id="search" />
+        <h1 id="logo">Logo</h1>
+        <Select
+          className="basic-single"
+          classNamePrefix="select"
+          defaultValue={colourOptions[0]}
+          isDisabled="false"
+          isLoading="false"
+          isClearable={isClearable}
+          isRtl={isRtl}
+          isSearchable={isSearchable}
+          name="color"
+          options={colourOptions}
+        />
       </div>
       <div id="class bubbles">
         <ul>
