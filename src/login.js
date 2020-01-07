@@ -45,10 +45,11 @@ export default function Login(props) {
         if (doc.exists) {
             if (doc.data()['password'] == password){
               alert("login successful. Welcome")
+              props.updateUser(doc.data()['name'])
             } else {
               console.log(password)
               console.log(doc.data()['password'])
-              alert("fuck you poser")
+              alert("login unsucessful. Try again")
             }
             console.log("Document data:", doc.data());
         } else {

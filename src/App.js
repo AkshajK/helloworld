@@ -61,9 +61,11 @@ class App extends React.Component {
     this.updateClass = (classtoadd) => {
       var newlist = this.state.classes.slice()
       newlist.push(classtoadd) 
-      this.setState({classes: newlist
-      })
+      this.setState({classes: newlist})
+    };
 
+    this.updateUser = (newname) => {
+      this.setState({user: newname})
     };
   }
 
@@ -213,7 +215,7 @@ class App extends React.Component {
               <Route exact path="/">
               </Route>
               <Route path="/login">
-                <Login />
+                <Login updateUser = {this.updateUser} />
               </Route>
               <Route path="/register">
                 <Register />
