@@ -121,6 +121,21 @@ class App extends React.Component {
     });
   }
 
+  handleRemoveClass = () => {
+    alert('You have removed a class' );
+    console.log(this.state.user)
+    db.collection("classes").doc(this.state.class).collection("ListOfPeople").where('name','==',this.state.user).get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc){
+          doc.ref.delete();
+        });
+        console.log("Removed " + this.state.user + " from " + this.state.class)
+    }.bind(this))
+    .catch(function(error) {
+        console.error("Error removing document: ", error);
+    });
+  }
+
   render() {
     
     console.log("rendering");
@@ -144,14 +159,13 @@ class App extends React.Component {
     const optionList = self.state.classeslist.map(function (name) { 
       return <option value={name}>{name}</option>
     })
-    
-    const handleAdd = function () {
-      console.log("Added " + self.state.user + " to " + self.state.class)
+
+    var addClass = <button onClick={() => this.handleAddClass()}>Add {self.state.class}</button>
+
+    if (self.state.people[self.state.class].includes(self.state.user)){
+      addClass = <button onClick={() => this.handleRemoveClass()}>Remove {self.state.class}</button>
     }
 
-    const addClass = (<button onClick={() => this.handleAddClass()}>Add {self.state.class}</button>)
-
-    
   
     const handleInputChange = (e) => {
       console.log("handling input change")
