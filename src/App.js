@@ -3,7 +3,7 @@ import Select from 'react-select';
 import { Link, Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 import logo from './logo.svg';
 import './App.css';
-import Login from './login'//Daniel Sun is here
+import Login from './login'
 import Searchbar from "./searchbar"
 // Firebase App (the core Firebase SDK) is always required and must be listed first
 import * as firebase from "firebase/app";
@@ -15,6 +15,34 @@ import "firebase/analytics";
 import "firebase/auth";
 import "firebase/firestore";
 
+
+function randomStr(len, arr) { 
+        var ans = ''; 
+        for (var i = len; i > 0; i--) { 
+            ans +=  
+              arr[Math.floor(Math.random() * arr.length)]; 
+        } 
+        return ans; 
+    } 
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDVdohGwcKZibRusfG6IGCq3CBFCVGdka0",
+  authDomain: "schedule-comparator.firebaseapp.com",
+  databaseURL: "https://schedule-comparator.firebaseio.com",
+  projectId: "schedule-comparator",
+  storageBucket: "schedule-comparator.appspot.com",
+  messagingSenderId: "521939045676",
+  appId: "1:521939045676:web:6cdf2357f23e33e58fb089",
+  measurementId: "G-V4VQ51GDDZ"
+};
+
+// Initialize Firebase
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
+const db = firebase.firestore();
+
 class App extends React.Component {
   constructor () {
     super()
@@ -25,25 +53,9 @@ class App extends React.Component {
       classeslist: classeslist,
       classes: ["6.08", "6.033"],
       class: "6.08",
-      people: {"6.08": [], "6.033": [], "11.111": [], "11.125": [], "21M.600": []}
+      people: {"6.08": [], "6.033": [], "11.111": [], "11.125": [], "21M.600": []},
+      user: 'Daniel Sun'
     }
-    const firebaseConfig = {
-      apiKey: "AIzaSyDVdohGwcKZibRusfG6IGCq3CBFCVGdka0",
-      authDomain: "schedule-comparator.firebaseapp.com",
-      databaseURL: "https://schedule-comparator.firebaseio.com",
-      projectId: "schedule-comparator",
-      storageBucket: "schedule-comparator.appspot.com",
-      messagingSenderId: "521939045676",
-      appId: "1:521939045676:web:6cdf2357f23e33e58fb089",
-      measurementId: "G-V4VQ51GDDZ"
-    };
-    
-    // Initialize Firebase
-    if (!firebase.apps.length) {
-      firebase.initializeApp(firebaseConfig);
-    }
-    
-    self.db = firebase.firestore();
     
   }
 
@@ -53,7 +65,7 @@ class App extends React.Component {
     for(i = 0; i < self.state.classes.length; i++) {
       let curArr = []
       const index = i;
-      const listofscores = self.db
+      const listofscores = db
       .collection("classes")
       .doc(self.state.classes[i])
       .collection("ListOfPeople")
@@ -85,6 +97,21 @@ class App extends React.Component {
       })
     }
 
+  }
+
+  handleAddClass = (event) => {
+    alert('You have added a class' );
+    console.log(this.state.user)
+    db.collection("classes").doc(this.state.class).collection("ListOfPeople").doc(randomStr(20, "0123456789QWERTYUIOPLKJHGFDSAZXCVBNMqwertyuioplkjhgfdsazxcvbnm")).set({
+      name: this.state.user
+    })
+    .then(function() {
+        console.log("Document successfully written!");
+    })
+    .catch(function(error) {
+        console.error("Error writing document: ", error);
+    });
+    event.preventDefault();
   }
 
   render() {
@@ -149,6 +176,11 @@ class App extends React.Component {
         <ul>
           {classesList}
         </ul>
+      </div>
+      <div id = 'add class button'>
+        <u1>
+          <button onClick={this.handleAddClass}>addClass</button>
+        </u1>
       </div>
       <div id="body">
         <div id="class header"> </div>
