@@ -65,6 +65,9 @@ class App extends React.Component {
     }
     this.updateClass = (classtoadd) => {
       var newlist = this.state.classes.slice()
+      if (newlist.includes(classtoadd)) {
+        return
+      }
       newlist.push(classtoadd) 
       this.setState({classes: newlist})
     };
