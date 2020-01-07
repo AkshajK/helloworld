@@ -54,24 +54,8 @@ class App extends React.Component {
       classes: ["6.08", "6.033"],
       class: "6.08",
       people: {"6.08": [], "6.033": [], "11.111": [], "11.125": [], "21M.600": []},
-      name: "Joe Mama"
+      user: "Joe Mama"
     }
-    const firebaseConfig = {
-      apiKey: "AIzaSyDVdohGwcKZibRusfG6IGCq3CBFCVGdka0",
-      authDomain: "schedule-comparator.firebaseapp.com",
-      databaseURL: "https://schedule-comparator.firebaseio.com",
-      projectId: "schedule-comparator",
-      storageBucket: "schedule-comparator.appspot.com",
-      messagingSenderId: "521939045676",
-      appId: "1:521939045676:web:6cdf2357f23e33e58fb089",
-      measurementId: "G-V4VQ51GDDZ"
-    };
-    
-    // Initialize Firebase
-    if (!firebase.apps.length) {
-      firebase.initializeApp(firebaseConfig);
-    }
-    
   }
 
   componentDidMount() {
@@ -114,19 +98,18 @@ class App extends React.Component {
 
   }
 
-  handleAddClass = (event) => {
+  handleAddClass = () => {
     alert('You have added a class' );
     console.log(this.state.user)
     db.collection("classes").doc(this.state.class).collection("ListOfPeople").doc(randomStr(20, "0123456789QWERTYUIOPLKJHGFDSAZXCVBNMqwertyuioplkjhgfdsazxcvbnm")).set({
       name: this.state.user
     })
     .then(function() {
-        console.log("Document successfully written!");
-    })
+        console.log("Added " + this.state.user + " to " + this.state.class)
+    }.bind(this))
     .catch(function(error) {
         console.error("Error writing document: ", error);
     });
-    event.preventDefault();
   }
 
   render() {
@@ -154,10 +137,10 @@ class App extends React.Component {
     })
     
     const handleAdd = function () {
-      console.log("Added " + self.state.name + " to " + self.state.class)
+      console.log("Added " + self.state.user + " to " + self.state.class)
     }
 
-    const addClass = (<button onClick={() => handleAdd()}>Add {self.state.class}</button>)
+    const addClass = (<button onClick={() => this.handleAddClass()}>Add {self.state.class}</button>)
 
 
     return (
@@ -187,7 +170,7 @@ class App extends React.Component {
           </div>
         </Router>
 
-          <h1 id="logo">Welcome {self.state.name}!</h1>
+          <h1 id="logo">Welcome {self.state.user}!</h1>
         
         <Searchbar />
       </div>
@@ -196,13 +179,8 @@ class App extends React.Component {
           {classesList}
         </ul>
       </div>
-      <div id = 'add class button'>
-        <u1>
-          <button onClick={this.handleAddClass}>addClass</button>
-        </u1>
-      </div>
       <div id="body">
-        <div>
+        <div id='addclass'>
           {addClass}
         </div>
         <div id="class header"> </div>
