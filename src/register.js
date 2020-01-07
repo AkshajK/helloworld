@@ -46,13 +46,16 @@ export default function Register(props) {
         }
         
         // If password not entered 
-        if (password == '') 
+        if (password == '') {
             alert ("Please enter Password"); 
+            return; 
+        }
               
         // If confirm password not entered 
-        else if (password2 == '') 
+        else if (password2 == '') {
             alert ("Please enter confirm password"); 
-              
+            return; 
+        }
         // If Not same return False.     
         else if (password != password2) { 
             alert ("\nPassword did not match: Please try again...") 
@@ -61,8 +64,7 @@ export default function Register(props) {
 
         // If same return True. 
         else{ 
-            alert("Password Match: Welcome to MIT Course Comparator!") 
-            return; 
+            alert("Password Match: Welcome to MIT Course Comparator!")  
         } 
     let kerb = email.substring(0, email.indexOf('@'))
     db.collection("users").doc(kerb).set({
