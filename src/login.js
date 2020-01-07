@@ -47,11 +47,8 @@ export default function Login(props) {
               alert("login successful. Welcome")
               props.updateUser(doc.data()['name'])
             } else {
-              console.log(password)
-              console.log(doc.data()['password'])
               alert("login unsucessful. Try again")
             }
-            console.log("Document data:", doc.data());
         } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");

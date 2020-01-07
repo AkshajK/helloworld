@@ -6,6 +6,7 @@ import './App.css';
 import Login from './login'
 import Register from './register'
 import Searchbar from "./searchbar"
+import source from "./classes"
 // Firebase App (the core Firebase SDK) is always required and must be listed first
 import * as firebase from "firebase/app";
 
@@ -49,7 +50,11 @@ class App extends React.Component {
     super()
     const self = this 
     // update with actual list
-    var classeslist = ["6.08", "6.033", "11.111", "11.125", "21M.600"]
+    var classeslist = [];
+    var i;
+    for(i =0; i<source.length; i++) {
+      classeslist.push(source[i].title)
+    }
     this.state = {
       classeslist: classeslist,
       classes: [],

@@ -2,7 +2,13 @@ import _ from "lodash";
 import React, { Component } from "react";
 import { Search, Grid, Header, Segment } from "semantic-ui-react";
 import source from "./classes"
+
+var i;
 const initialState = { isLoading: false, results: [], value: "" };
+var classes = [];
+for(i =0; i<source.length; i++) {
+  classes.push(source[i].title)
+}
 
 export default class SearchExampleStandard extends Component {
   state = initialState;
@@ -11,11 +17,10 @@ export default class SearchExampleStandard extends Component {
     this.setState({ value: result.title });
 
   handleKeyPress = (e) => {
-    console.log("ih"+e.charCode)
     if(e.charCode === 13) {
-        // if (this.state.value in )
-        console.log("hi")
-        this.props.updateClass(this.state.value)
+        if (classes.includes(this.state.value)) {
+          this.props.updateClass(this.state.value)
+        }
     }
     
   };
