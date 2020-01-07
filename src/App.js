@@ -215,18 +215,19 @@ class App extends React.Component {
         <Searchbar updateClass={this.updateClass} />
       </div>
       <div id="class bubbles">
+        <h2>Your classes</h2>
         <ul>
           {classesList}
         </ul>
       </div>
       <div id="body">
-        <div id='addclass'>
-          {addClass}
-        </div>
         <div id="class header"> </div>
         <ul id="list of people"> 
           {listOfPeopleLi}
         </ul> 
+        <div id='addclass'>
+          {addClass}
+        </div>
       </div>
       </div>
     );
