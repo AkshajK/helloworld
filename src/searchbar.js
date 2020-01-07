@@ -1,31 +1,8 @@
 import _ from "lodash";
 import React, { Component } from "react";
 import { Search, Grid, Header, Segment } from "semantic-ui-react";
-
+import source from "./classes"
 const initialState = { isLoading: false, results: [], value: "" };
-
-const source = [
-  {
-    title: "6.08",
-    description: "Intro to EECS"
-  },
-  {
-    title: "11.111",
-    description: "Advanced Negotiation"
-  },
-  {
-    title: "11.125",
-    description: "Intro to Education"
-  },
-  {
-    title: "6.033",
-    description: "Computer Systems"
-  },
-  {
-    title: "21M.600",
-    description: "Intro to Acting"
-  }
-];
 
 export default class SearchExampleStandard extends Component {
   state = initialState;
@@ -36,6 +13,7 @@ export default class SearchExampleStandard extends Component {
   handleKeyPress = (e) => {
     console.log("ih"+e.charCode)
     if(e.charCode === 13) {
+        // if (this.state.value in )
         console.log("hi")
         this.props.updateClass(this.state.value)
     }

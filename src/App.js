@@ -52,7 +52,7 @@ class App extends React.Component {
     var classeslist = ["6.08", "6.033", "11.111", "11.125", "21M.600"]
     this.state = {
       classeslist: classeslist,
-      classes: ["6.08", "6.033"],
+      classes: [],
       class: "6.08",
       people: {"6.08": [], "6.033": [], "11.111": [], "11.125": [], "21M.600": []},
       user: "Joe Mama",
