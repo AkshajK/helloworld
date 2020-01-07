@@ -36,10 +36,34 @@ export default function Register(props) {
   const [password2, setPassword2] = useState("");
 
   function validateForm() {
-    return email.length > 8 && name.length> 0 && password.length > 0 && email.indexOf("@mit.edu")>0;
+    return email.length > 8 && name.length> 0 && password.length > 0;
   }
 
   function handleSubmit(event) {
+        if (email.indexOf("@mit.edu") <= 0){
+            alert("Email needs to be @mit.edu");
+            return;
+        }
+        
+        // If password not entered 
+        if (password == '') 
+            alert ("Please enter Password"); 
+              
+        // If confirm password not entered 
+        else if (password2 == '') 
+            alert ("Please enter confirm password"); 
+              
+        // If Not same return False.     
+        else if (password != password2) { 
+            alert ("\nPassword did not match: Please try again...") 
+            return; 
+        } 
+
+        // If same return True. 
+        else{ 
+            alert("Password Match: Welcome to MIT Course Comparator!") 
+            return; 
+        } 
     let kerb = email.substring(0, email.indexOf('@'))
     db.collection("users").doc(kerb).set({
       name: name,
