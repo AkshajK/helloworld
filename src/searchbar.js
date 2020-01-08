@@ -21,6 +21,9 @@ export default class SearchExampleStandard extends Component {
         if (classes.includes(this.state.value)) {
           this.props.updateClass(this.state.value)
         }
+        this.setState({
+          value: ""
+        })
     }
     
   };
