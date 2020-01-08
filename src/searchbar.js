@@ -45,22 +45,25 @@ export default class SearchExampleStandard extends Component {
     const { isLoading, value, results } = this.state;
 
     return (
-      <Grid>
-        <Grid.Column width={6}>
-          <Search
-            loading={isLoading}
-            onResultSelect={this.handleResultSelect}
-            onSearchChange={_.debounce(this.handleSearchChange, 500, {
-              leading: true
-            })}
-            results={results}
-            value={value}
-            onKeyPress={this.handleKeyPress}
-            {...this.props}
-          />
-        </Grid.Column>
+      <div style={{textAlign: 'center'}}>
+          <Grid>
+            <Grid.Column width={16}>
+              <Search
+                loading={isLoading}
+                onResultSelect={this.handleResultSelect}
+                onSearchChange={_.debounce(this.handleSearchChange, 500, {
+                  leading: true
+                })}
+                results={results}
+                value={value}
+                onKeyPress={this.handleKeyPress}
+                {...this.props}
+              />
+            </Grid.Column>
+          
+          </Grid>
+      </div>
       
-      </Grid>
     );
   }
 }
