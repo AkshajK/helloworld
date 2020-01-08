@@ -46,6 +46,12 @@ export default function Login(props) {
             if (doc.data()['password'] == password){
               alert("login successful. Welcome")
               props.updateUser(doc.data()['name'])
+              firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // ...
+              });
             } else {
               alert("login unsucessful. Try again")
             }

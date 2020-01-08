@@ -57,7 +57,7 @@ class App extends React.Component {
     }
     this.state = {
       classeslist: classeslist,
-      classes: [],
+      classes: ["6.08"],
       class: "6.08",
       people: {"6.08": [], "6.033": [], "11.111": [], "11.125": [], "21M.600": []},
       user: "Joe Mama",
@@ -259,8 +259,8 @@ class App extends React.Component {
         <div id='addclass'>
           {addClass}
         </div>
-        <a href="https://oidc.mit.edu/oauth/authorize?response_type=code&client_id=674248f5-d935-481f-83bd-1b53b987265e">
-          Connect Your Account</a>
+        {/* <a href="https://oidc.mit.edu/oauth/authorize?response_type=code&client_id=674248f5-d935-481f-83bd-1b53b987265e">
+          Connect Your Account</a> */}
       </div>
       </div>
     );

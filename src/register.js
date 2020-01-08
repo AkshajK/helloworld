@@ -65,7 +65,15 @@ export default function Register(props) {
         // If same return True. 
         else{ 
             alert("Password Match: Welcome to MIT Course Comparator!")  
-        } 
+            firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                alert(errorMessage)
+                // ...
+              });
+        }
+    
     let kerb = email.substring(0, email.indexOf('@'))
     db.collection("users").doc(kerb).set({
       name: name,
