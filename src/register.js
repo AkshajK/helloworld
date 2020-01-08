@@ -72,21 +72,20 @@ export default function Register(props) {
                 alert(errorMessage)
                 // ...
               });
+
+            let kerb = email.substring(0, email.indexOf('@'))
+            db.collection("users").doc(kerb).set({
+            name: name,
+            kerb: kerb,
+            classes: []
+            })
+            .then(function() {
+                console.log("Added " + name + " to database")
+            }.bind(this))
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
         }
-    
-    let kerb = email.substring(0, email.indexOf('@'))
-    db.collection("users").doc(kerb).set({
-      name: name,
-      kerb: kerb,
-      password: password,
-      classes: []
-    })
-    .then(function() {
-        console.log("Added " + name + " to database")
-    }.bind(this))
-    .catch(function(error) {
-        console.error("Error writing document: ", error);
-    });
     event.preventDefault();
   }
 
