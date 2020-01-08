@@ -261,7 +261,7 @@ class App extends React.Component {
       </div>
       <div id="classbubbles">
         <h2>Your classes</h2>
-        <ul>
+        <ul class='hi'>
           {classesList}
         </ul>
       </div>
