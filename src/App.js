@@ -224,9 +224,9 @@ class App extends React.Component {
 
         <Router>
           <div class = "topnav">
-            <a><Link to="/">Home</Link></a>
-            <a><Link to="/login">Login</Link></a>
-            <a><Link to="/register">Register</Link></a>
+            <div class = 'nav1'><a><Link to="/">Home</Link></a></div>
+            <div class = 'nav2'><a><Link to="/login">Login</Link></a></div>
+            <div class = 'nav3'><a><Link to="/register">Register</Link></a></div>
 
 
             {/*
@@ -246,31 +246,28 @@ class App extends React.Component {
                 <Register />
               </Route>
             </Switch>
-
-
           </div>
         </Router>
         <div class='head1'>
-         <h1 id="emojis">🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀</h1>
-            <h1 id="title">INTERSTELLAR </h1>
-            <h1 id="emojis">🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀</h1>
+            <h1 id="title">🚀🚀 INTERSTELLAR 🚀🚀 </h1>
+            <h1 id="emojis"> </h1>
         </div>
-
           
           <h1 id="logo">Welcome {self.state.user}!</h1>
+          <h2 id = "logo1">Spring 2020</h2>
           
         
         <Searchbar updateclass={this.updateClass} />
       </div>
-      <div id="class bubbles">
+      <div id="classbubbles">
         <h2>Your classes</h2>
         <ul>
           {classesList}
         </ul>
       </div>
       <div id="body">
-        <div id="class header"> </div>
-        <ul id="list of people"> 
+        <div id="classheader"> </div>
+        <ul id="listofpeople"> 
           {listOfPeopleLi}
         </ul> 
         <div id='addclass'>
