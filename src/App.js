@@ -241,6 +241,7 @@ class App extends React.Component {
 
           
           <h1 id="logo">Welcome {self.state.user}!</h1>
+          
         
         <Searchbar updateClass={this.updateClass} />
       </div>
@@ -258,6 +259,8 @@ class App extends React.Component {
         <div id='addclass'>
           {addClass}
         </div>
+        <a href="https://oidc.mit.edu/oauth/authorize?response_type=code&client_id=674248f5-d935-481f-83bd-1b53b987265e">
+          Connect Your Account</a>
       </div>
       </div>
     );
