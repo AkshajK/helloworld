@@ -233,7 +233,13 @@ class App extends React.Component {
 
           </div>
         </Router>
+        <div class='head1'>
+         <h1 id="emojis">🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀</h1>
+            <h1 id="title">INTERSTELLAR </h1>
+            <h1 id="emojis">🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀</h1>
+        </div>
 
+          
           <h1 id="logo">Welcome {self.state.user}!</h1>
         
         <Searchbar updateClass={this.updateClass} />

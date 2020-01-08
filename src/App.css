@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
@@ -13,6 +14,34 @@
   }
 }
 
+#emojis {
+  text-align: center;
+}
+
+#title {
+  text-align: center;
+  font-size: 80px;
+  font-family: 'Copperplate', Times, serif;
+  font-weight: normal
+}
+
+.head1 {
+  background-image: linear-gradient(-90deg, red, yellow);
+
+}
+
+#logo {
+  margin-left: 50px;
+}
+
+#class-bubbles {
+  margin-left: 50px;
+}
+
+#body {
+  margin-left: 50px;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -22,6 +51,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+
 }
 
 .App-link {
