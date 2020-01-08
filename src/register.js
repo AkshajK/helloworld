@@ -10,7 +10,6 @@ import "firebase/analytics";
 // Add the Firebase products that you want to use
 import "firebase/auth";
 import "firebase/firestore";
-import { render } from "@testing-library/react";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDVdohGwcKZibRusfG6IGCq3CBFCVGdka0",
@@ -74,20 +73,22 @@ export default function Register(props) {
                 path =1
                 // ...
               }).then(() => {
-                alert(firebase.auth().currentUser['email'])
-                let kerb = email.substring(0, email.indexOf('@'))
-                db.collection("users").doc(kerb).set({
-                name: name,
-                kerb: kerb,
-                classes: []
-                })
-                .then(function() {
-                    console.log("Added " + name + " to database")
-                    
-                }.bind(this))
-                .catch(function(error) {
-                    console.error("Error writing document: ", error);
-                });
+                if (path<0.5) {
+                    // firebase.auth.currentUser.updateProfile({displayName: name})
+                    // alert(firebase.auth().currentUser['name'])
+                    let kerb = email.substring(0, email.indexOf('@'))
+                    db.collection("users").doc(kerb).set({
+                    name: name,
+                    kerb: kerb,
+                    classes: []
+                    })
+                    .then(function() {
+                        console.log("Added " + name + " to database")
+                    }.bind(this))
+                    .catch(function(error) {
+                        console.error("Error writing document: ", error);
+                    });
+                }
               });
 
         }
