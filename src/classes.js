@@ -42,7 +42,7 @@
 
 // ]
 
-export default [
+var arr = [
     {
        title: "1.008",
        description: "Solving Big Engineering Problems"
@@ -456,10 +456,6 @@ export default [
        description: "Introduction to Robotics"
     },
     {
-       title: "2.12",
-       description: "Introduction to Robotics"
-    },
-    {
        title: "2.121",
        description: "Stochastic Systems"
     },
@@ -470,10 +466,6 @@ export default [
     {
        title: "2.131",
        description: "Advanced Instrumentation and Measurement"
-    },
-    {
-       title: "2.14",
-       description: "Analysis and Design of Feedback Control Systems"
     },
     {
        title: "2.14",
@@ -2816,10 +2808,6 @@ export default [
        description: "Computational Psycholinguistics"
     },
     {
-       title: "9.19",
-       description: "Computational Psycholinguistics"
-    },
-    {
        title: "9.24",
        description: "Disorders and Diseases of the Nervous System"
     },
@@ -2947,10 +2935,10 @@ export default [
        title: "9.URG",
        description: "Undergraduate Research"
     },
-    {
-       title: "10",
-       description: "Molecule Builders"
-    },
+    //{
+    //   title: "10",
+    //   description: "Molecule Builders"
+    //},
     {
        title: "10",
        description: "Engineering Molecular Marvels: Careers and ChemE at MIT"
@@ -3119,14 +3107,14 @@ export default [
        title: "10.81",
        description: "(10.83, 10.85, 10.87) School of Chemical Engineering Practice -- Communication Skills and Human Relations"
     },
-    {
-       title: "10.8",
-       description: "-10.82 School of Chemical Engineering Practice -- Technical Accomplishment"
-    },
-    {
-       title: "10.81",
-       description: "-10.83 School of Chemical Engineering Practice -- Communication Skills and Human Relations"
-    },
+    //{
+     //  title: "10.8",
+     //  description: "-10.82 School of Chemical Engineering Practice -- Technical Accomplishment"
+   // },
+   // {
+   //    title: "10.81",
+    //   description: "-10.83 School of Chemical Engineering Practice -- Communication Skills and Human Relations"
+   // },
     {
        title: "10.84",
        description: "-10.86 School of Chemical Engineering Practice -- Technical Accomplishment"
@@ -4271,10 +4259,10 @@ export default [
        title: "14.16",
        description: "Strategy and Information"
     },
-    {
-       title: "14.16",
-       description: "Behavioral Economics"
-    },
+    //{
+   //    title: "14.16",
+    //   description: "Behavioral Economics"
+   // },
     {
        title: "14.191",
        description: "Independent Research Paper"
@@ -4307,10 +4295,10 @@ export default [
        title: "14.2",
        description: "Industrial Organization: Competitive Strategy and Public Policy"
     },
-    {
+   /* {
        title: "14.2",
        description: "Industrial Organization: Competitive Strategy and Public Policy"
-    },
+    },*/
     {
        title: "14.26J",
        description: "Economics of Incentives: Theory and Applications"
@@ -4339,10 +4327,10 @@ export default [
        title: "14.32",
        description: "Econometric Data Science"
     },
-    {
+   /* {
        title: "14.32",
        description: "Econometric Data Science"
-    },
+    },*/
     {
        title: "14.33",
        description: "Research and Communication in Economics: Topics, Methods, and Implementation"
@@ -4427,14 +4415,14 @@ export default [
        title: "14.75",
        description: "Political Economy and Economic Development"
     },
-    {
+   /* {
        title: "14.75",
        description: "Political Economy and Economic Development"
     },
     {
        title: "14.76",
        description: "Firms, Markets, Trade and Growth"
-    },
+    },*/
     {
        title: "14.76",
        description: "Firms, Markets, Trade and Growth"
@@ -7835,14 +7823,14 @@ export default [
        title: "21W.031",
        description: "Science Writing and New Media: Explorations in Communicating about Science and Technology"
     },
-    {
+    /*{
        title: "21W.031",
        description: "Science Writing and New Media: Explorations in Communicating about Science and Technology"
     },
     {
        title: "21W.035",
        description: "Science Writing and New Media: Elements of Science Writing for the Public"
-    },
+    },*/
     {
        title: "21W.035",
        description: "Science Writing and New Media: Elements of Science Writing for the Public"
@@ -9148,3 +9136,6 @@ export default [
        description: "Undergraduate Research in Women's and Gender Studies"
     }
  ]
+
+console.log(arr.length)
+export default arr

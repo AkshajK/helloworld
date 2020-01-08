@@ -260,7 +260,7 @@ class App extends React.Component {
           <h1 id="logo">Welcome {self.state.user}!</h1>
           
         
-        <Searchbar updateClass={this.updateClass} />
+        <Searchbar updateclass={this.updateClass} />
       </div>
       <div id="class bubbles">
         <h2>Your classes</h2>
