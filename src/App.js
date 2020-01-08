@@ -43,23 +43,26 @@ if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 
-const db = firebase.firestore();
 
 class App extends React.Component {
   constructor () {
     super()
+    this.db = firebase.firestore();
     const self = this 
     // update with actual list
     var classeslist = [];
+    var blankPeople = {}
     var i;
     for(i =0; i<source.length; i++) {
       classeslist.push(source[i].title)
+      blankPeople[source[i].title] = []
     }
+    blankPeople["21M.600"] = []
     this.state = {
       classeslist: classeslist,
       classes: ["6.08"],
       class: "6.08",
-      people: {"6.08": [], "6.033": [], "11.111": [], "11.125": [], "21M.600": []},
+      people: blankPeople,
       user: "Joe Mama",
       searchQuery: ""
     }
@@ -80,47 +83,55 @@ class App extends React.Component {
   componentDidMount() {
     var i;
     const self = this
-    for(i = 0; i < self.state.classeslist.length; i++) {
-      let curArr = []
-      const index = i;
-      const listofscores = db
+    var newPeople = this.state.people
+    const listofscores = this.db
       .collection("classes")
-      .doc(self.state.classeslist[index])
-      .collection("ListOfPeople")
-      .orderBy("name", "asc")
       .get()
       .then((querySnapshot) => {
-        querySnapshot.forEach(function(doc) {
+        let curArr = []
+        querySnapshot.forEach((doc) => {
           // doc.data() is never undefined for query doc snapshots
-          console.log(doc.id, " => ", doc.data());
+          //console.log(doc.id, " => ", doc.data());
+         // console.log(doc)
+          var classname = doc.id
+          const listofpeople = this.db.collection("classes").doc(classname).collection("ListOfPeople")
+          .orderBy("name", "asc")
+          .get()
+          .then((querySnapshot) => {
+              querySnapshot.forEach(function(doc1) {
+              // doc.data() is never undefined for query doc snapshots
+           
   
-          var data = doc.data()
+              var data = doc1.data()
 
-          curArr.push(data.name)
+              curArr.push(data.name)
           
-          console.log(data.name + "<--")
-        });
-      }).then(() => {
-        // TODO copy over the individual keys and values from state.people
-        var newPeople = this.state.people
-        console.log(index)
-        newPeople[this.state.classeslist[index]] = curArr
-        console.log(newPeople[this.state.classeslist[index]])
-        console.log(curArr.length)
-        this.setState({people: newPeople}, () => {
-          console.log("setState callback")
-          console.log(self.state.people[self.state.classeslist[index]])
+              
+             })
+          })
+          .then(() => {
+                // TODO copy over the individual keys and values from state.people
+            
+                newPeople[classname] = curArr
+                //console.log(classname + "asdf")
+          })
+
         })
+      })
+      .then(() => {
+        console.log(newPeople)
+        console.log("HAHA")
+        this.setState({people: newPeople})
         //console.log("got all people")
       })
-    }
+    
 
   }
 
   handleAddClass = () => {
     alert('You have added a class' );
     console.log(this.state.user)
-    db.collection("classes").doc(this.state.class).collection("ListOfPeople").doc(randomStr(20, "0123456789QWERTYUIOPLKJHGFDSAZXCVBNMqwertyuioplkjhgfdsazxcvbnm")).set({
+    this.db.collection("classes").doc(this.state.class).collection("ListOfPeople").doc(randomStr(20, "0123456789QWERTYUIOPLKJHGFDSAZXCVBNMqwertyuioplkjhgfdsazxcvbnm")).set({
       name: this.state.user
     })
     .then(function() {
@@ -134,7 +145,7 @@ class App extends React.Component {
   handleRemoveClass = () => {
     alert('You have removed a class' );
     console.log(this.state.user)
-    db.collection("classes").doc(this.state.class).collection("ListOfPeople").where('name','==',this.state.user).get()
+    this.db.collection("classes").doc(this.state.class).collection("ListOfPeople").where('name','==',this.state.user).get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc){
           doc.ref.delete();
@@ -161,7 +172,8 @@ class App extends React.Component {
     .map(function (name) { 
         return <button id={name} onClick={() => handleClick(name)}>{name}</button>
     })
-
+    console.log(self.state.people)
+    console.log("hi" + self.state.class)
     const listOfPeopleLi = self.state.people[self.state.class].map(function (name) { 
       return <li id={name}>{name}</li>
     })
