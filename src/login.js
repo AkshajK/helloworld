@@ -38,24 +38,29 @@ export default function Login(props) {
   }
 
   function handleSubmit(event) {
-    let kerb = email.substring(0, email.indexOf('@'))
-    var docRef = db.collection("users").doc(kerb);
-
-    docRef.get().then(function(doc) {
-        if (doc.exists) {
-            if (doc.data()['password'] == password){
-              alert("login successful. Welcome")
-              props.updateUser(doc.data()['name'])
-            } else {
-              alert("login unsucessful. Try again")
-            }
-        } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-        }
-    }).catch(function(error) {
-        console.log("Error getting document:", error);
-    });
+    var path = 0
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      alert(errorMessage)
+      path = 1
+      // ...
+    }).then(() => {
+      alert(path)
+      if (path<0.5) {
+        let kerb = email.substring(0, email.indexOf('@'))
+        var docRef = db.collection("users").doc(kerb);
+        docRef.get().then(function(doc) {
+            if (doc.exists) {
+                props.updateUser(doc.data())
+            }       
+        }).catch(function(error) {
+            console.log("Error getting document:", error);
+        });
+      }
+    }
+    );
     event.preventDefault();
   }
 

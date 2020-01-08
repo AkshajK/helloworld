@@ -64,21 +64,34 @@ export default function Register(props) {
 
         // If same return True. 
         else{ 
-            alert("Password Match: Welcome to MIT Course Comparator!")  
-        } 
-    let kerb = email.substring(0, email.indexOf('@'))
-    db.collection("users").doc(kerb).set({
-      name: name,
-      kerb: kerb,
-      password: password,
-      classes: []
-    })
-    .then(function() {
-        console.log("Added " + name + " to database")
-    }.bind(this))
-    .catch(function(error) {
-        console.error("Error writing document: ", error);
-    });
+            var path = 0
+            firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                alert(errorMessage)
+                path =1
+                // ...
+              }).then(() => {
+                if (path<0.5) {
+                    // firebase.auth.currentUser.updateProfile({displayName: name})
+                    // alert(firebase.auth().currentUser['name'])
+                    let kerb = email.substring(0, email.indexOf('@'))
+                    db.collection("users").doc(kerb).set({
+                    name: name,
+                    kerb: kerb,
+                    classes: []
+                    })
+                    .then(function() {
+                        console.log("Added " + name + " to database")
+                    }.bind(this))
+                    .catch(function(error) {
+                        console.error("Error writing document: ", error);
+                    });
+                }
+              });
+
+        }
     event.preventDefault();
   }
 

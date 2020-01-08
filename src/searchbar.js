@@ -19,8 +19,11 @@ export default class SearchExampleStandard extends Component {
   handleKeyPress = (e) => {
     if(e.charCode === 13) {
         if (classes.includes(this.state.value)) {
-          this.props.updateClass(this.state.value)
+          this.props.updateclass(this.state.value)
         }
+        this.setState({
+         value: ""
+        })
     }
     
   };
