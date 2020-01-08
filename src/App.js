@@ -27,6 +27,14 @@ function randomStr(len, arr) {
         return ans; 
     } 
 
+function arrayRemove(arr, value) {
+
+  return arr.filter(function(ele){
+    return ele != value;
+  });
+   
+}
+
 const firebaseConfig = {
   apiKey: "AIzaSyDVdohGwcKZibRusfG6IGCq3CBFCVGdka0",
   authDomain: "schedule-comparator.firebaseapp.com",
@@ -173,10 +181,13 @@ class App extends React.Component {
       console.log("set class to " + name)
      
     }
+    const handleExit = function (name) {
+      self.setState({classes: arrayRemove(self.state.classes, name)})
+    }
     const classesList = self.state.classes
     .slice(self.state.classes.length-10, self.state.classes.length)
     .map(function (name) { 
-        return <button id={name} onClick={() => handleClick(name)}>{name}</button>
+        return <div id={name}><button id={name} onClick={() => handleClick(name)}>{name}</button><button id='x' onClick={() => handleExit(name)}>x</button></div>
     })
     console.log(self.state.people)
     console.log("hi" + self.state.class)
