@@ -116,6 +116,7 @@ class App extends React.Component {
                 // TODO copy over the individual keys and values from state.people
             
                 newPeople[classname] = curArr
+                curArr = []
                 //console.log(classname + "asdf")
           })
 
