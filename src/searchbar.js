@@ -22,7 +22,8 @@ export default class SearchExampleStandard extends Component {
           this.props.updateclass(this.state.value)
         }
         this.setState({
-         value: ""
+         value: "",
+         results: []
         })
     }
     

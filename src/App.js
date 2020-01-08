@@ -136,6 +136,7 @@ class App extends React.Component {
   handleAddClass = () => {
     alert('You have added a class' );
     console.log(this.state.user)
+
     this.db.collection("classes").doc(this.state.class).collection("ListOfPeople").doc(randomStr(20, "0123456789QWERTYUIOPLKJHGFDSAZXCVBNMqwertyuioplkjhgfdsazxcvbnm")).set({
       name: this.state.user
     })
@@ -257,7 +258,7 @@ class App extends React.Component {
           <h2 id = "logo1">Spring 2020</h2>
           
         
-        <Searchbar updateclass={this.updateClass} />
+        <Searchbar updateclass={this.updateClass} showNoResults={false} />
       </div>
       <div id="classbubbles">
         <h2>Your classes</h2>
