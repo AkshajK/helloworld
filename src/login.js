@@ -38,23 +38,29 @@ export default function Login(props) {
   }
 
   function handleSubmit(event) {
+    var path = 0
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
       alert(errorMessage)
+      path = 1
       // ...
-    });
-    let kerb = email.substring(0, email.indexOf('@'))
-    var docRef = db.collection("users").doc(kerb);
-
-    docRef.get().then(function(doc) {
-        if (doc.exists) {
-            props.updateUser(doc.data())
-        }       
-    }).catch(function(error) {
-        console.log("Error getting document:", error);
-    });
+    }).then(() => {
+      alert(path)
+      if (path<0.5) {
+        let kerb = email.substring(0, email.indexOf('@'))
+        var docRef = db.collection("users").doc(kerb);
+        docRef.get().then(function(doc) {
+            if (doc.exists) {
+                props.updateUser(doc.data())
+            }       
+        }).catch(function(error) {
+            console.log("Error getting document:", error);
+        });
+      }
+    }
+    );
     event.preventDefault();
   }
 
