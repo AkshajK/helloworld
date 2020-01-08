@@ -72,8 +72,8 @@ class App extends React.Component {
       this.setState({classes: newlist})
     };
 
-    this.updateUser = (newname) => {
-      this.setState({user: newname})
+    this.updateUser = (data) => {
+      this.setState({user: data['name'] })
     };
   }
 
