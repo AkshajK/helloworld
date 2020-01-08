@@ -72,7 +72,7 @@ class App extends React.Component {
         return
       }
       newlist.push(classtoadd) 
-      this.setState({classes: newlist})
+      this.setState({classes: newlist, class: classtoadd})
       // alert(firebase.auth().currentUser['email'])
     };
 
