@@ -57,7 +57,7 @@ class App extends React.Component {
       classeslist.push(source[i].title)
       blankPeople[source[i].title] = []
     }
-    blankPeople["21M.600"] = []
+    //blankPeople["21M.600"] = []
     this.state = {
       classeslist: classeslist,
       classes: ["6.08"],
