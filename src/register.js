@@ -10,6 +10,7 @@ import "firebase/analytics";
 // Add the Firebase products that you want to use
 import "firebase/auth";
 import "firebase/firestore";
+import { render } from "@testing-library/react";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDVdohGwcKZibRusfG6IGCq3CBFCVGdka0",
@@ -64,27 +65,31 @@ export default function Register(props) {
 
         // If same return True. 
         else{ 
-            alert("Password Match: Welcome to MIT Course Comparator!")  
+            var path = 0
             firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
                 // Handle Errors here.
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 alert(errorMessage)
+                path =1
                 // ...
+              }).then(() => {
+                alert(firebase.auth().currentUser['email'])
+                let kerb = email.substring(0, email.indexOf('@'))
+                db.collection("users").doc(kerb).set({
+                name: name,
+                kerb: kerb,
+                classes: []
+                })
+                .then(function() {
+                    console.log("Added " + name + " to database")
+                    
+                }.bind(this))
+                .catch(function(error) {
+                    console.error("Error writing document: ", error);
+                });
               });
 
-            let kerb = email.substring(0, email.indexOf('@'))
-            db.collection("users").doc(kerb).set({
-            name: name,
-            kerb: kerb,
-            classes: []
-            })
-            .then(function() {
-                console.log("Added " + name + " to database")
-            }.bind(this))
-            .catch(function(error) {
-                console.error("Error writing document: ", error);
-            });
         }
     event.preventDefault();
   }
