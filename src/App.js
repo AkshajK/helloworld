@@ -285,6 +285,21 @@ class App extends React.Component {
         //});
       }
     }
+    const signout = () => {
+      alert("singing out")
+      firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+        self.setState({
+          classes: ["6.08"],
+          class: "6.08",
+          user: "Guest",
+          searchQuery: ""})
+        alert("logged out")
+      }).catch(function(error) {
+        // An error happened.
+        alert(error.message)
+      });
+    }
 
     return (
       <div>
@@ -327,6 +342,7 @@ class App extends React.Component {
         
         <Searchbar updateclass={this.updateClass} showNoResults={false} />
       </div>
+      <button onClick = {() => signout()}>Logout</button>
       <div id="classbubbles">
         <h2>Your classes: {this.state.classesUserIsIn.toString()}</h2>
         <ul>
