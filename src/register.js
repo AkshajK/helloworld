@@ -71,12 +71,16 @@ export default function Register(props) {
                 var errorMessage = error.message;
                 alert(errorMessage)
                 path =1
+                
                 // ...
               }).then(() => {
                 if (path<0.5) {
-                    // firebase.auth.currentUser.updateProfile({displayName: name})
-                    // alert(firebase.auth().currentUser['name'])
+
                     let kerb = email.substring(0, email.indexOf('@'))
+                    var user = firebase.auth().currentUser;
+                    user.updateProfile({
+                        displayName: name,
+                    })
                     db.collection("users").doc(kerb).set({
                     name: name,
                     kerb: kerb,
@@ -84,6 +88,25 @@ export default function Register(props) {
                     })
                     .then(function() {
                         console.log("Added " + name + " to database")
+                        alert("sending email")
+                        user.sendEmailVerification().then(function() {
+                            // Email sent.
+                            // alert("singing out")
+                            // firebase.auth().signOut().then(function() {
+                            //     // Sign-out successful.
+                            //     self.setState({
+                            //     classes: ["6.08"],
+                            //     class: "6.08",
+                            //     user: "Guest",
+                            //     searchQuery: ""})
+                            //     alert("logged out")
+                            // }).catch(function(error) {
+                            //     // An error happened.
+                            //     alert(error.message)
+                            // });
+                        }).catch(function(error) {
+                            // An error happened.
+                        });
                     }.bind(this))
                     .catch(function(error) {
                         console.error("Error writing document: ", error);
