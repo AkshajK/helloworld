@@ -200,8 +200,14 @@ class App extends React.Component {
         console.log("Added " + this.state.user + " to " + this.state.class)
         var newclassesuserisin = this.state.classesUserIsIn.slice()
         newclassesuserisin.push(this.state.class)
+        var newpeople = this.state.people
+        var newclasspeoplelist = this.state.people[this.state.class]
+        newclasspeoplelist.push(this.state.user)
+        newpeople[this.state.class] = newclasspeoplelist
         this.setState({
-          classesUserIsIn: newclassesuserisin
+          classesUserIsIn: newclassesuserisin,
+          people: newpeople
+
         })
     }.bind(this))
     .catch(function(error) {
@@ -218,8 +224,12 @@ class App extends React.Component {
           doc.ref.delete();
         });
         console.log("Removed " + this.state.user + " from " + this.state.class)
+        var newpeople = this.state.people
+        newpeople[this.state.class] = arrayRemove(this.state.people[this.state.class], this.state.user)
+
         this.setState({
-          classesUserIsIn: arrayRemove(this.state.classesUserIsIn, this.state.class)
+          classesUserIsIn: arrayRemove(this.state.classesUserIsIn, this.state.class),
+          people: newpeople
         })
     }.bind(this))
     .catch(function(error) {
