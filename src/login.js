@@ -59,8 +59,10 @@ export default function Login(props) {
             console.log("Error getting document:", error);
         });
       }
+      
     }
     );
+
     event.preventDefault();
   }
 
