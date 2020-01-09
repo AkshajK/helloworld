@@ -7,6 +7,7 @@ import Login from './login'
 import Register from './register'
 import Searchbar from "./searchbar"
 import source from "./classes"
+import { Button } from 'semantic-ui-react'
 // Firebase App (the core Firebase SDK) is always required and must be listed first
 import * as firebase from "firebase/app";
 
@@ -17,7 +18,13 @@ import "firebase/analytics";
 import "firebase/auth";
 import "firebase/firestore";
 
+function arrayRemove(arr, value) {
 
+  return arr.filter(function(ele){
+      return ele != value;
+  });
+
+}
 function randomStr(len, arr) { 
         var ans = ''; 
         for (var i = len; i > 0; i--) { 
@@ -27,13 +34,6 @@ function randomStr(len, arr) {
         return ans; 
     } 
 
-function arrayRemove(arr, value) {
-
-  return arr.filter(function(ele){
-    return ele != value;
-  });
-   
-}
 
 const firebaseConfig = {
   apiKey: "AIzaSyDVdohGwcKZibRusfG6IGCq3CBFCVGdka0",
@@ -72,7 +72,8 @@ class App extends React.Component {
       class: "6.08",
       people: blankPeople,
       user: "Joe Mama",
-      searchQuery: ""
+      searchQuery: "",
+      classesUserIsIn: []
     }
     this.updateClass = (classtoadd) => {
       var newlist = this.state.classes.slice()
@@ -89,19 +90,63 @@ class App extends React.Component {
       alert(email.substring(0, email.indexOf('@')))
 
       this.setState({user: data['name']})
+      this.userIsUpdated()
     };
   }
 
   componentDidMount() {
     var i;
     const self = this
+    var listclasses = []
     var newPeople = this.state.people
+    this.db.collection("classes").get()
+      .then((querySnapshot) => {
+        var listOfPeoplePromises = []
+        
+        querySnapshot.forEach((doc) => {
+          listclasses.push(doc.id)
+          const listOfPeoplePromise = this.db.collection("classes")
+          .doc(doc.id)
+          .collection("ListOfPeople")
+          .orderBy("name", "asc")
+          .get()
+          listOfPeoplePromises.push(listOfPeoplePromise);
+        })
+        return Promise.all(listOfPeoplePromises)
+      })
+      .then((listsOfPeople) => {
+        
+        var newListsOfPeople = listsOfPeople.map((person) => {
+          var curArr = []
+          person.forEach((doc1) => {
+            curArr.push(doc1.data().name)
+          })
+          return curArr
+        })
+
+        var i;
+        for(i=0; i<listclasses.length; i++) {
+          newPeople[listclasses[i]] = newListsOfPeople[i]
+        }
+
+        
+        self.setState({
+          people: newPeople,
+          //classesUserIsIn: classesUserIsIn
+        })
+        this.userIsUpdated()
+
+      })
+      
+      /*
     const listofscores = this.db
       .collection("classes")
       .get()
       .then((querySnapshot) => {
         let curArr = []
+        let classIds = []
         querySnapshot.forEach((doc) => {
+          classIds.push(doc.id)
           // doc.data() is never undefined for query doc snapshots
           //console.log(doc.id, " => ", doc.data());
          // console.log(doc)
@@ -132,13 +177,26 @@ class App extends React.Component {
         })
       })
       .then(() => {
-        console.log(newPeople)
-        console.log("HAHA")
-        this.setState({people: newPeople})
+     
+        self.setState({people: newPeople})
+        console.log(JSON.stringify(newPeople))
         //console.log("got all people")
       })
-    
+     */
+      
+  }
 
+  userIsUpdated = () => {
+    var classesUserIsIn = []
+    var i;
+    for(i=0; i<this.state.classeslist.length; i++) {
+      if(this.state.people[this.state.classeslist[i]].includes(this.state.user)) {
+        classesUserIsIn.push(this.state.classeslist[i])
+      }
+    }
+    this.setState({
+      classesUserIsIn: classesUserIsIn
+    })
   }
 
   handleAddClass = () => {
@@ -150,6 +208,17 @@ class App extends React.Component {
     })
     .then(function() {
         console.log("Added " + this.state.user + " to " + this.state.class)
+        var newclassesuserisin = this.state.classesUserIsIn.slice()
+        newclassesuserisin.push(this.state.class)
+        var newpeople = this.state.people
+        var newclasspeoplelist = this.state.people[this.state.class]
+        newclasspeoplelist.push(this.state.user)
+        newpeople[this.state.class] = newclasspeoplelist
+        this.setState({
+          classesUserIsIn: newclassesuserisin,
+          people: newpeople
+
+        })
     }.bind(this))
     .catch(function(error) {
         console.error("Error writing document: ", error);
@@ -165,6 +234,13 @@ class App extends React.Component {
           doc.ref.delete();
         });
         console.log("Removed " + this.state.user + " from " + this.state.class)
+        var newpeople = this.state.people
+        newpeople[this.state.class] = arrayRemove(this.state.people[this.state.class], this.state.user)
+
+        this.setState({
+          classesUserIsIn: arrayRemove(this.state.classesUserIsIn, this.state.class),
+          people: newpeople
+        })
     }.bind(this))
     .catch(function(error) {
         console.error("Error removing document: ", error);
@@ -185,7 +261,7 @@ class App extends React.Component {
       self.setState({classes: arrayRemove(self.state.classes, name)})
     }
     const classesList = self.state.classes
-    .slice(self.state.classes.length-10, self.state.classes.length)
+    .slice(Math.max(0, self.state.classes.length-20), self.state.classes.length)
     .map(function (name) { 
         return (<li id='classes'>
           <button id={name} onClick={() => handleClick(name)}>{name}</button><button id='x' onClick={() => handleExit(name)}>x</button>
@@ -231,6 +307,22 @@ class App extends React.Component {
         //});
       }
     }
+    const signout = () => {
+      alert("singing out")
+      firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+        self.setState({
+          classes: ["6.08"],
+          class: "6.08",
+          user: "Guest",
+          searchQuery: ""})
+        alert("logged out")
+      }).catch(function(error) {
+        // An error happened.
+        alert(error.message)
+      });
+      this.userIsUpdated()
+    }
 
     return (
       <div>
@@ -273,9 +365,10 @@ class App extends React.Component {
         
         <Searchbar updateclass={this.updateClass} showNoResults={false} />
       </div>
+      <button onClick = {() => signout()}>Logout</button>
       <div id="classbubbles">
-        <h2>Your classes</h2>
-        <ul class='hi'>
+        <h2>Your classes: {this.state.classesUserIsIn.toString()}</h2>
+        <ul>
           {classesList}
         </ul>
       </div>
