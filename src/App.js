@@ -221,9 +221,10 @@ class App extends React.Component {
   handleAddClass = () => {
     alert('You have added a class' );
     console.log(this.state.user)
-
+    
     this.db.collection("classes").doc(this.state.class).collection("ListOfPeople").doc(randomStr(20, "0123456789QWERTYUIOPLKJHGFDSAZXCVBNMqwertyuioplkjhgfdsazxcvbnm")).set({
       name: this.state.user
+
     })
     .then(function() {
         console.log("Added " + this.state.user + " to " + this.state.class)

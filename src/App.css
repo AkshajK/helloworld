@@ -107,9 +107,9 @@
 }
 
 .greenbutton {
-  color: navy;
-  background-color: #4CAF50; /* Green */
-  border: none;
+  color: black;
+  background-color: #FFFF00; /* Green */
+  border: 5px solid red;
  
   padding: 10px 20px;
   text-align: center;
@@ -118,12 +118,17 @@
   font-size: 32px;
   font-weight: 900;
   border-radius: 25px;
+  box-shadow: 3px 3px 1px gray;
+}
+
+.greenbutton:hover {
+  box-shadow: 5px 5px 3px;
 }
 
 .biggergreenbutton {
-  color: navy;
-  background-color: #4CAF50; /* Green */
-  border: none;
+  color: black;
+  background-color: #FFFF00; /* Green */
+  border: 5px solid red;
  
   padding: 15px 30px;
   text-align: center;
@@ -132,6 +137,11 @@
   font-size: 48px;
   font-weight: 900;
   border-radius: 25px;
+  box-shadow: 3px 3px 1px gray;
+}
+
+.biggergreenbutton:hover {
+  box-shadow: 5px 5px 3px;
 }
 
 .removeenroll{
