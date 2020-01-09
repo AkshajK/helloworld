@@ -71,7 +71,7 @@ class App extends React.Component {
       classes: ["6.08"],
       class: "6.08",
       people: blankPeople,
-      user: "Joe Mama",
+      user: "Guest",
       searchQuery: "",
       classesUserIsIn: []
     }
@@ -259,6 +259,7 @@ class App extends React.Component {
     }
     const handleExit = function (name) {
       self.setState({classes: arrayRemove(self.state.classes, name)})
+      self.setState({class: self.state.classes[0]})
     }
 
     var timer = 0
