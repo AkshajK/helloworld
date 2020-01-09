@@ -34,13 +34,6 @@ function randomStr(len, arr) {
         return ans; 
     } 
 
-function arrayRemove(arr, value) {
-
-  return arr.filter(function(ele){
-    return ele != value;
-  });
-   
-}
 
 const firebaseConfig = {
   apiKey: "AIzaSyDVdohGwcKZibRusfG6IGCq3CBFCVGdka0",
@@ -205,8 +198,10 @@ class App extends React.Component {
     })
     .then(function() {
         console.log("Added " + this.state.user + " to " + this.state.class)
+        var newclassesuserisin = this.state.classesUserIsIn.slice()
+        newclassesuserisin.push(this.state.class)
         this.setState({
-          classesUserIsIn: this.state.classesUserIsIn.push(this.state.class)
+          classesUserIsIn: newclassesuserisin
         })
     }.bind(this))
     .catch(function(error) {
