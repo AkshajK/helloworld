@@ -90,6 +90,7 @@ class App extends React.Component {
       alert(email.substring(0, email.indexOf('@')))
 
       this.setState({user: data['name']})
+      this.userIsUpdated()
     };
   }
 
@@ -128,19 +129,15 @@ class App extends React.Component {
           newPeople[listclasses[i]] = newListsOfPeople[i]
         }
 
-        var classesUserIsIn = []
-        for(i=0; i<this.state.classeslist.length; i++) {
-          if(newPeople[this.state.classeslist[i]].includes(this.state.user)) {
-            classesUserIsIn.push(this.state.classeslist[i])
-          }
-        }
+        
         self.setState({
           people: newPeople,
-          classesUserIsIn: classesUserIsIn
+          //classesUserIsIn: classesUserIsIn
         })
-        
+        this.userIsUpdated()
 
       })
+      
       /*
     const listofscores = this.db
       .collection("classes")
@@ -187,6 +184,19 @@ class App extends React.Component {
       })
      */
       
+  }
+
+  userIsUpdated = () => {
+    var classesUserIsIn = []
+    var i;
+    for(i=0; i<this.state.classeslist.length; i++) {
+      if(this.state.people[this.state.classeslist[i]].includes(this.state.user)) {
+        classesUserIsIn.push(this.state.classeslist[i])
+      }
+    }
+    this.setState({
+      classesUserIsIn: classesUserIsIn
+    })
   }
 
   handleAddClass = () => {
@@ -309,6 +319,7 @@ class App extends React.Component {
         // An error happened.
         alert(error.message)
       });
+      this.userIsUpdated()
     }
 
     return (
