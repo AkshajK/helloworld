@@ -351,7 +351,7 @@ class App extends React.Component {
         //});
       }
     }
-    const signout = () => {
+    const logout = () => {
       alert("singing out")
       firebase.auth().signOut().then(function() {
         // Sign-out successful.
@@ -367,6 +367,46 @@ class App extends React.Component {
       });
       this.userIsUpdated()
     }
+    const privateContent = ( 
+      <div>
+      <h1 id="logo">Welcome {self.state.user}!</h1>
+      <h2 id = "logo1">Spring 2020</h2>
+      
+      
+      <Searchbar updateclass={this.updateClass} showNoResults={false} />
+      <button onClick = {() => logout()}>Logout</button>
+      <div id="classbubbles">
+        <h2>Your classes: {this.state.classesUserIsIn.toString()}</h2>
+        <ul>
+          {classesList}
+        </ul>
+      </div>
+      <div id="body">
+        <div id="classheader"> </div>
+        <ul id="listofpeople"> 
+          {listOfPeopleLi}
+        </ul>
+        <div>
+          <button class='remove' onClick={() => handleExit(this.state.class)}>Remove {this.state.class}</button>
+        </div>
+        <div id='addclass'>
+          {addClass}
+        </div>
+  
+        <input type="text" id="email"  value={this.state.email} onChange = {this.handleEmailChange} />
+        <br/>
+        <button onClick={this.handleSubmit} id="resetpass" >Reset Password</button>
+        </div>
+        </div>
+      )
+  
+      const publicContent = (
+        <div>
+          <h1>
+            Please Sign In
+          </h1>
+        </div>
+      )
 
     return (
       <div>
@@ -403,37 +443,7 @@ class App extends React.Component {
             <h1 id="emojis"> </h1>
         </div>
           
-          <h1 id="logo">Welcome {self.state.user}!</h1>
-          <h2 id = "logo1">Spring 2020</h2>
-          
-        
-        <Searchbar updateclass={this.updateClass} showNoResults={false} />
-      </div>
-      <button onClick = {() => signout()}>Logout</button>
-      <div id="classbubbles">
-        <h2>Your classes: {this.state.classesUserIsIn.toString()}</h2>
-        <ul>
-          {classesList}
-        </ul>
-      </div>
-      <div id="body">
-        <div id="classheader"> </div>
-        <ul id="listofpeople"> 
-          {listOfPeopleLi}
-        </ul>
-        <div>
-          <button class='removeenroll' onClick={() => handleExit(this.state.class)}>Remove {this.state.class}</button>
-        </div>
-        <div id='addclass'>
-          {addClass}
-        </div>
-
-        <input type="text" id="email"  value={this.state.email} onChange = {this.handleEmailChange} />
-        <br/>
-        <button onClick={this.handleSubmit} id="resetpass" >Reset Password</button>
-
-        {/* <a href="https://oidc.mit.edu/oauth/authorize?response_type=code&client_id=674248f5-d935-481f-83bd-1b53b987265e">
-          Connect Your Account</a> */}
+        {firebase.auth().currentUser ? privateContent : publicContent}
       </div>
       </div>
     );
