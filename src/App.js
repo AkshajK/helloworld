@@ -72,6 +72,7 @@ class App extends React.Component {
       class: "6.08",
       people: blankPeople,
       user: "Guest",
+      usertag: "",
       searchQuery: "",
       classesUserIsIn: [],
       email: ''
@@ -87,10 +88,10 @@ class App extends React.Component {
     };
 
     this.updateUser = (data) => {
-      let email = firebase.auth().currentUser['email']
-      alert(email.substring(0, email.indexOf('@')))
+      let mit_email = firebase.auth().currentUser['email']
+      alert(mit_email.substring(0, mit_email.indexOf('@')))
 
-      this.setState({user: data['name']})
+      this.setState({user: data['name'], usertag: data['name']+" ("+data['kerb']+")", email: mit_email})
       this.userIsUpdated()
     };
   }
@@ -138,7 +139,7 @@ class App extends React.Component {
         var newListsOfPeople = listsOfPeople.map((person) => {
           var curArr = []
           person.forEach((doc1) => {
-            curArr.push(doc1.data().name)
+            curArr.push(doc1.data().name+" ("+doc1.data().kerb+")")
           })
           return curArr
         })
@@ -209,7 +210,7 @@ class App extends React.Component {
     var classesUserIsIn = []
     var i;
     for(i=0; i<this.state.classeslist.length; i++) {
-      if(this.state.people[this.state.classeslist[i]].includes(this.state.user)) {
+      if(this.state.people[this.state.classeslist[i]].includes(this.state.usertag)) {
         classesUserIsIn.push(this.state.classeslist[i])
       }
     }
@@ -223,7 +224,7 @@ class App extends React.Component {
     console.log(this.state.user)
 
     this.db.collection("classes").doc(this.state.class).collection("ListOfPeople").doc(randomStr(20, "0123456789QWERTYUIOPLKJHGFDSAZXCVBNMqwertyuioplkjhgfdsazxcvbnm")).set({
-      name: this.state.user
+      name: this.state.user, kerb: this.state.email.substring(0, this.state.email.indexOf('@'))
     })
     .then(function() {
         console.log("Added " + this.state.user + " to " + this.state.class)
@@ -231,7 +232,7 @@ class App extends React.Component {
         newclassesuserisin.push(this.state.class)
         var newpeople = this.state.people
         var newclasspeoplelist = this.state.people[this.state.class]
-        newclasspeoplelist.push(this.state.user)
+        newclasspeoplelist.push(this.state.usertag)
         newpeople[this.state.class] = newclasspeoplelist
         this.setState({
           classesUserIsIn: newclassesuserisin,
@@ -247,14 +248,14 @@ class App extends React.Component {
   handleRemoveClass = () => {
     alert('You have removed a class' );
     console.log(this.state.user)
-    this.db.collection("classes").doc(this.state.class).collection("ListOfPeople").where('name','==',this.state.user).get()
+    this.db.collection("classes").doc(this.state.class).collection("ListOfPeople").where('kerb','==',this.state.email.substring(0,this.state.email.indexOf('@'))).get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc){
           doc.ref.delete();
         });
         console.log("Removed " + this.state.user + " from " + this.state.class)
         var newpeople = this.state.people
-        newpeople[this.state.class] = arrayRemove(this.state.people[this.state.class], this.state.user)
+        newpeople[this.state.class] = arrayRemove(this.state.people[this.state.class], this.state.usertag)
 
         this.setState({
           classesUserIsIn: arrayRemove(this.state.classesUserIsIn, this.state.class),
@@ -323,7 +324,7 @@ class App extends React.Component {
 
     var addClass = <button class="removeenroll" onClick={() => this.handleAddClass()}>Enroll in {self.state.class}</button>
 
-    if (self.state.people[self.state.class].includes(self.state.user)){
+    if (self.state.people[self.state.class].includes(self.state.usertag)){
       addClass = <button class="removeenroll" onClick={() => this.handleRemoveClass()}>Unenroll from {self.state.class}</button>
     }
 
