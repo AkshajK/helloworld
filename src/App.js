@@ -73,7 +73,8 @@ class App extends React.Component {
       people: blankPeople,
       user: "Guest",
       searchQuery: "",
-      classesUserIsIn: []
+      classesUserIsIn: [],
+      email: ''
     }
     this.updateClass = (classtoadd) => {
       var newlist = this.state.classes.slice()
@@ -93,6 +94,24 @@ class App extends React.Component {
       this.userIsUpdated()
     };
   }
+
+  handleEmailChange = (event) => {
+    this.setState({email: event.target.value});
+  }
+
+  handleSubmit = () => {
+    var auth = firebase.auth();
+    var emailAddress = this.state.email;
+    alert(emailAddress)
+    auth.sendPasswordResetEmail(emailAddress).then(function() {
+      // Email sent.
+      alert("email sent to " +emailAddress )
+    }).catch(function(error) {
+      // An error happened.
+      alert(error.message)
+    });
+  }
+
 
   componentDidMount() {
     var i;
@@ -401,6 +420,11 @@ class App extends React.Component {
         <div id='addclass'>
           {addClass}
         </div>
+
+        <input type="text" id="email"  value={this.state.email} onChange = {this.handleEmailChange} />
+        <br/>
+        <button onClick={this.handleSubmit} id="resetpass" >Reset Password</button>
+
         {/* <a href="https://oidc.mit.edu/oauth/authorize?response_type=code&client_id=674248f5-d935-481f-83bd-1b53b987265e">
           Connect Your Account</a> */}
       </div>
