@@ -71,7 +71,7 @@ class App extends React.Component {
       classes: ["6.08"],
       class: "6.08",
       people: blankPeople,
-      user: "Joe Mama",
+      user: "Guest",
       searchQuery: "",
       classesUserIsIn: []
     }
@@ -258,7 +258,15 @@ class App extends React.Component {
      
     }
     const handleExit = function (name) {
+      if(self.state.classes.length > 1) {
+        var newclasses = arrayRemove(self.state.classes, name)
+        self.setState({classes: newclasses, class: newclasses[newclasses.length - 1]})
+        
+      }
+      else {
       self.setState({classes: arrayRemove(self.state.classes, name)})
+      }
+
     }
 
     var timer = 0
@@ -269,7 +277,7 @@ class App extends React.Component {
     .slice(Math.max(0, self.state.classes.length-20), self.state.classes.length)
     .map(function (name) { 
         return (
-          <button id="icon" class="hi" 
+          <button class={name===self.state.class ? "biggergreenbutton" : "greenbutton"} 
           onClick={() => {
             timer = setTimeout(() => {
               if (!prevent) {
@@ -294,10 +302,10 @@ class App extends React.Component {
       return <option value={name}>{name}</option>
     })
 
-    var addClass = <button onClick={() => this.handleAddClass()}>Enroll in {self.state.class}</button>
+    var addClass = <button class="removeenroll" onClick={() => this.handleAddClass()}>Enroll in {self.state.class}</button>
 
     if (self.state.people[self.state.class].includes(self.state.user)){
-      addClass = <button onClick={() => this.handleRemoveClass()}>Unenroll from {self.state.class}</button>
+      addClass = <button class="removeenroll" onClick={() => this.handleRemoveClass()}>Unenroll from {self.state.class}</button>
     }
 
   
@@ -395,7 +403,7 @@ class App extends React.Component {
           {listOfPeopleLi}
         </ul>
         <div>
-          <button class='remove' onClick={() => handleExit(this.state.class)}>Remove {this.state.class}</button>
+          <button class='removeenroll' onClick={() => handleExit(this.state.class)}>Remove {this.state.class}</button>
         </div>
         <div id='addclass'>
           {addClass}

@@ -106,7 +106,7 @@
   color: white;
 }
 
-.hi {
+.greenbutton {
   color: navy;
   background-color: #4CAF50; /* Green */
   border: none;
@@ -120,7 +120,21 @@
   border-radius: 25px;
 }
 
-.remove{
+.biggergreenbutton {
+  color: navy;
+  background-color: #4CAF50; /* Green */
+  border: none;
+ 
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 48px;
+  font-weight: 900;
+  border-radius: 25px;
+}
+
+.removeenroll{
   background-color: #504CAF;
   border: none;
   color: white;
