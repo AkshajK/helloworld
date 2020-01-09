@@ -404,6 +404,10 @@ class App extends React.Component {
           <input type="text" id="email"  value={this.state.email} onChange = {this.handleEmailChange} />
         <br/>
         <button onClick={this.handleSubmit} id="resetpass" >Reset Password</button>
+
+        <h1>
+          Bio/Intro information Here
+        </h1>
         </div>
       )
 
