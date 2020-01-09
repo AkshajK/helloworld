@@ -392,10 +392,6 @@ class App extends React.Component {
         <div id='addclass'>
           {addClass}
         </div>
-  
-        <input type="text" id="email"  value={this.state.email} onChange = {this.handleEmailChange} />
-        <br/>
-        <button onClick={this.handleSubmit} id="resetpass" >Reset Password</button>
         </div>
         </div>
       )
@@ -405,6 +401,9 @@ class App extends React.Component {
           <h1>
             Please Sign In
           </h1>
+          <input type="text" id="email"  value={this.state.email} onChange = {this.handleEmailChange} />
+        <br/>
+        <button onClick={this.handleSubmit} id="resetpass" >Reset Password</button>
         </div>
       )
 
