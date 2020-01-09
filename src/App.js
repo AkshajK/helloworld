@@ -168,9 +168,13 @@ class App extends React.Component {
         classesUserIsIn.push(this.state.classeslist[i])
       }
     }
+    console.log(JSON.stringify(classesUserIsIn))
     this.setState({
-      classesUserIsIn: classesUserIsIn
-    })
+      classesUserIsIn: classesUserIsIn,
+      
+    }, this.setState({
+      classes: this.state.classesUserIsIn
+    }))
   }
 
   // Runs right after constructor but before render
@@ -291,6 +295,7 @@ class App extends React.Component {
       });
       this.userIsUpdated()
     }
+    // <h2>Your classes: {this.state.classesUserIsIn.toString()}</h2>
     const privateContent = ( 
       <div>
       <h1 id="logo">Welcome {self.state.user}!</h1>
@@ -300,7 +305,7 @@ class App extends React.Component {
       <Searchbar updateclass={this.updateClass} showNoResults={false} />
       <button onClick = {() => logout()}>Logout</button>
       <div id="classbubbles">
-        <h2>Your classes: {this.state.classesUserIsIn.toString()}</h2>
+        
         <ul>
           {classesList}
         </ul>

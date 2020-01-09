@@ -2,7 +2,7 @@ import _ from "lodash";
 import React, { Component } from "react";
 import { Search, Grid, Header, Segment } from "semantic-ui-react";
 import source from "./classes"
-
+import './searchbar.css';
 var i;
 const initialState = { isLoading: false, results: [], value: "" };
 var classes = [];
@@ -49,24 +49,27 @@ export default class SearchExampleStandard extends Component {
     const { isLoading, value, results } = this.state;
 
     return (
-      <div style={{textAlign: 'center'}}>
+      //<div style={{textAlign: 'center'}}>
           <Grid>
             <Grid.Column width={16}>
-              <Search
-                loading={isLoading}
-                onResultSelect={this.handleResultSelect}
-                onSearchChange={_.debounce(this.handleSearchChange, 500, {
-                  leading: true
-                })}
-                results={results}
-                value={value}
-                onKeyPress={this.handleKeyPress}
-                {...this.props}
-              />
+              <div id="searchbar">
+                <Search id="actualsearchbar" icon=""
+                  loading={isLoading}
+                  onResultSelect={this.handleResultSelect}
+                  onSearchChange={_.debounce(this.handleSearchChange, 500, {
+                    leading: true
+                  })}
+                  results={results}
+                  value={value}
+                  onKeyPress={this.handleKeyPress}
+                  {...this.props}
+                />
+              </div>
+              
             </Grid.Column>
           
           </Grid>
-      </div>
+      //</div>
       
     );
   }

@@ -1,0 +1,15 @@
+#searchbar {
+    position: absolute;
+    right: 35%;
+    text-align: center;
+    margin: '0 auto';
+    top: -30px;
+
+}
+
+#actualsearchbar {
+    background-color: yellow;
+    border: 5px solid red;
+    font-size: 32px;
+    font-weight: bold;
+}
