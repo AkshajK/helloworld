@@ -392,7 +392,7 @@ class App extends React.Component {
           {listOfPeopleLi}
         </ul>
         <div>
-          <button class='remove' onClick={() => handleExit(this.state.class)}>Remove {this.state.class}</button>
+          <button class='removeenroll' onClick={() => handleExit(this.state.class)}>Remove {this.state.class}</button>
         </div>
         <div id='addclass'>
           {addClass}
