@@ -263,8 +263,8 @@ class App extends React.Component {
     const classesList = self.state.classes
     .slice(Math.max(0, self.state.classes.length-20), self.state.classes.length)
     .map(function (name) { 
-        return (<button class="hiBigger" id='classes'>
-          <button id={name} class="hi" onClick={() => handleClick(name)}>{name}</button><button id='x' onClick={() => handleExit(name)}>x</button>
+        return (
+          <button id={name} class="hi" onClick={() => handleClick(name)}>{name}  <button id='x' onClick={() => handleExit(name)}>x</button>
         </button>)
     })
     console.log(self.state.people)

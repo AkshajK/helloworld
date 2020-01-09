@@ -120,20 +120,6 @@
   border-radius: 25px;
 }
 
-.hiBigger {
-  color: navy;
-  background-color: #4CAF50; /* Green */
-  border: none;
- 
-  padding: 5px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 32px;
-  font-weight: 900;
-  border-radius: 25px;
-}
-
 #listofpeople {
   color: black;
   font-size: 20px;
