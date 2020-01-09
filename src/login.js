@@ -47,6 +47,9 @@ export default function Login(props) {
       path = 1
       // ...
     }).then(() => {
+      if (!firebase.currentUser){
+        return 
+      }
       if (firebase.auth().currentUser.emailVerified) {
         alert(path)
         if (path<0.5) {
