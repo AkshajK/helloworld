@@ -264,8 +264,7 @@ class App extends React.Component {
     .slice(Math.max(0, self.state.classes.length-20), self.state.classes.length)
     .map(function (name) { 
         return (
-          <button id={name} class="hi" onClick={() => handleClick(name)}>{name}  <button id='x' onClick={() => handleExit(name)}>x</button>
-        </button>)
+          <button id={name} class="hi" onClick={() => handleClick(name)}>{name}</button>)
     })
     console.log(self.state.people)
     console.log("hi" + self.state.class)
@@ -277,10 +276,10 @@ class App extends React.Component {
       return <option value={name}>{name}</option>
     })
 
-    var addClass = <button onClick={() => this.handleAddClass()}>Add {self.state.class}</button>
+    var addClass = <button onClick={() => this.handleAddClass()}>Enroll in {self.state.class}</button>
 
     if (self.state.people[self.state.class].includes(self.state.user)){
-      addClass = <button onClick={() => this.handleRemoveClass()}>Remove {self.state.class}</button>
+      addClass = <button onClick={() => this.handleRemoveClass()}>Unenroll from {self.state.class}</button>
     }
 
   
@@ -376,7 +375,10 @@ class App extends React.Component {
         <div id="classheader"> </div>
         <ul id="listofpeople"> 
           {listOfPeopleLi}
-        </ul> 
+        </ul>
+        <div>
+          <button class='remove' onClick={() => handleExit(this.state.class)}>Remove {this.state.class}</button>
+        </div>
         <div id='addclass'>
           {addClass}
         </div>
