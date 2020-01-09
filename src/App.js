@@ -260,11 +260,29 @@ class App extends React.Component {
     const handleExit = function (name) {
       self.setState({classes: arrayRemove(self.state.classes, name)})
     }
+
+    var timer = 0
+    var delay = 200
+    var prevent = false
+
     const classesList = self.state.classes
     .slice(Math.max(0, self.state.classes.length-20), self.state.classes.length)
     .map(function (name) { 
         return (
-          <button id={name} class="hi" onClick={() => handleClick(name)}>{name}</button>)
+          <button id="icon" class="hi" 
+          onClick={() => {
+            timer = setTimeout(() => {
+              if (!prevent) {
+                handleClick(name)
+              }
+              prevent = false
+            },delay)
+            }}
+           onDoubleClick={() => {
+             clearTimeout(timer)
+             prevent = true
+             handleExit(name)
+           }}>{name}</button>)
     })
     console.log(self.state.people)
     console.log("hi" + self.state.class)
