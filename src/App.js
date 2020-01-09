@@ -35,6 +35,9 @@ function randomStr(len, arr) {
         return ans; 
     } 
 
+function shortenTag(usertag) {
+  return usertag.substring(0,usertag.indexOf("(")-1)
+}
 
 const firebaseConfig = {
   apiKey: "AIzaSyDVdohGwcKZibRusfG6IGCq3CBFCVGdka0",
@@ -316,7 +319,7 @@ class App extends React.Component {
     console.log(self.state.people)
     console.log("hi" + self.state.class)
     const listOfPeopleLi = self.state.people[self.state.class].map(function (name) { 
-      return <li id={name}>{name}</li>
+      return <li id={name}>{shortenTag(name)}</li>
     })
 
     const optionList = self.state.classeslist.map(function (name) { 
