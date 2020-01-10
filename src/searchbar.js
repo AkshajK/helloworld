@@ -21,6 +21,17 @@ export default class SearchExampleStandard extends Component {
         if (classes.includes(this.state.value)) {
           this.props.updateclass(this.state.value)
         }
+        else {
+          const re = new RegExp(_.escapeRegExp(this.state.value), "i");
+          const isMatch = result => re.test(result.title);
+          const results = _.filter(source, isMatch)
+          //console.log(results)
+          if(results.length > 0) {
+            if (classes.includes(results[0].title)) {
+              this.props.updateclass(results[0].title)
+            }
+          }
+        }
         this.setState({
          value: "",
          results: []
