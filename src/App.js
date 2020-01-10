@@ -63,7 +63,7 @@ class App extends React.Component {
     this.state = {
       classeslist: classeslist, // Array of all classes
       classes: [], // Array of classes for which buttons are showing
-      class: "6.08", // Class whos roster is being shown
+      class: "", // Class whos roster is being shown
       people: blankPeople, // object that has classes as keys and takes class -> list of usertags of users in the class
       user: "Guest", // name of user
       usertag: "Guest (guest1314234@mit.edu)", // usertag of user (usertag is "name (kerb)"). 
@@ -247,7 +247,7 @@ class App extends React.Component {
               let data = doc.data()
               self.setState({
                 classes: data['classes'], // Array of classes for which buttons are showing
-                class: "6.08", // Class whos roster is being shown
+                class: data['classes'].length >0 ? data['classes'][0] : "", // Class whos roster is being shown
                 user: data['name'], // name of user
                 usertag: data['name']+" ("+data['kerb']+")", // usertag of user (usertag is "name (kerb)"). 
                 classesUserIsIn: data['classes'], // classes that the user is in
@@ -341,21 +341,26 @@ class App extends React.Component {
              handleExit(name)
            }}>{name}</button>)
     })
+    
     console.log(self.state.people)
     console.log("hi" + self.state.class)
-    const listOfPeopleLi = self.state.people[self.state.class].map(function (name) { 
-      return <li id={name}>{shortenTag(name)}</li>
-    })
 
+
+    var listOfPeopleLi = null
+    var addClass = <button class="removeenroll" onClick={() => this.handleAddClass()}>Enroll in {self.state.class}</button>
+
+    if (self.state.class.length>0) {
+      listOfPeopleLi = self.state.people[self.state.class].map(function (name) { 
+      return <li id={name}>{shortenTag(name)}</li>
+      })
+      if (self.state.people[self.state.class].includes(self.state.usertag)){
+        addClass = <button class="removeenroll" onClick={() => this.handleRemoveClass()}>Unenroll from {self.state.class}</button>
+      }
+    } 
     const optionList = self.state.classeslist.map(function (name) { 
       return <option value={name}>{name}</option>
     })
 
-    var addClass = <button class="removeenroll" onClick={() => this.handleAddClass()}>Enroll in {self.state.class}</button>
-
-    if (self.state.people[self.state.class].includes(self.state.usertag)){
-      addClass = <button class="removeenroll" onClick={() => this.handleRemoveClass()}>Unenroll from {self.state.class}</button>
-    }
     // <h2>Your classes: {this.state.classesUserIsIn.toString()}</h2>
     // <div>
     //<button class='removeenroll' onClick={() => handleExit(this.state.class)}>Remove {this.state.class}</button>
@@ -401,7 +406,8 @@ class App extends React.Component {
         </ul>
         
         <div id='addclass'>
-          {addClass}
+          {/* {addClass} */}
+          {this.state.class.length>0 ? addClass : "search for class. This will change into the enroll/unenroll button"}
         </div>
         </div>
         </div>
@@ -452,7 +458,6 @@ class App extends React.Component {
       console.log(firebase.auth().currentUser)
     return (
       <div>
-      
         {firebase.auth().currentUser ? privateContent : publicContent}
       </div>
     );

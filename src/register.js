@@ -84,7 +84,8 @@ export default function Register(props) {
                     db.collection("users").doc(kerb).set({
                     name: name,
                     kerb: kerb,
-                    classes: []
+                    classes: [],
+                    friends: []
                     })
                     .then(function() {
                         console.log("Added " + name + " to database")
