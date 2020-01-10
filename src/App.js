@@ -85,8 +85,10 @@ class App extends React.Component {
       let mit_email = firebase.auth().currentUser['email']
       alert(mit_email.substring(0, mit_email.indexOf('@')))
 
-      this.setState({user: data['name'], usertag: data['name']+" ("+data['kerb']+")", email: mit_email})
-      this.userIsUpdated()
+      this.setState({user: data['name'], usertag: data['name']+" ("+data['kerb']+")", email: mit_email}, () => {
+        this.userIsUpdated()
+      })
+      
     };
   }
 
@@ -339,7 +341,7 @@ class App extends React.Component {
         </h1>
         </div>
       )
-
+      console.log(firebase.auth().currentUser)
     return (
       <div>
       <div id="header"> 
