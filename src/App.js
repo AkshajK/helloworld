@@ -449,9 +449,9 @@ class App extends React.Component {
           </div>
           </div>
           <div id="body1">
-            <h1 id="intro">
+            <h1 id="intro">            
               <br></br>
-            Welcome to Interstellar, a class comparison website for MIT students to share your classes and see what classes your friends are taking!
+            Welcome to Interstellar, a class comparison website for MIT students to share your classes and see what classes your friends are taking!             
             <body>
             <Login updateUser = {this.updateUser}/>
               <br></br>

@@ -3,7 +3,6 @@
 /* #02010A (black), #22007C (blue), #102542 (gray), #140D4F (blue-purple), #5F4BB6 (light purple)*/
 .App {
   text-align: center;
-  
 }
 
 .App-logo {
@@ -153,7 +152,7 @@
   display: inline-block;
   font-size: 32px;
   
-  border-radius: 25px;
+  border-radius: 20px;
   box-shadow: 1px 3px 1px gray;
 
 }
