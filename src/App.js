@@ -312,12 +312,11 @@ class App extends React.Component {
         
       }
       else {
-      self.setState({classes: arrayRemove(self.state.classes, name)})
+      self.setState({classes: arrayRemove(self.state.classes, name), class: ""})
       }
 
     }
 
-    let fat = "dbi"
 
     var timer = 0
     var delay = 200
