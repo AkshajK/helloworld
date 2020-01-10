@@ -27,11 +27,13 @@
 
 .head1 {
   background-image: linear-gradient(-90deg, red, yellow);
+  box-shadow: 2px 2px 1px gray;
 
 }
 
 #logo {
   margin-right: 50px;
+  margin-top: 10px;
   text-align: right;
 }
 
@@ -108,8 +110,8 @@
 
 .greenbutton {
   color: black;
-  background-color: #FFFF00; /* Green */
-  border: 5px solid red;
+  background-color: orange; /* Green */
+  border: 2px solid red;
  
   padding: 10px 20px;
   text-align: center;
@@ -118,25 +120,26 @@
   font-size: 32px;
   font-weight: 900;
   border-radius: 25px;
-  box-shadow: 3px 3px 1px gray;
+  box-shadow: 1px 3px 1px gray;
   margin-top: 30px;
 }
 
 .greenbutton:hover {
-  box-shadow: 5px 5px 3px;
+  box-shadow: 3px 3px 1px;
   
 }
 
 .biggergreenbutton {
   color: black;
   background-color: #FFFF00; /* Green */
-  border: 5px solid red;
+  border: 2px solid red;
  
-  padding: 13px 26px;
+ /* padding: 13px 26px;  og padding */
+  padding: 10px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 900;
   border-radius: 25px;
   box-shadow: 5px 5px 3px gray;

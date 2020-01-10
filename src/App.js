@@ -5,6 +5,7 @@ import logo from './logo.svg';
 import './App.css';
 import Login from './login'
 import Register from './register'
+import Logout from './logout'
 import Searchbar from "./searchbar"
 import source from "./classes"
 import { Button } from 'semantic-ui-react'
@@ -83,12 +84,13 @@ class App extends React.Component {
     // this function is passed to login
     this.updateUser = (data) => {
       let mit_email = firebase.auth().currentUser['email']
-      alert(mit_email.substring(0, mit_email.indexOf('@')))
-
-      this.setState({user: data['name'], usertag: data['name']+" ("+data['kerb']+")", email: mit_email}, () => {
+      this.setState({
+        user: data['name'], 
+        usertag: data['name']+" ("+data['kerb']+")", 
+        email: mit_email
+      }, () => {
         this.userIsUpdated()
       })
-      
     };
   }
 
@@ -163,20 +165,18 @@ class App extends React.Component {
 
   // Runs whenever the user is updated (to update classesUserIsIn)
   userIsUpdated = () => {
-    var classesUserIsIn = []
+    var newclassesUserIsIn = []
     var i;
     for(i=0; i<this.state.classeslist.length; i++) {
       if(this.state.people[this.state.classeslist[i]].includes(this.state.usertag)) {
-        classesUserIsIn.push(this.state.classeslist[i])
+        newclassesUserIsIn.push(this.state.classeslist[i])
       }
     }
-    console.log(JSON.stringify(classesUserIsIn))
+    console.log(JSON.stringify(newclassesUserIsIn))
     this.setState({
-      classesUserIsIn: classesUserIsIn,
-      
-    }, this.setState({
-      classes: this.state.classesUserIsIn
-    }))
+      classesUserIsIn: newclassesUserIsIn,
+      classes: newclassesUserIsIn
+    })
   }
 
   // Runs right after constructor but before render
@@ -219,6 +219,25 @@ class App extends React.Component {
       })
   }
 
+  logout = () => {
+    alert("signing out")
+    firebase.auth().signOut().then(function() {
+      // Sign-out successful.
+      this.setState({
+        classes: ["6.08"],
+        class: "6.08",
+        user: "Guest",
+        usertag: "", 
+        email: ''
+      })
+      
+      alert("logged out")
+    }).catch(function(error) {
+      // An error happened.
+      alert(error.message)
+    });
+    this.userIsUpdated()
+  }
   
   // Runs whenever setState is called
   render() {
@@ -281,34 +300,39 @@ class App extends React.Component {
     if (self.state.people[self.state.class].includes(self.state.usertag)){
       addClass = <button class="removeenroll" onClick={() => this.handleRemoveClass()}>Unenroll from {self.state.class}</button>
     }
-
-    const logout = () => {
-      //alert("signing out")
-      firebase.auth().signOut().then(function() {
-        // Sign-out successful.
-        self.setState({
-          classes: ["6.08"],
-          class: "6.08",
-          user: "Guest"})
-        alert("logged out")
-      }).catch(function(error) {
-        // An error happened.
-        alert(error.message)
-      });
-      this.userIsUpdated()
-    }
     // <h2>Your classes: {this.state.classesUserIsIn.toString()}</h2>
     // <div>
     //<button class='removeenroll' onClick={() => handleExit(this.state.class)}>Remove {this.state.class}</button>
    // </div>
     const privateContent = ( 
       <div>
+        <div id="header"> 
+
+        <Router>
+          <div class = "topnav">
+            <div class = 'nav1'><a><Link to="/">Home</Link></a></div>
+            <div class = 'nav2'><a><Link to="/login">Logout</Link></a></div>
+
+            <Switch>
+              <Route exact path="/">
+              </Route>
+              <Route path="/login">
+                  <Logout updateUser = {this.logoutUser} />
+                </Route>
+            </Switch>
+          </div>
+        </Router>
+        <div class='head1'>
+            <h1 id="title">🚀🚀 INTERSTELLAR 🚀🚀 </h1>
+            <h1 id="emojis"> </h1>
+        </div>
+        </div>
       <h1 id="logo">Welcome {self.state.user}!</h1>
       <h2 id = "logo1">Spring 2020</h2>
       
       
       <Searchbar updateclass={this.updateClass} showNoResults={false} />
-      <button onClick = {() => logout()}>Logout</button>
+      <button onClick = {this.logout}>Logout</button>
       <div id="classbubbles">
         
         <ul>
@@ -330,56 +354,51 @@ class App extends React.Component {
   
       const publicContent = (
         <div>
+          <div id="header"> 
+
+          <Router>
+            <div class = "topnav">
+              <div class = 'nav1'><a><Link to="/">Home</Link></a></div>
+              <div class = 'nav2'><a><Link to="/login">Login</Link></a></div>
+              <div class = 'nav3'><a><Link to="/register">Register</Link></a></div>
+
+
+              {/*
+                A <Switch> looks through all its children <Route>
+                elements and renders the first one whose path
+                matches the current URL. Use a <Switch> any time
+                you have multiple routes, but you want only one
+                of them to render at a time
+              */}
+              <Switch>
+                <Route exact path="/">
+                </Route>
+                <Route path="/login">
+                  <Login updateUser = {this.updateUser} />
+                </Route>
+                <Route path="/register">
+                  <Register />
+                </Route>
+              </Switch>
+            </div>
+          </Router>
+          <div class='head1'>
+              <h1 id="title">🚀🚀 INTERSTELLAR 🚀🚀 </h1>
+              <h1 id="emojis"> </h1>
+          </div>
+          </div>
           <h1>
             Please Sign In
-          </h1>
-          <input type="text" id="email"  value={this.state.email} onChange = {this.handleEmailChange} />
-        <br/>
-        <button onClick={this.handleSubmit} id="resetpass" >Reset Password</button>
 
-        <h1>
-          Bio/Intro information Here
+          Welcome to Interstellar! [include some nice image or logo or something here]         Bio/Intro information Here
         </h1>
         </div>
       )
       console.log(firebase.auth().currentUser)
     return (
       <div>
-      <div id="header"> 
-
-        <Router>
-          <div class = "topnav">
-            <div class = 'nav1'><a><Link to="/">Home</Link></a></div>
-            <div class = 'nav2'><a><Link to="/login">Login</Link></a></div>
-            <div class = 'nav3'><a><Link to="/register">Register</Link></a></div>
-
-
-            {/*
-              A <Switch> looks through all its children <Route>
-              elements and renders the first one whose path
-              matches the current URL. Use a <Switch> any time
-              you have multiple routes, but you want only one
-              of them to render at a time
-            */}
-            <Switch>
-              <Route exact path="/">
-              </Route>
-              <Route path="/login">
-                <Login updateUser = {this.updateUser} />
-              </Route>
-              <Route path="/register">
-                <Register />
-              </Route>
-            </Switch>
-          </div>
-        </Router>
-        <div class='head1'>
-            <h1 id="title">🚀🚀 INTERSTELLAR 🚀🚀 </h1>
-            <h1 id="emojis"> </h1>
-        </div>
-          
+      
         {firebase.auth().currentUser ? privateContent : publicContent}
-      </div>
       </div>
     );
   }
