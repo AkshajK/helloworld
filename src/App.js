@@ -444,16 +444,20 @@ class App extends React.Component {
               <h1 id="emojis"> </h1>
           </div>
           </div>
-          <h1>
-            Please Sign In
-
-          Welcome to Interstellar, a class comparison website for MIT students to share what classes they are taking, as well as to see what classes other students are taking!
-          <body>
-          <img src="Complete_graph_K9.jpg"  width="200"
-            height="200"></img>
-          </body>
-          Create an account with a valid @mit.edu email address to get started.
-        </h1>
+          <div id="body1">
+            <h1 id="intro">
+              <br></br>
+            Welcome to Interstellar, a class comparison website for MIT students to share your classes and see what classes your friends are taking!
+            <body>
+              <br></br>
+            <img src="Complete_graph_K9.jpg"  width="200"
+              height="200"></img>
+            </body>
+            <br></br>
+            Please sign in or create an account with a valid @mit.edu email address to get started!
+          </h1>
+          </div>
+          
         </div>
       )
       console.log(firebase.auth().currentUser)
