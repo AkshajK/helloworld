@@ -71,6 +71,7 @@ class App extends React.Component {
       email: 'guest1314234@mit.edu' // email of the user
     }
 
+
     // this function is passed to the search bar
     this.updateClass = (classtoadd) => {
       var newlist = this.state.classes.slice()
@@ -236,6 +237,30 @@ class App extends React.Component {
     var i;
     const self = this
     var listclasses = []
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        let email = firebase.auth().currentUser['email']
+        let kerb = email.substring(0, email.indexOf("@"))
+        self.db.collection('users').doc(kerb).get().then(function(doc) {
+          if (doc.exists) {
+              let data = doc.data()
+              self.setState({
+                classes: data['classes'], // Array of classes for which buttons are showing
+                class: "6.08", // Class whos roster is being shown
+                user: data['name'], // name of user
+                usertag: data['name']+" ("+data['kerb']+")", // usertag of user (usertag is "name (kerb)"). 
+                classesUserIsIn: data['classes'], // classes that the user is in
+                email: email // email of the user
+              })
+          }       
+      }).catch(function(error) {
+          console.log("Error getting document:", error);
+      });
+      } else {
+        // No user is signed in.
+      }
+    });
     var newPeople = this.state.people
     this.db.collection("classes").get()
       .then((querySnapshot) => {
