@@ -130,7 +130,7 @@ class App extends React.Component {
   
 
   handleAddClass = () => {
-    alert('You have added a class' );
+    //alert('You have added a class' );
     console.log(this.state.user)
     
     this.db.collection("classes").doc(this.state.class).collection("ListOfPeople").doc(randomStr(20, "0123456789QWERTYUIOPLKJHGFDSAZXCVBNMqwertyuioplkjhgfdsazxcvbnm")).set({
@@ -156,7 +156,7 @@ class App extends React.Component {
   }
 
   handleRemoveClass = () => {
-    alert('You have removed a class' );
+    //alert('You have removed a class' );
     console.log(this.state.user)
     this.db.collection("classes").doc(this.state.class).collection("ListOfPeople").where('kerb','==',this.state.email.substring(0,this.state.email.indexOf('@'))).get()
     .then(function(querySnapshot) {
@@ -298,6 +298,9 @@ class App extends React.Component {
       addClass = <button class="removeenroll" onClick={() => this.handleRemoveClass()}>Unenroll from {self.state.class}</button>
     }
     // <h2>Your classes: {this.state.classesUserIsIn.toString()}</h2>
+    // <div>
+    //<button class='removeenroll' onClick={() => handleExit(this.state.class)}>Remove {this.state.class}</button>
+   // </div>
     const privateContent = ( 
       <div>
         <div id="header"> 
@@ -338,9 +341,7 @@ class App extends React.Component {
         <ul id="listofpeople"> 
           {listOfPeopleLi}
         </ul>
-        <div>
-          <button class='removeenroll' onClick={() => handleExit(this.state.class)}>Remove {this.state.class}</button>
-        </div>
+        
         <div id='addclass'>
           {addClass}
         </div>
