@@ -347,7 +347,7 @@ class App extends React.Component {
 
     if (self.state.class.length>0) {
       listOfPeopleLi = self.state.people[self.state.class].map(function (name) { 
-      return <li id={name}>{shortenTag(name)}</li>
+      return <li class="peoplelist" id={name}>{shortenTag(name)}</li>
       })
       if (self.state.people[self.state.class].includes(self.state.usertag)){
         addClass = <button class="removeenroll" onClick={() => this.handleRemoveClass()}>Unenroll from {self.state.class}</button>
@@ -400,14 +400,18 @@ class App extends React.Component {
         </ul>
       </div>
       <div id="body">
-        <div id="classheader"> </div>
+        
+        <hr />
+        <div id="classheader"> 
         <ul id="listofpeople"> 
           {listOfPeopleLi}
         </ul>
         
+        
         <div id='addclass'>
           {/* {addClass} */}
           {this.state.class.length>0 ? addClass : "search for class. This will change into the enroll/unenroll button"}
+        </div>
         </div>
         </div>
         </div>

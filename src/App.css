@@ -54,7 +54,8 @@
 }
 
 #body {
-  margin-left: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 .App-header {
@@ -89,6 +90,12 @@
   background-color: #330;
   overflow: hidden;
   position: aboslute;
+}
+
+.peoplelist {
+  list-style-type: none;
+  font-size: 25px;
+  line-height: 1.6;
 }
 
 /* Style the links inside the navigation bar */
@@ -153,12 +160,19 @@
 .biggergreenbutton:hover {
   box-shadow: 3px 3px 1px;
 }
-
+#classheader {
+  position: relative;
+}
 .removeenroll{
   color: white;
   font-weight: bold;
   background-color: #8F7BE6; /* Green */
   border: 2px solid black;
+
+  position: absolute;
+  top: -35px;
+  right: 0px;
+  text-align: right;
  
   padding: 10px 20px;
   text-align: center;
