@@ -94,7 +94,10 @@ export default function Register(props) {
                             // register automatically signs you in, so this signs you out
                             firebase.auth().signOut().then(function() {
                                 // Sign-out successful.
-                                return;
+                                setPassword("")
+                                setEmail("")
+                                setPassword2("")
+                                setName("")
                             }).catch(function(error) {
                                 // An error happened.
                                 alert(error.message)

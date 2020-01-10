@@ -58,6 +58,8 @@ export default function Login(props) {
             docRef.get().then(function(doc) {
                 if (doc.exists) {
                     props.updateUser(doc.data())
+                    setPassword("")
+                    setEmail("")
                 }       
             }).catch(function(error) {
                 console.log("Error getting document:", error);

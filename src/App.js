@@ -83,12 +83,13 @@ class App extends React.Component {
     // this function is passed to login
     this.updateUser = (data) => {
       let mit_email = firebase.auth().currentUser['email']
-      alert(mit_email.substring(0, mit_email.indexOf('@')))
-
-      this.setState({user: data['name'], usertag: data['name']+" ("+data['kerb']+")", email: mit_email}, () => {
+      this.setState({
+        user: data['name'], 
+        usertag: data['name']+" ("+data['kerb']+")", 
+        email: mit_email
+      }, () => {
         this.userIsUpdated()
       })
-      
     };
   }
 
