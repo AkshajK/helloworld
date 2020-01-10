@@ -63,7 +63,7 @@ export default function Login(props) {
               console.log("Error getting document:", error);
           });
       } else {
-        alert("Emaily not verified. Please confirm your MIT email address")
+        alert("Email not verified. Please confirm your MIT email address")
         firebase.auth().signOut().then(function() {
           // Sign-out successful.
         }).catch(function(error) {
