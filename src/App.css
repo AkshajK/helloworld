@@ -1,3 +1,5 @@
+
+/*  #OD324D (blue), #4F0147 (light purple), #000000, #290025 (dark purple), #11001C (indigo)  */
 .App {
   text-align: center;
   
@@ -46,6 +48,7 @@
 
 #classbubbles {
   margin-left: 50px;
+  margin-top: 50px;
 }
 
 #body {
@@ -118,7 +121,7 @@
   text-decoration: none;
   display: inline-block;
   font-size: 32px;
-  font-weight: 900;
+  
   border-radius: 25px;
   box-shadow: 1px 3px 1px gray;
   margin-top: 30px;
@@ -132,7 +135,7 @@
 .biggergreenbutton {
   color: black;
   background-color: #FFFF00; /* Green */
-  border: 2px solid red;
+  border: 6px solid red;
  
  /* padding: 13px 26px;  og padding */
   padding: 10px 20px;
@@ -140,7 +143,7 @@
   text-decoration: none;
   display: inline-block;
   font-size: 32px;
-  font-weight: 900;
+  
   border-radius: 25px;
   box-shadow: 5px 5px 3px gray;
   margin-top: 30px;
