@@ -66,9 +66,9 @@ class App extends React.Component {
       class: "6.08", // Class whos roster is being shown
       people: blankPeople, // object that has classes as keys and takes class -> list of usertags of users in the class
       user: "Guest", // name of user
-      usertag: "", // usertag of user (usertag is "name (kerb)"). 
+      usertag: "Guest (guest1314234@mit.edu)", // usertag of user (usertag is "name (kerb)"). 
       classesUserIsIn: [], // classes that the user is in
-      email: '' // email of the user
+      email: 'guest1314234@mit.edu' // email of the user
     }
 
     // this function is passed to the search bar
@@ -130,10 +130,26 @@ class App extends React.Component {
     //alert('You have added a class' );
     console.log(this.state.user)
     //don't delete this fucking line
+    const self=this
     this.db.collection("classes").doc(this.state.class).set({
     })
+    let kerb = this.state.email.substring(0, this.state.email.indexOf('@'))
+    
     this.db.collection("classes").doc(this.state.class).collection("ListOfPeople").doc(randomStr(20, "0123456789QWERTYUIOPLKJHGFDSAZXCVBNMqwertyuioplkjhgfdsazxcvbnm")).set({
-      name: this.state.user, kerb: this.state.email.substring(0, this.state.email.indexOf('@'))
+      name: this.state.user, kerb: kerb
+    })
+
+    this.db.collection("users").doc(kerb).get().then(function(doc) {
+      if (doc.exists) {
+        let data = doc.data()
+        let newClasses = data['classes']
+        newClasses.push(self.state.class)
+        self.db.collection('users').doc(kerb).update({
+          classes: newClasses
+        })
+      }
+      }).catch(function(error) {
+        console.log("Error getting document:", error);
     })
     .then(function() {
         console.log("Added " + this.state.user + " to " + this.state.class)
@@ -157,7 +173,9 @@ class App extends React.Component {
   handleRemoveClass = () => {
     //alert('You have removed a class' );
     console.log(this.state.user)
-    this.db.collection("classes").doc(this.state.class).collection("ListOfPeople").where('kerb','==',this.state.email.substring(0,this.state.email.indexOf('@'))).get()
+    let self = this
+    let kerb = this.state.email.substring(0,this.state.email.indexOf('@'))
+    this.db.collection("classes").doc(this.state.class).collection("ListOfPeople").where('kerb','==',kerb).get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc){
           doc.ref.delete();
@@ -174,6 +192,23 @@ class App extends React.Component {
     .catch(function(error) {
         console.error("Error removing document: ", error);
     });
+    alert("set")
+
+    this.db.collection("users").doc(kerb).get().then(function(doc) {
+      if (doc.exists) {
+          let classes = doc.data()['classes']
+          self.db.collection("users").doc(kerb).update({
+            classes: arrayRemove(classes, self.state.class)
+          })
+          .catch(function(error) {
+              console.error("Error removing document: ", error);
+          });
+      }       
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
+    alert("done")
+
   }
   //////////////////////////////////////////////////////////
 
