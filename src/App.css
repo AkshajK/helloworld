@@ -1,5 +1,6 @@
 
 /*  #OD324D (blue), #4F0147 (light purple), #000000, #290025 (dark purple), #11001C (indigo)  */
+/* #02010A (black), #22007C (blue), #102542 (gray), #140D4F (blue-purple), #5F4BB6 (light purple)*/
 .App {
   text-align: center;
   
@@ -29,9 +30,9 @@
 }
 
 .head1 {
-  background-image: linear-gradient(-90deg, red, yellow);
+  background-image: linear-gradient(-90deg, #5F4BB6, #140D4F);
   box-shadow: 2px 2px 1px gray;
-
+  color: #ffffff
 }
 
 #logo {
@@ -84,16 +85,16 @@
 
 /* Add a black background color to the top navigation */
 .topnav {
-  background-image: linear-gradient(-90deg, red, yellow);
+  background-image: linear-gradient(-90deg, #5F4BB6, #140D4F);
   background-color: #330;
   overflow: hidden;
   position: aboslute;
 }
 
 /* Style the links inside the navigation bar */
-.topnav a {
+.topnav a, h2 {
   float: left;
-  color: #000;
+  color: #ffffff;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
