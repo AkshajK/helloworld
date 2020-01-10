@@ -5748,7 +5748,7 @@ var arr = [
        description: "Topics in Differential Equations"
     },
     {
-       title: "18.2",
+       title: "18.200",
        description: "Principles of Discrete Applied Mathematics"
     },
     {

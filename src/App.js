@@ -312,10 +312,11 @@ class App extends React.Component {
         
       }
       else {
-      self.setState({classes: arrayRemove(self.state.classes, name)})
+      self.setState({classes: arrayRemove(self.state.classes, name), class: ""})
       }
 
     }
+
 
     var timer = 0
     var delay = 200
@@ -325,7 +326,7 @@ class App extends React.Component {
     .slice(Math.max(0, self.state.classes.length-20), self.state.classes.length)
     .map(function (name) { 
         return (
-          <button class={name===self.state.class ? "biggergreenbutton" : "greenbutton"} 
+          <button class={(name===self.state.class ? "biggergreenbutton" : "greenbutton")+" "+(self.state.classesUserIsIn.includes(name) ? "bold" : "notbold")} 
           onClick={() => {
             timer = setTimeout(() => {
               if (!prevent) {
@@ -346,7 +347,7 @@ class App extends React.Component {
 
     if (self.state.class.length>0) {
       listOfPeopleLi = self.state.people[self.state.class].map(function (name) { 
-      return <li id={name}>{shortenTag(name)}</li>
+      return <li class="peoplelist" id={name}>{shortenTag(name)}</li>
       })
       if (self.state.people[self.state.class].includes(self.state.usertag)){
         addClass = <button class="removeenroll" onClick={() => this.handleRemoveClass()}>Unenroll from {self.state.class}</button>
@@ -379,7 +380,7 @@ class App extends React.Component {
           </div>
         </Router>
         <div className='head1'>
-            <h1 id="title">🚀🚀 INTERSTELLAR 🚀🚀 </h1>
+            <h1 id="title">interstellar</h1>
             <h1 id="emojis"> </h1>
         </div>
         </div>
@@ -399,14 +400,18 @@ class App extends React.Component {
         </ul>
       </div>
       <div id="body">
-        <div id="classheader"> </div>
+        
+        <hr />
+        <div id="classheader"> 
         <ul id="listofpeople"> 
           {listOfPeopleLi}
         </ul>
         
+        
         <div id='addclass'>
           {/* {addClass} */}
           {this.state.class.length>0 ? addClass : "search for class. This will change into the enroll/unenroll button"}
+        </div>
         </div>
         </div>
         </div>
@@ -439,14 +444,14 @@ class App extends React.Component {
             </div>
           </Router>
           <div className ='head1'>
-              <h1 id="title">🚀🚀 INTERSTELLAR 🚀🚀 </h1>
+              <h1 id="title">interstellar </h1>
               <h1 id="emojis"> </h1>
           </div>
           </div>
           <div id="body1">
-            <h1 id="intro">
+            <h1 id="intro">            
               <br></br>
-            Welcome to Interstellar, a class comparison website for MIT students to share your classes and see what classes your friends are taking!
+            Welcome to Interstellar, a class comparison website for MIT students to share your classes and see what classes your friends are taking!             
             <body>
             <Login updateUser = {this.updateUser}/>
               <br></br>
