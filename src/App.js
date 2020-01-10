@@ -85,8 +85,10 @@ class App extends React.Component {
       let mit_email = firebase.auth().currentUser['email']
       alert(mit_email.substring(0, mit_email.indexOf('@')))
 
-      this.setState({user: data['name'], usertag: data['name']+" ("+data['kerb']+")", email: mit_email})
-      this.userIsUpdated()
+      this.setState({user: data['name'], usertag: data['name']+" ("+data['kerb']+")", email: mit_email}, () => {
+        this.userIsUpdated()
+      })
+      
     };
   }
 
@@ -168,9 +170,13 @@ class App extends React.Component {
         classesUserIsIn.push(this.state.classeslist[i])
       }
     }
+    console.log(JSON.stringify(classesUserIsIn))
     this.setState({
-      classesUserIsIn: classesUserIsIn
-    })
+      classesUserIsIn: classesUserIsIn,
+      
+    }, this.setState({
+      classes: this.state.classesUserIsIn
+    }))
   }
 
   // Runs right after constructor but before render
@@ -291,6 +297,7 @@ class App extends React.Component {
       });
       this.userIsUpdated()
     }
+    // <h2>Your classes: {this.state.classesUserIsIn.toString()}</h2>
     const privateContent = ( 
       <div>
       <h1 id="logo">Welcome {self.state.user}!</h1>
@@ -300,7 +307,7 @@ class App extends React.Component {
       <Searchbar updateclass={this.updateClass} showNoResults={false} />
       <button onClick = {() => logout()}>Logout</button>
       <div id="classbubbles">
-        <h2>Your classes: {this.state.classesUserIsIn.toString()}</h2>
+        
         <ul>
           {classesList}
         </ul>
@@ -334,7 +341,7 @@ class App extends React.Component {
         </h1>
         </div>
       )
-
+      console.log(firebase.auth().currentUser)
     return (
       <div>
       <div id="header"> 

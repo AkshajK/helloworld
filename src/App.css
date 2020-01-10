@@ -119,10 +119,12 @@
   font-weight: 900;
   border-radius: 25px;
   box-shadow: 3px 3px 1px gray;
+  margin-top: 30px;
 }
 
 .greenbutton:hover {
   box-shadow: 5px 5px 3px;
+  
 }
 
 .biggergreenbutton {
@@ -130,14 +132,15 @@
   background-color: #FFFF00; /* Green */
   border: 5px solid red;
  
-  padding: 15px 30px;
+  padding: 13px 26px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 48px;
+  font-size: 40px;
   font-weight: 900;
   border-radius: 25px;
-  box-shadow: 3px 3px 1px gray;
+  box-shadow: 5px 5px 3px gray;
+  margin-top: 30px;
 }
 
 .biggergreenbutton:hover {
