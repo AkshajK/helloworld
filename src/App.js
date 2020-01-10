@@ -61,8 +61,8 @@ class App extends React.Component {
     
     this.state = {
       classeslist: classeslist, // Array of all classes
-      classes: ["6.08"], // Array of classes for which buttons are showing
-      class: "6.08", // Class whos roster is being shown
+      classes: [], // Array of classes for which buttons are showing
+      class: "", // Class whos roster is being shown
       people: blankPeople, // object that has classes as keys and takes class -> list of usertags of users in the class
       user: "Guest", // name of user
       usertag: "", // usertag of user (usertag is "name (kerb)"). 
