@@ -165,20 +165,18 @@ class App extends React.Component {
 
   // Runs whenever the user is updated (to update classesUserIsIn)
   userIsUpdated = () => {
-    var classesUserIsIn = []
+    var newclassesUserIsIn = []
     var i;
     for(i=0; i<this.state.classeslist.length; i++) {
       if(this.state.people[this.state.classeslist[i]].includes(this.state.usertag)) {
-        classesUserIsIn.push(this.state.classeslist[i])
+        newclassesUserIsIn.push(this.state.classeslist[i])
       }
     }
-    console.log(JSON.stringify(classesUserIsIn))
+    console.log(JSON.stringify(newclassesUserIsIn))
     this.setState({
-      classesUserIsIn: classesUserIsIn,
-      
-    }, this.setState({
-      classes: this.state.classesUserIsIn
-    }))
+      classesUserIsIn: newclassesUserIsIn,
+      classes: newclassesUserIsIn
+    })
   }
 
   // Runs right after constructor but before render
