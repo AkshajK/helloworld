@@ -24,7 +24,7 @@
 #title {
   text-align: center;
   font-size: 80px;
-  font-family: 'Copperplate', Times, serif;
+  font-family: 'Courier New', Courier, monospace;
   font-weight: normal;
   text-shadow: 3px 3px gray;
 }
@@ -114,9 +114,9 @@
 }
 
 .greenbutton {
-  color: black;
-  background-color: orange; /* Green */
-  border: 2px solid red;
+  color: white;
+  background-color: #5230AC; /* Green */
+  border: 2px solid #22007C;
  
   padding: 10px 20px;
   text-align: center;
@@ -135,9 +135,9 @@
 }
 
 .biggergreenbutton {
-  color: black;
-  background-color: #FFFF00; /* Green */
-  border: 6px solid red;
+  color: white;
+  background-color: #5230AC; /* Green */
+  border: 8px solid #22007C;
  /* padding: 13px 26px;  og padding */
   padding: 10px 20px;
   text-align: center;
@@ -155,9 +155,10 @@
 }
 
 .removeenroll{
-  color: black;
-  background-color: gold; /* Green */
-  border: 2px solid red;
+  color: white;
+  font-weight: bold;
+  background-color: #8F7BE6; /* Green */
+  border: 2px solid black;
  
   padding: 10px 20px;
   text-align: center;
@@ -191,6 +192,8 @@
 .notbold {
   font-style: italic;
   opacity: 70%;
+  border-color: black;
+  background-color: #102542;
 }
 #txt {
 }
