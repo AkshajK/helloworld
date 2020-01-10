@@ -325,7 +325,8 @@ class App extends React.Component {
         </div>
       <h1 id="logo">Welcome {self.state.user}!</h1>
       <h2 id = "logo1">Spring 2020</h2>
-      
+      <Searchbar updateclass={this.updateClass} showNoResults={false} />
+
       
       <div id="classbubbles">
         
