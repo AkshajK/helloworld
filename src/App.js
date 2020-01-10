@@ -92,6 +92,21 @@ class App extends React.Component {
         this.userIsUpdated()
       })
     };
+
+
+    this.logout = () => {
+      alert("signing out")
+      
+      firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+        self.userIsUpdated()
+        
+        alert("logged out")
+      }).catch(function(error) {
+        // An error happened.
+        alert(error.message)
+      });
+    }
   }
 
   ///////////////////////// Bunch of functions to handle certain events
@@ -165,18 +180,20 @@ class App extends React.Component {
 
   // Runs whenever the user is updated (to update classesUserIsIn)
   userIsUpdated = () => {
-    var newclassesUserIsIn = []
+    var classesUserIsIn = []
     var i;
     for(i=0; i<this.state.classeslist.length; i++) {
       if(this.state.people[this.state.classeslist[i]].includes(this.state.usertag)) {
-        newclassesUserIsIn.push(this.state.classeslist[i])
+        classesUserIsIn.push(this.state.classeslist[i])
       }
     }
-    console.log(JSON.stringify(newclassesUserIsIn))
+    console.log(JSON.stringify(classesUserIsIn))
     this.setState({
-      classesUserIsIn: newclassesUserIsIn,
-      classes: newclassesUserIsIn
-    })
+      classesUserIsIn: classesUserIsIn,
+      
+    }, this.setState({
+      classes: this.state.classesUserIsIn
+    }))
   }
 
   // Runs right after constructor but before render
@@ -217,26 +234,6 @@ class App extends React.Component {
         })
         this.userIsUpdated()
       })
-  }
-
-  logout = () => {
-    alert("signing out")
-    firebase.auth().signOut().then(function() {
-      // Sign-out successful.
-      this.setState({
-        classes: ["6.08"],
-        class: "6.08",
-        user: "Guest",
-        usertag: "", 
-        email: ''
-      })
-      
-      alert("logged out")
-    }).catch(function(error) {
-      // An error happened.
-      alert(error.message)
-    });
-    this.userIsUpdated()
   }
   
   // Runs whenever setState is called
@@ -314,7 +311,7 @@ class App extends React.Component {
               <Route exact path="/">
               </Route>
               <Route path="/login">
-                  <Logout updateUser = {this.logoutUser} />
+                  <Logout logout = {this.logout} />
                 </Route>
             </Switch>
           </div>

@@ -33,7 +33,6 @@ export default function Logout(props) {
 
   function handleSubmit(event) {
     props.logout()
-
     event.preventDefault();
   }
 
