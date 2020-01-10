@@ -60,6 +60,7 @@ class App extends React.Component {
       blankPeople[source[i].title] = []
     }
     
+    // initialize everything to be empty or default values
     this.state = {
       classeslist: classeslist, // Array of all classes
       classes: [], // Array of classes for which buttons are showing
@@ -94,7 +95,11 @@ class App extends React.Component {
       })
     };
 
+    this.updatePage = () => {
+      this.userIsUpdated()
+    };
 
+    // logs user out and then updates page information so that they only see login screen
     this.logout = () => {      
       firebase.auth().signOut().then(function() {
         // Sign-out successful.
@@ -111,6 +116,8 @@ class App extends React.Component {
     this.setState({email: event.target.value});
   }
 
+  
+  // password reset email not currently working
   handleSubmit = () => {
     var auth = firebase.auth();
     var emailAddress = this.state.email;
@@ -124,11 +131,10 @@ class App extends React.Component {
   }
 
   
-
+  //when you enroll in a class
   handleAddClass = () => {
     //alert('You have added a class' );
-    console.log(this.state.user)
-    //don't delete this fucking line
+    //don't delete any of these fucking lines please
     const self=this
     this.db.collection("classes").doc(this.state.class).set({
     })
@@ -169,9 +175,9 @@ class App extends React.Component {
     });
   }
 
+  //when you unenroll in a class
   handleRemoveClass = () => {
     //alert('You have removed a class' );
-    console.log(this.state.user)
     let self = this
     let kerb = this.state.email.substring(0,this.state.email.indexOf('@'))
     this.db.collection("classes").doc(this.state.class).collection("ListOfPeople").where('kerb','==',kerb).get()
@@ -218,7 +224,6 @@ class App extends React.Component {
         classesUserIsIn.push(this.state.classeslist[i])
       }
     }
-    console.log(JSON.stringify(classesUserIsIn))
     this.setState({
       classesUserIsIn: classesUserIsIn,
       
@@ -294,12 +299,10 @@ class App extends React.Component {
   // Runs whenever setState is called
   render() {
     
-    console.log("rendering");
-    console.log("state is: ", this.state)
+    console.log("rendering state " + this.state);
     const self = this
     const handleClick = function (name) {
       self.setState({class: name})
-      console.log("set class to " + name)
      
     }
     const handleExit = function (name) {
@@ -337,10 +340,6 @@ class App extends React.Component {
              handleExit(name)
            }}>{name}</button>)
     })
-    
-    console.log(self.state.people)
-    console.log("hi" + self.state.class)
-
 
     var listOfPeopleLi = null
     var addClass = <button class="removeenroll" onClick={() => this.handleAddClass()}>Enroll in {self.state.class}</button>
@@ -366,9 +365,9 @@ class App extends React.Component {
         <div id="header"> 
 
         <Router>
-          <div class = "topnav">
-            <div class = 'nav1'><a><Link to="/">Home</Link></a></div>
-            <div class = 'nav2'><a><Link to="/login">Logout</Link></a></div>
+          <div className = "topnav">
+            <div className = 'nav1'><a><Link to="/">Home</Link></a></div>
+            <div className = 'nav2'><a><Link to="/login">Logout</Link></a></div>
 
             <Switch>
               <Route exact path="/">
@@ -379,7 +378,7 @@ class App extends React.Component {
             </Switch>
           </div>
         </Router>
-        <div class='head1'>
+        <div className='head1'>
             <h1 id="title">🚀🚀 INTERSTELLAR 🚀🚀 </h1>
             <h1 id="emojis"> </h1>
         </div>
@@ -414,10 +413,9 @@ class App extends React.Component {
           <div id="header"> 
 
           <Router>
-            <div class = "topnav">
-              <div class = 'nav1'><a><Link to="/">Home</Link></a></div>
-              <div class = 'nav2'><a><Link to="/login">Login</Link></a></div>
-              <div class = 'nav3'><a><Link to="/register">Register</Link></a></div>
+            <div className = "topnav">
+              <div className = 'nav1'><a><Link to="/">Home</Link></a></div>
+              <div className = 'nav3'><a><Link to="/register">Register</Link></a></div>
 
 
               {/*
@@ -430,25 +428,21 @@ class App extends React.Component {
               <Switch>
                 <Route exact path="/">
                 </Route>
-                <Route path="/login">
-                  <Login updateUser = {this.updateUser} />
-                </Route>
                 <Route path="/register">
-                  <Register />
+                  <Register updatePage = {this.updatePage} />
                 </Route>
               </Switch>
             </div>
           </Router>
-          <div class='head1'>
+          <div className ='head1'>
               <h1 id="title">🚀🚀 INTERSTELLAR 🚀🚀 </h1>
               <h1 id="emojis"> </h1>
           </div>
           </div>
-          <h1>
-            Please Sign In
-
+          <h1>            
           Welcome to Interstellar, a class comparison website for MIT students to share what classes they are taking, as well as to see what classes other students are taking!
           <body>
+            <Login updateUser = {this.updateUser}/>
           <img src="Complete_graph_K9.jpg"  width="200"
             height="200"></img>
           </body>
@@ -456,10 +450,9 @@ class App extends React.Component {
         </h1>
         </div>
       )
-      console.log(firebase.auth().currentUser)
     return (
       <div>
-        {firebase.auth().currentUser ? privateContent : publicContent}
+        {(firebase.auth().currentUser && firebase.auth().currentUser.emailVerified) ? privateContent : publicContent}
       </div>
     );
   }
