@@ -94,13 +94,10 @@ class App extends React.Component {
     };
 
 
-    this.logout = () => {
-      alert("signing out")
-      
+    this.logout = () => {      
       firebase.auth().signOut().then(function() {
         // Sign-out successful.
         self.userIsUpdated()
-        
         alert("logged out")
       }).catch(function(error) {
         // An error happened.
@@ -132,7 +129,9 @@ class App extends React.Component {
   handleAddClass = () => {
     //alert('You have added a class' );
     console.log(this.state.user)
-    
+    //don't delete this fucking line
+    this.db.collection("classes").doc(this.state.class).set({
+    })
     this.db.collection("classes").doc(this.state.class).collection("ListOfPeople").doc(randomStr(20, "0123456789QWERTYUIOPLKJHGFDSAZXCVBNMqwertyuioplkjhgfdsazxcvbnm")).set({
       name: this.state.user, kerb: this.state.email.substring(0, this.state.email.indexOf('@'))
     })
@@ -328,8 +327,6 @@ class App extends React.Component {
       <h2 id = "logo1">Spring 2020</h2>
       
       
-      <Searchbar updateclass={this.updateClass} showNoResults={false} />
-      <button onClick = {this.logout}>Logout</button>
       <div id="classbubbles">
         
         <ul>
