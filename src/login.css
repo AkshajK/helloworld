@@ -1,13 +1,14 @@
 /* Add a black background color to the top navigation */
-.Login {
+.Login{
     background-color: #FFF;
-    overflow: hidden;
     color: #2f2f2f;
-    padding: 14px 16px;
     text-decoration: none;
     font-size: 18px;
-    position: absolute;
-    right: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     border-width: 1px;
     border-color: #000;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: inline-block;
+    text-align: center;
   }
