@@ -37,13 +37,9 @@ export default function Logout(props) {
   }
 
   return (
-    <div className="Login">
-      <form onSubmit={handleSubmit}>
-        <Button block bsSize="large" type="submit">
-          Logout
-        </Button>
+      <form onClick={handleSubmit}>
+        Logout
       </form>
-    </div>
     
   );
 }
