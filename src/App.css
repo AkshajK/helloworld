@@ -50,7 +50,8 @@
 
 #classbubbles {
   margin-left: 50px;
-  margin-top: 50px;
+  margin-top: 80px;
+  margin-right: 50px;
 }
 
 #body {
@@ -133,7 +134,7 @@
   
   border-radius: 25px;
   box-shadow: 1px 3px 1px gray;
-  margin-top: 30px;
+
 }
 
 .greenbutton:hover {
@@ -154,7 +155,7 @@
   
   border-radius: 25px;
   box-shadow: 1px 3px 1px gray;
-  margin-top: 30px;
+
 }
 
 .biggergreenbutton:hover {
