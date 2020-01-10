@@ -415,7 +415,6 @@ class App extends React.Component {
           <Router>
             <div className = "topnav">
               <div className = 'nav1'><a><Link to="/">Home</Link></a></div>
-              <div className = 'nav2'><a><Link to="/login">Login</Link></a></div>
               <div className = 'nav3'><a><Link to="/register">Register</Link></a></div>
 
 
@@ -429,9 +428,6 @@ class App extends React.Component {
               <Switch>
                 <Route exact path="/">
                 </Route>
-                <Route path="/login">
-                  <Login updateUser = {this.updateUser} />
-                </Route>
                 <Route path="/register">
                   <Register updatePage = {this.updatePage} />
                 </Route>
@@ -443,11 +439,10 @@ class App extends React.Component {
               <h1 id="emojis"> </h1>
           </div>
           </div>
-          <h1>
-            Please Sign In
-
+          <h1>            
           Welcome to Interstellar, a class comparison website for MIT students to share what classes they are taking, as well as to see what classes other students are taking!
           <body>
+            <Login updateUser = {this.updateUser}/>
           <img src="Complete_graph_K9.jpg"  width="200"
             height="200"></img>
           </body>
