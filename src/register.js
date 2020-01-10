@@ -89,7 +89,6 @@ export default function Register(props) {
                     })
                     .then(function() {
                         console.log("Added " + name + " to database")
-                        alert("sending email")
                         user.sendEmailVerification().then(function() {
                             // Email sent.
                             // register automatically signs you in, so this signs you out
@@ -99,6 +98,9 @@ export default function Register(props) {
                                 setEmail("")
                                 setPassword2("")
                                 setName("")
+                                alert('email sent')
+
+
                             }).catch(function(error) {
                                 // An error happened.
                                 alert(error.message)
