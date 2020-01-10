@@ -317,6 +317,8 @@ class App extends React.Component {
 
     }
 
+    let fat = "dbi"
+
     var timer = 0
     var delay = 200
     var prevent = false
