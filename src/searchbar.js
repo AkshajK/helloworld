@@ -13,8 +13,14 @@ for(i =0; i<source.length; i++) {
 export default class SearchExampleStandard extends Component {
   state = initialState;
 
-  handleResultSelect = (e, { result }) =>
-    this.setState({ value: result.title });
+  handleResultSelect = (e, { result }) => {
+    //this.setState({ value: result.title })
+    this.props.updateclass(result.title)
+    this.setState({
+      value: "",
+      results: []
+     })
+  };
 
   handleKeyPress = (e) => {
     if(e.charCode === 13) {

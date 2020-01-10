@@ -189,9 +189,9 @@
   color: black;
   font-size: 20px;
   line-height: 30px;
-  columns: 3;
-  -webkit-columns: 3;
-  -moz-columns: 3;
+  columns: 4;
+  -webkit-columns: 4;
+  -moz-columns: 4;
 }
 
 #intro {
@@ -213,4 +213,7 @@
   background-color: #102542;
 }
 #txt {
+}
+
+#addclass {
 }
