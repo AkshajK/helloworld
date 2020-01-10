@@ -64,7 +64,7 @@ export default class SearchExampleStandard extends Component {
           <Grid>
             <Grid.Column width={16}>
               <div id="searchbar">
-                <Search id="actualsearchbar" icon=""
+                <Search id="actualsearchbar" icon="search"
                   loading={isLoading}
                   onResultSelect={this.handleResultSelect}
                   onSearchChange={_.debounce(this.handleSearchChange, 500, {
@@ -74,6 +74,7 @@ export default class SearchExampleStandard extends Component {
                   value={value}
                   onKeyPress={this.handleKeyPress}
                   {...this.props}
+                  size="massive"
                 />
               </div>
               
