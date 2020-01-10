@@ -283,7 +283,7 @@ class App extends React.Component {
     }
 
     const logout = () => {
-      alert("singing out")
+      alert("signing out")
       firebase.auth().signOut().then(function() {
         // Sign-out successful.
         self.setState({
@@ -337,7 +337,7 @@ class App extends React.Component {
         <button onClick={this.handleSubmit} id="resetpass" >Reset Password</button>
 
         <h1>
-          Bio/Intro information Here
+          Welcome to Interstellar! [include some nice image or logo or something here]         Bio/Intro information Here
         </h1>
         </div>
       )
