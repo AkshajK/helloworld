@@ -83,12 +83,13 @@ class App extends React.Component {
     // this function is passed to login
     this.updateUser = (data) => {
       let mit_email = firebase.auth().currentUser['email']
-      alert(mit_email.substring(0, mit_email.indexOf('@')))
-
-      this.setState({user: data['name'], usertag: data['name']+" ("+data['kerb']+")", email: mit_email}, () => {
+      this.setState({
+        user: data['name'], 
+        usertag: data['name']+" ("+data['kerb']+")", 
+        email: mit_email
+      }, () => {
         this.userIsUpdated()
       })
-      
     };
   }
 
@@ -283,7 +284,7 @@ class App extends React.Component {
     }
 
     const logout = () => {
-      alert("singing out")
+      alert("signing out")
       firebase.auth().signOut().then(function() {
         // Sign-out successful.
         self.setState({
@@ -337,7 +338,7 @@ class App extends React.Component {
         <button onClick={this.handleSubmit} id="resetpass" >Reset Password</button>
 
         <h1>
-          Bio/Intro information Here
+          Welcome to Interstellar! [include some nice image or logo or something here]         Bio/Intro information Here
         </h1>
         </div>
       )

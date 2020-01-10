@@ -70,8 +70,8 @@ export default function Register(props) {
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 alert(errorMessage)
-                path =1
-                
+                path=1
+                return;
                 // ...
               }).then(() => {
                 if (path<0.5) {
@@ -94,6 +94,10 @@ export default function Register(props) {
                             // register automatically signs you in, so this signs you out
                             firebase.auth().signOut().then(function() {
                                 // Sign-out successful.
+                                setPassword("")
+                                setEmail("")
+                                setPassword2("")
+                                setName("")
                             }).catch(function(error) {
                                 // An error happened.
                                 alert(error.message)
@@ -106,8 +110,7 @@ export default function Register(props) {
                         console.error("Error writing document: ", error);
                     });
                 }
-              });
-
+              });   
         }
     event.preventDefault();
   }

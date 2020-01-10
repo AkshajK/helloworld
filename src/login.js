@@ -50,26 +50,28 @@ export default function Login(props) {
       //if (!firebase.currentUser){
       //  return 
       //}
-      if (firebase.auth().currentUser.emailVerified) {
-        alert(path)
-        if (path<0.5) {
-          let kerb = email.substring(0, email.indexOf('@'))
-          var docRef = db.collection("users").doc(kerb);
-          docRef.get().then(function(doc) {
-              if (doc.exists) {
-                  props.updateUser(doc.data())
-              }       
+      // alert('signed in')
+      if (path<0.5) {
+        if (firebase.auth().currentUser.emailVerified) {
+            let kerb = email.substring(0, email.indexOf('@'))
+            var docRef = db.collection("users").doc(kerb);
+            docRef.get().then(function(doc) {
+                if (doc.exists) {
+                    props.updateUser(doc.data())
+                    setPassword("")
+                    setEmail("")
+                }       
+            }).catch(function(error) {
+                console.log("Error getting document:", error);
+            });
+        } else {
+          alert("Email not verified. Please confirm your MIT email address")
+          firebase.auth().signOut().then(function() {
+            // Sign-out successful.
           }).catch(function(error) {
-              console.log("Error getting document:", error);
-          });
-      } else {
-        alert("Email not verified. Please confirm your MIT email address")
-        firebase.auth().signOut().then(function() {
-          // Sign-out successful.
-        }).catch(function(error) {
-            // An error happened.
-            alert(error.message)
-      });
+              // An error happened.
+              alert(error.message)
+        });
       }
     }
       
