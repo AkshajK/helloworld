@@ -99,7 +99,6 @@ class App extends React.Component {
       firebase.auth().signOut().then(function() {
         // Sign-out successful.
         self.userIsUpdated()
-        alert("logged out")
       }).catch(function(error) {
         // An error happened.
         alert(error.message)
@@ -115,7 +114,6 @@ class App extends React.Component {
   handleSubmit = () => {
     var auth = firebase.auth();
     var emailAddress = this.state.email;
-    alert(emailAddress)
     auth.sendPasswordResetEmail(emailAddress).then(function() {
       // Email sent.
       alert("email sent to " +emailAddress )
@@ -193,7 +191,6 @@ class App extends React.Component {
     .catch(function(error) {
         console.error("Error removing document: ", error);
     });
-    alert("set")
 
     this.db.collection("users").doc(kerb).get().then(function(doc) {
       if (doc.exists) {
@@ -208,7 +205,6 @@ class App extends React.Component {
     }).catch(function(error) {
         console.log("Error getting document:", error);
     });
-    alert("done")
 
   }
   //////////////////////////////////////////////////////////
@@ -451,7 +447,12 @@ class App extends React.Component {
           <h1>
             Please Sign In
 
-          Welcome to Interstellar! [include some nice image or logo or something here]         Bio/Intro information Here
+          Welcome to Interstellar, a class comparison website for MIT students to share what classes they are taking, as well as to see what classes other students are taking!
+          <body>
+          <img src="Complete_graph_K9.jpg"  width="200"
+            height="200"></img>
+          </body>
+          Create an account with a valid @mit.edu email address to get started.
         </h1>
         </div>
       )
