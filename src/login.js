@@ -86,6 +86,7 @@ export default function Login(props) {
       <h1>Sign in Below!</h1>
   
       <form onSubmit={handleSubmit}>
+        <div>
         <div className="right">
         <FormGroup controlId="email" bsSize="large">
           <FormLabel>Email: &nbsp; &nbsp; &nbsp;</FormLabel>
@@ -104,6 +105,7 @@ export default function Login(props) {
             type="password"
           />
         </FormGroup>
+        </div>
         </div>
         <br></br>
         <Button block bsSize="large" disabled={!validateForm()} type="submit">
