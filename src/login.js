@@ -83,8 +83,8 @@ export default function Login(props) {
 
   return (
     <div className="Login">
-      <h1>Sign in Here!</h1>
       <form onSubmit={handleSubmit}>
+      <h1>Sign In</h1>
         {/* <div className = ""> */}
         <div className="right">
         <FormGroup controlId="email" bsSize="large">

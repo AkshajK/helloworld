@@ -558,21 +558,19 @@ class App extends React.Component {
             <h1 id="intro">            
               <br></br>
             Welcome to Interstellar, a class comparison website for MIT students to share your classes and see what classes your friends are taking!             
-            <body>
-              <br></br>
-            <img src="Complete_graph_K9.jpg"  width="200"
-              height="200"></img>
-            </body>
+            <div class = "body">
+            <br></br>
+            <img src="Complete_graph_K9.jpg"  width="180"
+              height="180"></img>
+            </div>
             <br></br>
             Please sign in or create an account with a valid @mit.edu email address to get started!
-            <body>
             <div class = "login-zoom">
             <Login updateUser = {this.updateUser}/>
-            </div>
-            <div class = "loggin-zoom">
+
             <Register updatePage = {this.updatePage} />
             </div>
-            </body>
+
           </h1>
           </div>
           
