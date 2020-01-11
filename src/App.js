@@ -372,6 +372,7 @@ class App extends React.Component {
           <div className = "topnav">
             <div className = 'nav1'><a><Link to="/">Home</Link></a></div>
             <div className = 'nav2'><a><Link><Logout logout = {this.logout} /></Link></a></div>
+            <div id="logo">Welcome {self.state.user}!</div>
           </div>
         </Router>
         <div className='head1'>
@@ -379,7 +380,7 @@ class App extends React.Component {
             <h1 id="emojis"> </h1>
         </div>
         </div>
-      <h1 id="logo">Welcome {self.state.user}!</h1>
+      
       <h2 id = "logo1">Spring 2020</h2>
       <div id='sb'>
         <Searchbar updateclass={this.updateClass} showNoResults={false} />
