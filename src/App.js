@@ -423,7 +423,7 @@ class App extends React.Component {
 
         <Router>
           <div className = "topnav">
-            <Link className = 'nav2'><Logout logout = {this.logout} /></Link>
+            <div className = 'nav2'><a><Link><Logout logout = {this.logout} /></Link></a></div>
             <div id="logo">Welcome {self.state.user}!</div>
           </div>
         </Router>
@@ -472,8 +472,6 @@ class App extends React.Component {
           <Router>
             <div className = "topnav">
               <div className = 'nav1'><a><Link to="/">Home</Link></a></div>
-              <div className = 'nav3'><a><Link to="/login">Login</Link></a></div>
-              <div className = 'nav3'><a><Link to="/register">Register</Link></a></div>
               
 
 
@@ -486,12 +484,6 @@ class App extends React.Component {
               */}
               <Switch>
                 <Route exact path="/">
-                </Route>
-                <Route path="/login">
-                <Login updateUser = {this.updateUser}/>
-                </Route>
-                <Route path="/register">
-                  <Register updatePage = {this.updatePage} />
                 </Route>
               </Switch>
             </div>
@@ -512,6 +504,14 @@ class App extends React.Component {
             </body>
             <br></br>
             Please sign in or create an account with a valid @mit.edu email address to get started!
+            <body>
+            <div class = "login-zoom">
+            <Login updateUser = {this.updateUser}/>
+            </div>
+            <div class = "login-zoom">
+            <Register updatePage = {this.updatePage} />
+            </div>
+            </body>
           </h1>
           </div>
           

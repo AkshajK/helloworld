@@ -67,6 +67,7 @@ export default class SearchExampleStandard extends Component {
 
     return (
       //<div style={{textAlign: 'center'}}>
+
           <Grid>
             <Grid.Column width={16}>
               <div id="searchbar">

@@ -125,7 +125,9 @@ export default function Register(props) {
 
   return (
     <div className="Register">
+      <h1>Register Below!</h1>
       <form onSubmit={handleSubmit}>
+      <div className="right">
         <FormGroup controlId="name" bsSize="large">
           <FormLabel>First Name </FormLabel>
           <FormControl
@@ -169,6 +171,7 @@ export default function Register(props) {
             type="password"
           />
         </FormGroup>
+      </div>
         <Button block bsSize="large" disabled={!validateForm()} type="submit">
           Register
         </Button>
