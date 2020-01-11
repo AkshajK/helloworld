@@ -382,7 +382,7 @@ class App extends React.Component {
       
       <h2 id = "logo1">Spring 2020</h2>
       <div id='sb'>
-        <Searchbar updateclass={this.updateClass} showNoResults={false} />
+        <Searchbar id="thesearchbar" updateclass={this.updateClass} showNoResults={false} />
       </div>
       <div id='txt'>
         {/* <img src="search.png"  width="50" height="50"></img> */}

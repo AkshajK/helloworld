@@ -81,6 +81,7 @@ export default class SearchExampleStandard extends Component {
                   onKeyPress={this.handleKeyPress}
                   {...this.props}
                   size="massive"
+                  fluid="true"
                 />
               </div>
               

@@ -50,9 +50,26 @@
   text-align: right;
 }
 
+#sb {
+  text-align: center;
+  margin-top: 20px;
+  
+ 
+}
+
+#thesearchbar {
+  display: inline-block;
+  margin: 0 auto;
+  background-color: #dddddd;
+    border: 3px solid black;
+    font-size: 32px;
+    font-weight: bold;
+   
+}
+
 #classbubbles {
   margin-left: 50px;
-  margin-top: 130px;
+  margin-top: 10px;
   margin-right: 50px;
 }
 
@@ -60,6 +77,8 @@
   margin-left: 100px;
   margin-right: 100px;
 }
+
+
 
 .App-header {
   background-color: #282c34;
@@ -175,7 +194,7 @@
   border: 2px solid black;
 
   position: absolute;
-  top: -35px;
+  top: -120px;
   right: 0px;
   text-align: right;
  
