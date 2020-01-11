@@ -407,7 +407,7 @@ class App extends React.Component {
         
         <div id='addclass'>
           {/* {addClass} */}
-          {this.state.class.length>0 ? addClass : "search for class. This will change into the enroll/unenroll button"}
+          {this.state.class.length>0 ? addClass : "Easter Egg 2"}
         </div>
         </div>
         </div>
