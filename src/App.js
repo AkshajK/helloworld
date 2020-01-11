@@ -370,8 +370,7 @@ class App extends React.Component {
 
         <Router>
           <div className = "topnav">
-            <div className = 'nav1'><a><Link to="/">Home</Link></a></div>
-            <div className = 'nav2'><a><Link><Logout logout = {this.logout} /></Link></a></div>
+            <div><a><Link><Logout logout = {this.logout} /></Link></a></div>
           </div>
         </Router>
         <div className='head1'>
