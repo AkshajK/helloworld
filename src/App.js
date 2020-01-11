@@ -469,19 +469,9 @@ class App extends React.Component {
         <div>
           <div id="header"> 
 
-          {/* <Router>
+          <Router>
             <div className = "topnav">
               <div className = 'nav1'><Link to="/">Home</Link></div>
-              <div className = 'nav1'><Link to="/register">Register</Link></div>
-
-
-              
-              //  A <Switch> looks through all its children <Route>
-              //  elements and renders the first one whose path
-              //  matches the current URL. Use a <Switch> any time
-              //  you have multiple routes, but you want only one
-              //  of them to render at a time
-              
               <Switch>
                 <Route exact path="/">
                 </Route>
@@ -493,7 +483,7 @@ class App extends React.Component {
                 </Route>
               </Switch>
             </div>
-          </Router> */}
+          </Router>
           <div className ='head1'>
               <h1 id="title">interstellar</h1>
               <h1 id="emojis"> </h1>
