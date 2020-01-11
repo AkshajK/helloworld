@@ -32,11 +32,12 @@ const db = firebase.firestore();
 export default function Register(props) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
 
   function validateForm() {
-    return email.length > 8 && name.length> 0 && password.length > 0;
+    return email.length > 8 && name.length> 0 && lastName.length>0 && password.length > 0;
   }
 
   function handleSubmit(event) {
@@ -79,10 +80,10 @@ export default function Register(props) {
                     let kerb = email.substring(0, email.indexOf('@'))
                     var user = firebase.auth().currentUser;
                     user.updateProfile({
-                        displayName: name,
+                        displayName: name +" " + lastName,
                     })
                     db.collection("users").doc(kerb).set({
-                    name: name,
+                    name: name +" "+ lastName,
                     kerb: kerb,
                     classes: [],
                     friends: []
@@ -98,6 +99,7 @@ export default function Register(props) {
                                 setEmail("")
                                 setPassword2("")
                                 setName("")
+                                setLastName("")
                                 alert('email sent')
 
 
@@ -122,12 +124,21 @@ export default function Register(props) {
     <div className="Register">
       <form onSubmit={handleSubmit}>
         <FormGroup controlId="name" bsSize="large">
-          <FormLabel>Full Name </FormLabel>
+          <FormLabel>First Name </FormLabel>
           <FormControl
             autoFocus
             type="name"
             value={name}
             onChange={e => setName(e.target.value)}
+          />
+        </FormGroup>
+        <FormGroup controlId="name" bsSize="large">
+          <FormLabel>Last Name </FormLabel>
+          <FormControl
+            autoFocus
+            type="name"
+            value={lastName}
+            onChange={e => setLastName(e.target.value)}
           />
         </FormGroup>
         <FormGroup controlId="email" bsSize="large">
