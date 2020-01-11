@@ -487,7 +487,7 @@ class App extends React.Component {
 
         <Router>
           <div className = "topnav">
-            <div className = 'nav2'><a><Link><Logout logout = {this.logout} /></Link></a></div>
+            <div className="nav2"><Link><Logout logout = {this.logout} /></Link></div>
             <div id="logo">Welcome {self.state.user}!</div>
           </div>
         </Router>
@@ -540,22 +540,9 @@ class App extends React.Component {
 
           <Router>
             <div className = "topnav">
-              <div className = 'nav1'><a><Link to="/">Home</Link></a></div>
-              <div className = 'nav3'><a><Link to="/register">Register</Link></a></div>
-
-
-              {/*
-                A <Switch> looks through all its children <Route>
-                elements and renders the first one whose path
-                matches the current URL. Use a <Switch> any time
-                you have multiple routes, but you want only one
-                of them to render at a time
-              */}
+              <div className = 'nav1'><Link to="/">Home</Link></div>
               <Switch>
                 <Route exact path="/">
-                </Route>
-                <Route path="/register">
-                  <Register updatePage = {this.updatePage} />
                 </Route>
               </Switch>
             </div>
@@ -570,15 +557,20 @@ class App extends React.Component {
               <br></br>
             Welcome to Interstellar, a class comparison website for MIT students to share your classes and see what classes your friends are taking!             
             <body>
-              <div class = "login-zoom">
-            <Login updateUser = {this.updateUser}/>
-            </div>
               <br></br>
             <img src="Complete_graph_K9.jpg"  width="200"
               height="200"></img>
             </body>
             <br></br>
             Please sign in or create an account with a valid @mit.edu email address to get started!
+            <body>
+            <div class = "login-zoom">
+            <Login updateUser = {this.updateUser}/>
+            </div>
+            <div class = "loggin-zoom">
+            <Register updatePage = {this.updatePage} />
+            </div>
+            </body>
           </h1>
           </div>
           
