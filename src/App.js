@@ -498,7 +498,7 @@ class App extends React.Component {
             <div class = "login-zoom">
             <Login updateUser = {this.updateUser}/>
             </div>
-            <div class = "login-zoom">
+            <div class = "loggin-zoom">
             <Register updatePage = {this.updatePage} />
             </div>
             </body>
