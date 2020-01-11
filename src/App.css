@@ -1,7 +1,12 @@
 
 /*  #OD324D (blue), #4F0147 (light purple), #000000, #290025 (dark purple), #11001C (indigo)  */
 /* #02010A (black), #22007C (blue), #102542 (gray), #140D4F (blue-purple), #5F4BB6 (light purple)*/
+
+body {
+  zoom: 80%;
+}
 .App {
+  
   text-align: center;
 }
 
