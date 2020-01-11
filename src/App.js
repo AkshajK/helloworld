@@ -478,6 +478,8 @@ class App extends React.Component {
     // <div>
     //<button class='removeenroll' onClick={() => handleExit(this.state.class)}>Remove {this.state.class}</button>
    // </div>
+   //<h2 id = "logo1">Spring 2020</h2>
+   
     const privateContent = ( 
       <div>
         <head>
@@ -497,7 +499,7 @@ class App extends React.Component {
         </div>
         </div>
       
-      <h2 id = "logo1">Spring 2020</h2>
+      
       <div id='sb'>
         <Searchbar id="thesearchbar" updateclass={this.updateClass} showNoResults={false} />
       </div>
