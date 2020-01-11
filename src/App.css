@@ -81,7 +81,7 @@ body {
 #classbubbles {
   margin-left: 50px;
   margin-top: 10px;
-  margin-right: 350px;
+  margin-right: 480px;
 }
 
 #body {
@@ -199,16 +199,14 @@ body {
 #classheader {
   position: relative;
 }
+
 .removeenroll{
   color: white;
   font-weight: bold;
   background-color: #8F7BE6; /* Green */
   border: 2px solid black;
-
-  position: absolute;
-  top: -120px;
-  right: 0px;
-  text-align: right;
+  margin-left: 2px;
+  
  
   padding: 10px 20px;
   text-align: center;
@@ -220,6 +218,12 @@ body {
   box-shadow: 1px 3px 1px gray;
   margin-top: 30px;
 }
+
+.removeenroll:hover {
+  box-shadow: 3px 3px 1px;
+}
+
+
 
 #listofpeople {
   color: black;
@@ -249,16 +253,24 @@ body {
   opacity: 0.7;
   filter: alpha(opacity=70);
   -khtml-opacity: 0.7; */
-  border-color: black;
-  background-color: #102542;
+  border-color: #4D4D4D;
+  background-color: #5b677a;
+  
 }
 #txt {
 }
 
 #addclass {
-  font-size: 100px;
+  position: absolute;
+  top: -120px;
+  right: 0px;
+  
 }
 
+#dummytext {
+  font-size: 30px;
+  text-align: center;
+}
 
 
 .nav2 {

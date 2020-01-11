@@ -136,7 +136,70 @@ class App extends React.Component {
     });
   }
 
+  //when you enroll in a class
+  handleBatchEnroll = () => {
+    //alert('You have added a class' );
+    //don't delete any of these fucking lines please
+    var i;
+    const self=this
+    let kerb = this.state.email.substring(0, this.state.email.indexOf('@'))
+    for(i=0; i<this.state.classes.length; i++) {
+      var index = i;
+      if(this.state.classesUserIsIn.includes(this.state.classes[index])) {
+        continue;
+      }
+      
+      
+    
+    this.db.collection("classes").doc(this.state.classes[index]).set({
+    })
+    
+    
+    this.db.collection("classes").doc(this.state.classes[index]).collection("ListOfPeople").doc(kerb).set({
+      name: this.state.user, kerb: kerb
+    })
+
+    
+    }
+
+
+    let newClasses = self.state.classesUserIsIn.slice()
+    for(i=0; i<this.state.classes.length; i++) {
+      var index = i;
+      if(this.state.classesUserIsIn.includes(this.state.classes[index])) {
+        continue;
+      }
+      newClasses.push(this.state.classes[index])
+    }
+    
+    this.db.collection('users').doc(kerb).update({
+      classes: newClasses
+    })
+    .then(function() {
+          console.log("Added " + this.state.user + " to all classes")
+          var newpeople = this.state.people
+          for(i=0; i<this.state.classes.length; i++) {
+            var index = i;
+            if(this.state.classesUserIsIn.includes(this.state.classes[index])) {
+              continue;
+            }
+          var newclasspeoplelist = this.state.people[this.state.classes[index]].slice()
+          newclasspeoplelist.push(this.state.usertag)
+          newpeople[this.state.classes[index]] = newclasspeoplelist.slice()
+          }
+          this.setState({
+            classesUserIsIn: newClasses,
+            people: newpeople
   
+          })
+      }.bind(this))
+      .catch(function(error) {
+          console.error("Error writing document: ", error);
+      });
+  }
+
+
+
   //when you enroll in a class
   handleAddClass = () => {
     //alert('You have added a class' );
@@ -394,6 +457,7 @@ class App extends React.Component {
     })
 
     var listOfPeopleLi = null
+    var batchEnroll = <button class="removeenroll" onClick={() => this.handleBatchEnroll()}>Enroll All</button>
     var addClass = <button class="removeenroll" onClick={() => this.handleAddClass()}>Enroll in {self.state.class}</button>
 
     if (self.state.class.length>0) {
@@ -456,9 +520,14 @@ class App extends React.Component {
         </ul>
         
         
-        <div id='addclass'>
+        
           {/* {addClass} */}
-          {this.state.class.length>0 ? addClass : "Search for Classes above to start!"}
+        <div id='addclass'>
+          {this.state.class.length>0 ? (batchEnroll) : ""}
+          {this.state.class.length>0 ? (addClass) : ""}
+        </div>
+        <div id='dummytext'>
+          {this.state.class.length>0 ? "" : "Search for Classes above to start!"}
         </div>
         </div>
         </div>
