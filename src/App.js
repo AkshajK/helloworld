@@ -565,12 +565,13 @@ class App extends React.Component {
             </body>
             <br></br>
             Please sign in or create an account with a valid @mit.edu email address to get started!
-            <body>
-            <div class = "login-zoom">
+              <body>
+            <div id="bleh">
+            <div className = "login-zoom">
+            
             <Login updateUser = {this.updateUser}/>
-            </div>
-            <div class = "loggin-zoom">
             <Register updatePage = {this.updatePage} />
+            </div>
             </div>
             </body>
           </h1>

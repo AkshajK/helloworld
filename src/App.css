@@ -8,6 +8,9 @@ body {
 
 .login-zoom {
   zoom: 120%;
+  vertical-align: top;
+  top: 0px;
+  margin-top: 0px;
 }
 
 .App {
@@ -76,6 +79,9 @@ body {
     font-size: 32px;
     font-weight: bold;
    
+}
+#bleh{
+  position: relative;
 }
 
 #classbubbles {
