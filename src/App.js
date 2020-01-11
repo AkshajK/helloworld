@@ -95,6 +95,7 @@ class App extends React.Component {
       }, () => {
         this.userIsUpdated()
       })
+      alert("userUpdate")
     };
 
     this.updatePage = () => {
