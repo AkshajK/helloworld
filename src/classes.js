@@ -60,7 +60,7 @@ var arr = [
        description: "Design for Complex Environmental Issues: Building Solutions and Communicating Ideas"
     },
     {
-       title: "1.02",
+       title: "1.020",
        description: "Engineering Sustainability: Analysis and Design"
     },
     {
@@ -88,7 +88,7 @@ var arr = [
        description: "Introduction to Structural Design"
     },
     {
-       title: "1.06",
+       title: "1.060",
        description: "Fluid Mechanics"
     },
     {
@@ -116,7 +116,7 @@ var arr = [
        description: "Introduction to Environmental Data Analysis"
     },
     {
-       title: "1.08",
+       title: "1.080",
        description: "Environmental Chemistry"
     },
     {
@@ -456,6 +456,10 @@ var arr = [
        description: "Introduction to Robotics"
     },
     {
+      title: "2.120",
+      description: "Introduction to Robotics"
+   },
+    {
        title: "2.121",
        description: "Stochastic Systems"
     },
@@ -471,6 +475,10 @@ var arr = [
        title: "2.14",
        description: "Analysis and Design of Feedback Control Systems"
     },
+    {
+      title: "2.140",
+      description: "Analysis and Design of Feedback Control Systems"
+   },
     {
        title: "2.152J",
        description: "Nonlinear Control"
@@ -504,7 +512,7 @@ var arr = [
        description: "Fluids and Diseases"
     },
     {
-       title: "2.29",
+       title: "2.290",
        description: "Numerical Fluid Mechanics"
     },
     {
@@ -519,6 +527,10 @@ var arr = [
        title: "2.37",
        description: "Fundamentals of Nanoengineering"
     },
+    {
+      title: "2.370",
+      description: "Fundamentals of Nanoengineering"
+   },
     {
        title: "2.55",
        description: "Advanced Heat and Mass Transfer"
@@ -544,6 +556,10 @@ var arr = [
        description: "Mechanical Engineering Tools"
     },
     {
+      title: "2.670",
+      description: "Mechanical Engineering Tools"
+   },
+    {
        title: "2.671",
        description: "Measurement and Instrumentation"
     },
@@ -564,13 +580,18 @@ var arr = [
        description: "Unmanned Marine Vehicle Autonomy, Sensing, and Communication"
     },
     {
+      title: "2.680",
+      description: "Unmanned Marine Vehicle Autonomy, Sensing, and Communication"
+   },
+    {
        title: "2.689J",
        description: "Projects in Oceanographic Engineering"
     },
     {
-       title: "2.7",
+       title: "2.70",
        description: "FUNdaMENTALS of Precision Product Design"
     },
+    
     {
        title: "2.702",
        description: "Systems Engineering and Naval Ship Design"
@@ -591,6 +612,10 @@ var arr = [
        title: "2.72",
        description: "Elements of Mechanical Design"
     },
+    {
+      title: "2.720",
+      description: "Elements of Mechanical Design"
+   },
     {
        title: "2.722J",
        description: "D-Lab: Design"
@@ -652,7 +677,7 @@ var arr = [
        description: "Global Operations Leadership Seminar"
     },
     {
-       title: "2.9",
+       title: "2.900",
        description: "Ethics for Engineers"
     },
     {
@@ -676,9 +701,17 @@ var arr = [
        description: "Sports Technology: Engineering & Innovation"
     },
     {
+      title: "2.980",
+      description: "Sports Technology: Engineering & Innovation"
+   },
+    {
        title: "2.99",
        description: "Practical Experience"
     },
+    {
+      title: "2.990",
+      description: "Practical Experience"
+   },
     {
        title: "2.993",
        description: "Independent Study"
@@ -952,7 +985,7 @@ var arr = [
        description: "Materials in Ancient Societies: Ceramics Laboratory"
     },
     {
-       title: "3.99",
+       title: "3.990",
        description: "Seminar in Archaeological Method and Theory"
     },
     {
@@ -1048,7 +1081,7 @@ var arr = [
        description: "Independent Study in Design"
     },
     {
-       title: "4.11",
+       title: "4.110",
        description: "Design Across Scales and Disciplines"
     },
     {
@@ -1060,7 +1093,7 @@ var arr = [
        description: "Creative Computation"
     },
     {
-       title: "4.12",
+       title: "4.120",
        description: "Furniture Making Workshop"
     },
     {
@@ -1080,7 +1113,7 @@ var arr = [
        description: "Urban Design Studio"
     },
     {
-       title: "4.18",
+       title: "4.180",
        description: "Design Workshop"
     },
     {
@@ -1256,7 +1289,7 @@ var arr = [
        description: "Preparation for SMACT Thesis"
     },
     {
-       title: "4.39",
+       title: "4.390",
        description: "Art, Culture and Technology Studio"
     },
     {
@@ -1340,7 +1373,7 @@ var arr = [
        description: "Advanced Design Projects in Digital Fabrication"
     },
     {
-       title: "4.52",
+       title: "4.520",
        description: "Visual Computing"
     },
     {
@@ -1348,7 +1381,7 @@ var arr = [
        description: "Visual Computing"
     },
     {
-       title: "4.55",
+       title: "4.550",
        description: "Computational Design Lab"
     },
     {
@@ -1364,7 +1397,7 @@ var arr = [
        description: "Introduction to Building Information Modeling in Architecture"
     },
     {
-       title: "4.57",
+       title: "4.570",
        description: "Computational Design Lab"
     },
     {
@@ -1416,7 +1449,7 @@ var arr = [
        description: "Advanced Study in the History of Modern Architecture and Urbanism"
     },
     {
-       title: "4.65",
+       title: "4.650",
        description: "A Global History of Architecture"
     },
     {
@@ -1548,7 +1581,7 @@ var arr = [
        description: "Archaeological Science"
     },
     {
-       title: "5.31",
+       title: "5.310",
        description: "Laboratory Chemistry"
     },
     {
@@ -1608,7 +1641,7 @@ var arr = [
        description: "Chemistry in Industry"
     },
     {
-       title: "5.6",
+       title: "5.60",
        description: "Thermodynamics and Kinetics"
     },
     {
@@ -1640,7 +1673,7 @@ var arr = [
        description: "Biophysical Chemistry Techniques"
     },
     {
-       title: "5.8",
+       title: "5.80",
        description: "Advanced Topics of Current Special Interest"
     },
     {
@@ -1656,7 +1689,7 @@ var arr = [
        description: "Independent Study in Chemistry for Undergraduates"
     },
     {
-       title: "5.9",
+       title: "5.90",
        description: "Problems in Chemistry"
     },
     {
@@ -1808,7 +1841,7 @@ var arr = [
        description: "Introduction to EECS via Interconnected Embedded Systems"
     },
     {
-       title: "6.1",
+       title: "6.100",
        description: "Electrical Engineering and Computer Science Project"
     },
     {
@@ -1868,7 +1901,7 @@ var arr = [
        description: "Feedback System Design"
     },
     {
-       title: "6.32",
+       title: "6.320",
        description: "Feedback System Design"
     },
     {
@@ -1924,7 +1957,7 @@ var arr = [
        description: "Engineering, Economics and Regulation of the Electric Power Sector"
     },
     {
-       title: "6.73",
+       title: "6.730",
        description: "Physics for Solid-State Applications"
     },
     {
@@ -1984,7 +2017,7 @@ var arr = [
        description: "Randomness and Computation"
     },
     {
-       title: "6.85",
+       title: "6.850",
        description: "Geometric Computing"
     },
     {
@@ -2036,7 +2069,7 @@ var arr = [
        description: "Advanced Topics in Computer Systems"
     },
     {
-       title: "6.89",
+       title: "6.890",
        description: "Advanced Topics in Theoretical Computer Science"
     },
     {
@@ -2064,7 +2097,7 @@ var arr = [
        description: "Entrepreneurship in Engineering"
     },
     {
-       title: "6.91",
+       title: "6.910",
        description: "Independent Study in Electrical Engineering and Computer Science"
     },
     {
@@ -2080,7 +2113,7 @@ var arr = [
        description: "Engineering Leadership Lab"
     },
     {
-       title: "6.92",
+       title: "6.920",
        description: "Practical Internship Experience"
     },
     {
@@ -2116,7 +2149,7 @@ var arr = [
        description: "Graduate 6-A Internship"
     },
     {
-       title: "6.96",
+       title: "6.960",
        description: "Introductory Research in Electrical Engineering and Computer Science"
     },
     {
@@ -2128,7 +2161,7 @@ var arr = [
        description: "Independent Study in Electrical Engineering and Computer Science"
     },
     {
-       title: "6.98",
+       title: "6.980",
        description: "Teaching Electrical Engineering and Computer Science"
     },
     {
@@ -2288,7 +2321,7 @@ var arr = [
        description: "Evolutionary Biology: Concepts, Models and Computation"
     },
     {
-       title: "7.34",
+       title: "7.340",
        description: "Advanced Undergraduate Seminar"
     },
     {
@@ -2352,7 +2385,7 @@ var arr = [
        description: "Independent Study in Experimental Biology"
     },
     {
-       title: "7.41",
+       title: "7.410",
        description: "Applied Statistics"
     },
     {
@@ -2400,7 +2433,7 @@ var arr = [
        description: "Topics in Marine Microbiology"
     },
     {
-       title: "7.44",
+       title: "7.440",
        description: "An Introduction to Mathematical Ecology"
     },
     {
@@ -2408,7 +2441,7 @@ var arr = [
        description: "Advances in Biomanufacturing"
     },
     {
-       title: "7.47",
+       title: "7.470",
        description: "Biological Oceanography"
     },
     {
@@ -2456,7 +2489,7 @@ var arr = [
        description: "Molecular Biology"
     },
     {
-       title: "7.6",
+       title: "7.60",
        description: "Cell Biology: Structure and Functions of the Nucleus"
     },
     {
@@ -2492,7 +2525,7 @@ var arr = [
        description: "Nucleic Acids, Structure, Function, Evolution and Their Interactions with Proteins"
     },
     {
-       title: "7.8",
+       title: "7.80",
        description: "Fundamentals of Chemical Biology"
     },
     {
@@ -2744,6 +2777,10 @@ var arr = [
        description: "Undergraduate Research"
     },
     {
+      title: "9.00",
+      description: "Introduction to Psychological Science"
+   },
+   {
        title: "9.012",
        description: "Cognitive Science"
     },
@@ -2784,7 +2821,11 @@ var arr = [
        description: "Developmental Neurobiology"
     },
     {
-       title: "9.19",
+      title: "9.19",
+      description: "Computational Psycholinguistics"
+   },
+    {
+       title: "9.190",
        description: "Computational Psycholinguistics"
     },
     {
@@ -2824,7 +2865,7 @@ var arr = [
        description: "Current Topics in Perception"
     },
     {
-       title: "9.4",
+       title: "9.40",
        description: "Introduction to Neural Computation"
     },
     {
@@ -2832,7 +2873,7 @@ var arr = [
        description: "The Brain and Its Interface with the Body"
     },
     {
-       title: "9.5",
+       title: "9.50",
        description: "Research in Brain and Cognitive Sciences"
     },
     {
@@ -2840,7 +2881,7 @@ var arr = [
        description: "Mathematical Statistics"
     },
     {
-       title: "9.53",
+       title: "9.530",
        description: "Emergent Computations Within Distributed Neural Circuits"
     },
     {
@@ -2852,7 +2893,7 @@ var arr = [
        description: "Laboratory in Psycholinguistics"
     },
     {
-       title: "9.6",
+       title: "9.60",
        description: "Machine-Motivated Human Vision"
     },
     {
@@ -2864,7 +2905,7 @@ var arr = [
        description: "Off-Campus Undergraduate Research in Brain and Cognitive Sciences"
     },
     {
-       title: "9.9",
+       title: "9.900",
        description: "Clinical Connection Module"
     },
     {
@@ -2915,12 +2956,12 @@ var arr = [
        title: "9.URG",
        description: "Undergraduate Research"
     },
-    //{
-    //   title: "10",
-    //   description: "Molecule Builders"
-    //},
     {
-       title: "10",
+      title: "10.00",
+      description: "Molecule Builders"
+    },
+    {
+       title: "10.000",
        description: "Engineering Molecular Marvels: Careers and ChemE at MIT"
     },
     {
@@ -2952,7 +2993,7 @@ var arr = [
        description: "Debating About Society and Engineering"
     },
     {
-       title: "10.1",
+       title: "10.10",
        description: "Introduction to Chemical Engineering"
     },
     {
@@ -3016,11 +3057,11 @@ var arr = [
        description: "Electrochemical Energy Systems"
     },
     {
-       title: "10.45",
+       title: "10.450",
        description: "Process Dynamics, Operations, and Control"
     },
     {
-       title: "10.49",
+       title: "10.490",
        description: "Integrated Chemical Engineering"
     },
     {
@@ -3080,21 +3121,21 @@ var arr = [
        description: "Global Operations Leadership Seminar"
     },
     {
-       title: "10.8",
+       title: "10.80",
        description: "(10.82, 10.84, 10.86) School of Chemical Engineering Practice -- Technical Accomplishment"
     },
     {
        title: "10.81",
        description: "(10.83, 10.85, 10.87) School of Chemical Engineering Practice -- Communication Skills and Human Relations"
     },
-    //{
-     //  title: "10.8",
-     //  description: "-10.82 School of Chemical Engineering Practice -- Technical Accomplishment"
-   // },
-   // {
-   //    title: "10.81",
-    //   description: "-10.83 School of Chemical Engineering Practice -- Communication Skills and Human Relations"
-   // },
+    {
+      title: "10.82",
+      description: "-10.82 School of Chemical Engineering Practice -- Technical Accomplishment"
+   },
+   {
+      title: "10.83",
+      description: "-10.83 School of Chemical Engineering Practice -- Communication Skills and Human Relations"
+   },
     {
        title: "10.84",
        description: "-10.86 School of Chemical Engineering Practice -- Technical Accomplishment"
@@ -3112,11 +3153,11 @@ var arr = [
        description: "School of Chemical Engineering Practice -- Communication Skills and Human Relations"
     },
     {
-       title: "10.9",
+       title: "10.90",
        description: "Independent Research Problem"
     },
     {
-       title: "10.91",
+       title: "10.910",
        description: "Independent Research Problem"
     },
     {
@@ -3192,7 +3233,7 @@ var arr = [
        description: "Molecular Engineering Seminar"
     },
     {
-       title: "10.97",
+       title: "10.970",
        description: "Seminar in Molecular Computation"
     },
     {
@@ -3392,7 +3433,7 @@ var arr = [
        description: "Urban Fieldwork"
     },
     {
-       title: "11.189-11.190",
+       title: "11.190",
        description: "Urban Fieldwork"
     },
     {
@@ -3440,7 +3481,7 @@ var arr = [
        description: "DesignX Accelerator"
     },
     {
-       title: "11.25",
+       title: "0",
        description: "Transportation Research Design"
     },
     {
@@ -3484,7 +3525,7 @@ var arr = [
        description: "Engaging Community: Models and Methods for Strengthening Democracy"
     },
     {
-       title: "11.32",
+       title: "11.320",
        description: "Digital City Design Workshop"
     },
     {
@@ -3596,7 +3637,7 @@ var arr = [
        description: "Crowd Sourced City: Civic Tech Prototyping Class"
     },
     {
-       title: "11.46",
+       title: "11.460",
        description: "Development, Planning, and Implementation: The Dialectic of Theory and Practice"
     },
     {
@@ -3608,7 +3649,7 @@ var arr = [
        description: "Master of Science in Real Estate Development Thesis Preparation"
     },
     {
-       title: "11.52",
+       title: "11.520",
        description: "Workshop on Geographic Information Systems"
     },
     {
@@ -3640,7 +3681,7 @@ var arr = [
        description: "Research Seminar on Technology and the Work of the Future"
     },
     {
-       title: "11.8",
+       title: "11.800",
        description: "Reading, Writing and Research"
     },
     {
@@ -3684,11 +3725,11 @@ var arr = [
        description: "Advanced Urbanism Colloquium"
     },
     {
-       title: "11.92",
+       title: "11.920",
        description: "Planning in Practice"
     },
     {
-       title: "11.96",
+       title: "11.960",
        description: "Independent Study: Real Estate"
     },
     {
@@ -3736,7 +3777,7 @@ var arr = [
        description: "Special Subject: Urban Studies and Planning"
     },
     {
-       title: "11.S196-11.S199",
+       title: "11.S199",
        description: "Special Subject: Urban Studies and Planning"
     },
     {
@@ -3852,7 +3893,7 @@ var arr = [
        description: "Undergraduate Research"
     },
     {
-       title: "12",
+       title: "12.00",
        description: "Frontiers and Careers in Earth, Planets, Climate, and Life"
     },
     {
@@ -3908,7 +3949,7 @@ var arr = [
        description: "Field Oceanography"
     },
     {
-       title: "12.4",
+       title: "12.400",
        description: "Our Space Odyssey"
     },
     {
@@ -3928,11 +3969,11 @@ var arr = [
        description: "Teaching Experience in EAPS"
     },
     {
-       title: "12.46",
+       title: "12.460",
        description: "Current Research in Geology and Geochemistry"
     },
     {
-       title: "12.460-12.461",
+       title: "12.461",
        description: "Current Research in Geology and Geochemistry"
     },
     {
@@ -3944,15 +3985,15 @@ var arr = [
        description: "Mechanics of Earth"
     },
     {
-       title: "12.51",
+       title: "12.510",
        description: "Introduction to Seismology"
     },
     {
-       title: "12.54",
+       title: "12.540",
        description: "Principles of Global Positioning System"
     },
     {
-       title: "12.58",
+       title: "12.580",
        description: "Current Research in Geophysics"
     },
     {
@@ -3960,11 +4001,11 @@ var arr = [
        description: "Current Research in Geophysics"
     },
     {
-       title: "12.65",
+       title: "12.650",
        description: "Current Topics in Planetary Science"
     },
     {
-       title: "12.69",
+       title: "12.690",
        description: "Current Research in Planetary Science"
     },
     {
@@ -4008,11 +4049,11 @@ var arr = [
        description: "Current Research in Biological Oceanography at Woods Hole"
     },
     {
-       title: "12.73",
+       title: "12.730",
        description: "Current Research in Marine Geology and Geophysics at MIT"
     },
     {
-       title: "12.730-12.731",
+       title: "12.731",
        description: "Current Research in Marine Geology and Geophysics at MIT"
     },
     {
@@ -4028,11 +4069,11 @@ var arr = [
        description: "Current Research in Chemical Oceanography at MIT"
     },
     {
-       title: "12.735-12.736",
+       title: "12.736",
        description: "Current Research in Chemical Oceanography at MIT"
     },
     {
-       title: "12.74",
+       title: "12.740",
        description: "Paleoceanography"
     },
     {
@@ -4076,7 +4117,7 @@ var arr = [
        description: "Atmospheric Physics and Chemistry"
     },
     {
-       title: "12.81",
+       title: "12.810",
        description: "Dynamics of the Atmosphere"
     },
     {
@@ -4088,60 +4129,73 @@ var arr = [
        description: "Atmospheric Composition in the Changing Earth System"
     },
     {
+      title: "12.820",
+      description: "Turbulence in the Ocean and Atmosphere"
+   },
+    {
        title: "12.849",
        description: "Mechanisms and Models of the Global Carbon Cycle"
     },
     {
-       title: "12.85",
+       title: "12.850",
        description: "Computational Ocean Modeling"
     },
     {
-       title: "12.96",
+       title: "12.960",
        description: "Current Research in Physical Oceanography at MIT"
     },
     {
-       title: "12.960,",
-       description: "12.961 Current Research in Physical Oceanography at MIT"
+       title: "12.961,",
+       description: "Current Research in Physical Oceanography at MIT"
     },
     {
-       title: "12.97",
+       title: "12.971",
        description: "Current Research in Physical Oceanography at Woods Hole"
     },
     {
        title: "12.970,",
-       description: "12.971 Current Research in Physical Oceanography at Woods Hole"
+       description: "Current Research in Physical Oceanography at Woods Hole"
     },
     {
-       title: "12.98",
+       title: "12.980",
        description: "Current Research in Atmospheric Science"
     },
     {
-       title: "12.980,",
-       description: "12.981 Current Research in Atmospheric Science"
+       title: "12.981,",
+       description: "Current Research in Atmospheric Science"
     },
     {
        title: "12.982",
        description: "Current Research in Climate Physics and Chemistry"
     },
     {
-       title: "12.982,",
-       description: "12.983 Current Research in Climate Physics and Chemistry"
+       title: "12.983",
+       description: "Current Research in Climate Physics and Chemistry"
     },
     {
-       title: "12.S488,",
-       description: "12.S489 Special Seminar in Structural Geology"
+       title: "12.S488",
+       description: "Special Seminar in Structural Geology"
     },
     {
-       title: "12.S492,",
-       description: "12.S493 Special Seminar in Geobiology"
+      title: "12.S489",
+      description: "Special Seminar in Structural Geology"
+   },
+    {
+       title: "12.S492",
+       description: "Special Seminar in Geobiology"
     },
+
+    {
+      title: "12.S493",
+      description: "Special Seminar in Geobiology"
+   },
     {
        title: "12.S592",
        description: "Special Seminar in Earth, Atmospheric and Planetary Sciences"
     },
     {
-       title: "12.S592,",
-       description: "12.S593 Special Seminar in Earth, Atmospheric and Planetary Sciences"
+       title: "12.S593",
+       description: "Special Seminar in Earth, Atmospheric and Planetary Sciences"
     },
     {
        title: "12.THG",
@@ -4196,7 +4250,7 @@ var arr = [
        description: "Reading Seminar in Economics"
     },
     {
-       title: "14.1",
+       title: "14.10",
        description: "Reading Seminar in Economics"
     },
     {
@@ -4239,10 +4293,10 @@ var arr = [
        title: "14.16",
        description: "Strategy and Information"
     },
-    //{
-   //    title: "14.16",
-    //   description: "Behavioral Economics"
-   // },
+    {
+      title: "14.160",
+      description: "Behavioral Economics"
+   },
     {
        title: "14.191",
        description: "Independent Research Paper"
@@ -4272,13 +4326,13 @@ var arr = [
        description: "14.199 Teaching Introductory Economics"
     },
     {
-       title: "14.2",
+       title: "14.20",
        description: "Industrial Organization: Competitive Strategy and Public Policy"
     },
-   /* {
-       title: "14.2",
+   {
+       title: "14.200",
        description: "Industrial Organization: Competitive Strategy and Public Policy"
-    },*/
+    },
     {
        title: "14.26J",
        description: "Economics of Incentives: Theory and Applications"
@@ -4307,10 +4361,10 @@ var arr = [
        title: "14.32",
        description: "Econometric Data Science"
     },
-   /* {
-       title: "14.32",
+   {
+       title: "14.320",
        description: "Econometric Data Science"
-    },*/
+    },
     {
        title: "14.33",
        description: "Research and Communication in Economics: Topics, Methods, and Implementation"
@@ -4395,16 +4449,16 @@ var arr = [
        title: "14.75",
        description: "Political Economy and Economic Development"
     },
-   /* {
+   {
        title: "14.75",
        description: "Political Economy and Economic Development"
     },
     {
        title: "14.76",
        description: "Firms, Markets, Trade and Growth"
-    },*/
+    },
     {
-       title: "14.76",
+       title: "14.760",
        description: "Firms, Markets, Trade and Growth"
     },
     {
@@ -4552,7 +4606,7 @@ var arr = [
        description: "Seminar in International Management"
     },
     {
-       title: "15.23",
+       title: "15.230",
        description: "Public Policy and the Private Sector"
     },
     {
@@ -4576,7 +4630,7 @@ var arr = [
        description: "Choice Points: Thinking about Life and Leadership through Literature"
     },
     {
-       title: "15.27",
+       title: "15.270",
        description: "Ethical Practice: Leading Through Professionalism, Social Responsibility, and System Design"
     },
     {
@@ -4616,7 +4670,7 @@ var arr = [
        description: "Leadership and Organizational Change"
     },
     {
-       title: "15.32",
+       title: "15.320",
        description: "Strategic Organizational Design"
     },
     {
@@ -4688,7 +4742,7 @@ var arr = [
        description: "Entrepreneurial Sales"
     },
     {
-       title: "15.39",
+       title: "15.390",
        description: "New Enterprises"
     },
     {
@@ -4772,7 +4826,7 @@ var arr = [
        description: "Mergers, Acquisitions, and Private Equity"
     },
     {
-       title: "15.45",
+       title: "15.450",
        description: "Analytics of Finance"
     },
     {
@@ -5036,7 +5090,7 @@ var arr = [
        description: "Research Seminar in System Dynamics"
     },
     {
-       title: "15.9",
+       title: "15.900",
        description: "Competitive Strategy"
     },
     {
@@ -5048,7 +5102,7 @@ var arr = [
        description: "Strategy and the CEO"
     },
     {
-       title: "15.91",
+       title: "15.910",
        description: "Innovation Strategy"
     },
     {
@@ -5064,7 +5118,7 @@ var arr = [
        description: "The Sociology of Strategy"
     },
     {
-       title: "15.95",
+       title: "15.950",
        description: "Independent Study in Management"
     },
     {
@@ -5076,7 +5130,7 @@ var arr = [
        description: "Curricular Practical Training"
     },
     {
-       title: "15.96",
+       title: "15.960",
        description: "Independent Study in Management"
     },
     {
@@ -5184,7 +5238,7 @@ var arr = [
        description: "Undergraduate Studies in Management"
     },
     {
-       title: "16",
+       title: "16.00",
        description: "Introduction to Aerospace and Design"
     },
     {
@@ -5208,7 +5262,7 @@ var arr = [
        description: "Analytical High Speed Aerodynamics"
     },
     {
-       title: "16.2",
+       title: "16.20",
        description: "Structural Mechanics"
     },
     {
@@ -5272,7 +5326,7 @@ var arr = [
        description: "Biomedical Signal and Image Processing"
     },
     {
-       title: "16.5",
+       title: "16.50",
        description: "Aerospace Propulsion"
     },
     {
@@ -5280,11 +5334,11 @@ var arr = [
        description: "Space Propulsion"
     },
     {
-       title: "16.54",
+       title: "16.540",
        description: "Internal Flows in Turbomachines"
     },
     {
-       title: "16.65",
+       title: "16.650",
        description: "Engineering Leadership Lab"
     },
     {
@@ -5304,7 +5358,7 @@ var arr = [
        description: "Ethics for Engineers"
     },
     {
-       title: "16.68",
+       title: "16.680",
        description: "Project in Aeronautics and Astronautics"
     },
     {
@@ -5340,7 +5394,7 @@ var arr = [
        description: "Space Systems Engineering"
     },
     {
-       title: "16.9",
+       title: "16.90",
        description: "Computational Modeling and Data Analysis in Aerospace Engineering"
     },
     {
@@ -5348,7 +5402,7 @@ var arr = [
        description: "Practicum Experience"
     },
     {
-       title: "16.98",
+       title: "16.980",
        description: "Advanced Project"
     },
     {
@@ -5424,7 +5478,7 @@ var arr = [
        description: "Current Topics in Comparative Political Economy"
     },
     {
-       title: "17.2",
+       title: "17.20",
        description: "Introduction to the American Political Process"
     },
     {
@@ -5432,7 +5486,7 @@ var arr = [
        description: "American Political Institutions"
     },
     {
-       title: "17.21",
+       title: "17.210",
        description: "American Political Behavior II"
     },
     {
@@ -5492,7 +5546,7 @@ var arr = [
        description: "Empirical Models in International Relations"
     },
     {
-       title: "17.43",
+       title: "17.430",
        description: "Research Seminar in International Relations"
     },
     {
@@ -5512,7 +5566,7 @@ var arr = [
        description: "US Military Power"
     },
     {
-       title: "17.5",
+       title: "17.50",
        description: "Introduction to Comparative Politics"
     },
     {
@@ -5572,17 +5626,33 @@ var arr = [
        description: "Reading Seminar in Social Science"
     },
     {
-       title: "17.91",
+       title: "17.910",
        description: "Reading Seminar in Social Science"
     },
     {
-       title: "17.955",
+       title: "17.954",
        description: "Reading Seminar in Social Science"
     },
     {
-       title: "17.954-17.958,",
-       description: "17.96 Reading Seminar in Social Science"
+      title: "17.955",
+      description: "Reading Seminar in Social Science"
+   },
+   {
+      title: "17.956",
+      description: "Reading Seminar in Social Science"
+   },
+   {
+      title: "17.957",
+      description: "Reading Seminar in Social Science"
+   },
+    {
+       title: "17.958,",
+       description: "Reading Seminar in Social Science"
     },
+    {
+      title: "17.960",
+      description: "Reading Seminar in Social Science"
+   },
     {
        title: "17.962",
        description: "Second Year Paper Workshop"
@@ -5764,7 +5834,7 @@ var arr = [
        description: "Topics in Combinatorics"
     },
     {
-       title: "18.3",
+       title: "18.300",
        description: "Principles of Continuum Applied Mathematics"
     },
     {
@@ -5776,7 +5846,7 @@ var arr = [
        description: "Advanced Partial Differential Equations with Applications"
     },
     {
-       title: "18.33",
+       title: "18.330",
        description: "Introduction to Numerical Analysis"
     },
     {
@@ -5832,7 +5902,7 @@ var arr = [
        description: "Advanced Combinatorial Optimization"
     },
     {
-       title: "18.6",
+       title: "18.600",
        description: "Probability and Random Variables"
     },
     {
@@ -5924,7 +5994,7 @@ var arr = [
        description: "Topics in Algebraic Topology"
     },
     {
-       title: "18.95",
+       title: "18.950",
        description: "Differential Geometry"
     },
     {
@@ -5996,7 +6066,7 @@ var arr = [
        description: "Biological Circuit Engineering Laboratory"
     },
     {
-       title: "20.2",
+       title: "20.200",
        description: "Biological Engineering Seminar"
     },
     {
@@ -6048,7 +6118,7 @@ var arr = [
        description: "Applied Developmental Biology and Tissue Engineering"
     },
     {
-       title: "20.38",
+       title: "20.380",
        description: "Biological Engineering Design"
     },
     {
@@ -6064,7 +6134,7 @@ var arr = [
        description: "Biological Engineering II: Instrumentation and Measurement"
     },
     {
-       title: "20.44",
+       title: "20.440",
        description: "Analysis of Biological Networks"
     },
     {
@@ -6080,7 +6150,7 @@ var arr = [
        description: "Case Studies and Strategies in Drug Discovery and Development"
     },
     {
-       title: "20.49",
+       title: "20.490",
        description: "Computational Systems Biology: Deep Learning in the Life Sciences"
     },
     {
@@ -6100,11 +6170,11 @@ var arr = [
        description: "Independent Study in Biological Engineering"
     },
     {
-       title: "20.92",
+       title: "20.920",
        description: "Practical Work Experience"
     },
     {
-       title: "20.95",
+       title: "20.950",
        description: "Research Problems in Biological Engineering"
     },
     {
@@ -6112,7 +6182,7 @@ var arr = [
        description: "Thesis Proposal"
     },
     {
-       title: "20.96",
+       title: "20.960",
        description: "Teaching Experience in Biological Engineering"
     },
     {
@@ -6184,7 +6254,7 @@ var arr = [
        description: "Research in Humanities"
     },
     {
-       title: "22",
+       title: "22.00",
        description: "Introduction to Modeling and Simulation"
     },
     {
@@ -6348,7 +6418,7 @@ var arr = [
        description: "Metaphysics"
     },
     {
-       title: "24.23",
+       title: "24.230",
        description: "Meta-ethics"
     },
     {
@@ -6364,7 +6434,7 @@ var arr = [
        description: "Theory of Models"
     },
     {
-       title: "24.28",
+       title: "24.280",
        description: "Foundations of Probability"
     },
     {
@@ -6376,7 +6446,7 @@ var arr = [
        description: "Proseminar in Philosophy II"
     },
     {
-       title: "24.5",
+       title: "24.500",
        description: "Topics in Philosophy of Mind"
     },
     {
@@ -6404,7 +6474,7 @@ var arr = [
        description: "Independent Study: Philosophy"
     },
     {
-       title: "24.9",
+       title: "24.900",
        description: "Introduction to Linguistics"
     },
     {
