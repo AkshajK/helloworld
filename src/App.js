@@ -91,7 +91,7 @@ class App extends React.Component {
         user: data['name'], 
         usertag: data['name']+" ("+data['kerb']+")", 
         email: mit_email,
-        isPrivate = true
+        isPrivate: true
       }, () => {
         this.userIsUpdated()
       })
