@@ -423,7 +423,7 @@ class App extends React.Component {
 
         <Router>
           <div className = "topnav">
-            <Link className = 'nav2'><Logout logout = {this.logout} /></Link>
+            <div className="nav2"><Link><Logout logout = {this.logout} /></Link></div>
             <div id="logo">Welcome {self.state.user}!</div>
           </div>
         </Router>
@@ -469,10 +469,10 @@ class App extends React.Component {
         <div>
           <div id="header"> 
 
-          <Router>
+          {/* <Router>
             <div className = "topnav">
-              <div className = 'nav1'><a><Link to="/">Home</Link></a></div>
-              <div className = 'nav3'><a><Link to="/register">Register</Link></a></div>
+              <div className = 'nav1'><Link to="/">Home</Link></div>
+              <div className = 'nav1'><Link to="/register">Register</Link></div>
 
 
               {/*
@@ -490,7 +490,7 @@ class App extends React.Component {
                 </Route>
               </Switch>
             </div>
-          </Router>
+          </Router> */}
           <div className ='head1'>
               <h1 id="title">interstellar</h1>
               <h1 id="emojis"> </h1>

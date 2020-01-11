@@ -132,11 +132,11 @@ body {
 }
 
 /* Style the links inside the navigation bar */
-.topnav a, h2 {
+.nav2 a {
+  position: relative;
   float: left;
   color: #ffffff;
   text-align: center;
-  padding: 16px 18px;
   text-decoration: none;
   font-size: 18px;
 }
