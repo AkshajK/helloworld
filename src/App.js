@@ -377,7 +377,7 @@ class App extends React.Component {
     .slice(Math.max(0, self.state.classes.length-20), self.state.classes.length)
     .map(function (name) { 
         return (
-          <button class={(name===self.state.class ? "biggergreenbutton" : "greenbutton")+" "+(self.state.classesUserIsIn.includes(name) ? "bold" : "notbold")} 
+          <button className={(name===self.state.class ? "biggergreenbutton" : "greenbutton")+" "+(self.state.classesUserIsIn.includes(name) ? "bold" : "notbold")} 
           onClick={() => {
             timer = setTimeout(() => {
               if (!prevent) {
