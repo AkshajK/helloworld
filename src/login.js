@@ -83,7 +83,6 @@ export default function Login(props) {
 
   return (
     <div className="Login">
-      <h1>Sign in Below!</h1>
   
       <form onSubmit={handleSubmit}>
         {/* <div className = ""> */}
@@ -106,8 +105,6 @@ export default function Login(props) {
           />
         </FormGroup>
         </div>
-        {/* </div> */}
-        <br></br>
         <Button block bsSize="large" disabled={!validateForm()} type="submit">
           Login
         </Button>

@@ -485,6 +485,9 @@ class App extends React.Component {
               <Switch>
                 <Route exact path="/">
                 </Route>
+                <Route path="/login">
+                <Login updateUser = {this.updateUser}/>
+                </Route>
                 <Route path="/register">
                   <Register updatePage = {this.updatePage} />
                 </Route>
@@ -501,9 +504,6 @@ class App extends React.Component {
               <br></br>
             Welcome to Interstellar, a class comparison website for MIT students to share your classes and see what classes your friends are taking!             
             <body>
-              <div class = "login-zoom">
-            <Login updateUser = {this.updateUser}/>
-            </div>
               <br></br>
             <img src="Complete_graph_K9.jpg"  width="200"
               height="200"></img>
