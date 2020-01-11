@@ -69,7 +69,8 @@ class App extends React.Component {
       user: "Guest", // name of user
       usertag: "Guest (guest1314234@mit.edu)", // usertag of user (usertag is "name (kerb)"). 
       classesUserIsIn: [], // classes that the user is in
-      email: 'guest1314234@mit.edu', // email of the user
+      email: 'guest1314234@mit.edu', // email of the user, 
+      isPrivate: False
     }
 
 
@@ -89,7 +90,8 @@ class App extends React.Component {
       this.setState({
         user: data['name'], 
         usertag: data['name']+" ("+data['kerb']+")", 
-        email: mit_email
+        email: mit_email,
+        isPrivate = true
       }, () => {
         this.userIsUpdated()
       })
@@ -103,6 +105,9 @@ class App extends React.Component {
     this.logout = () => {      
       firebase.auth().signOut().then(function() {
         // Sign-out successful.
+        self.setState({
+          isPrivate: false
+        })
         self.userIsUpdated()
       }).catch(function(error) {
         // An error happened.
@@ -252,7 +257,8 @@ class App extends React.Component {
                 user: data['name'], // name of user
                 usertag: data['name']+" ("+data['kerb']+")", // usertag of user (usertag is "name (kerb)"). 
                 classesUserIsIn: data['classes'], // classes that the user is in
-                email: email // email of the user
+                email: email, // email of the user
+                isPrivate: (firebase.auth().currentUser && firebase.auth().currentUser.emailVerified)
               })
           }       
       }).catch(function(error) {
@@ -302,9 +308,9 @@ class App extends React.Component {
     console.log("rendering state " + this.state);
     const self = this
     const handleClick = function (name) {
-      self.setState({class: name})
-     
+      self.setState({class: name}) 
     }
+
     const handleExit = function (name) {
       if(self.state.classes.length > 1) {
         var newclasses = arrayRemove(self.state.classes, name)
@@ -464,7 +470,7 @@ class App extends React.Component {
       )
     return (
       <div>
-        {(firebase.auth().currentUser && firebase.auth().currentUser.emailVerified) ? privateContent : publicContent}
+        {this.state.isPrivate ? privateContent : publicContent}
       </div>
     );
   }
