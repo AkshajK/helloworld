@@ -70,7 +70,7 @@ class App extends React.Component {
       usertag: "Guest (guest1314234@mit.edu)", // usertag of user (usertag is "name (kerb)"). 
       classesUserIsIn: [], // classes that the user is in
       email: 'guest1314234@mit.edu', // email of the user, 
-      isPrivate: False
+      isPrivate: false
     }
 
 
