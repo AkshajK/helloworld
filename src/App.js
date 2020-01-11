@@ -472,7 +472,9 @@ class App extends React.Component {
           <Router>
             <div className = "topnav">
               <div className = 'nav1'><a><Link to="/">Home</Link></a></div>
+              <div className = 'nav3'><a><Link to="/login">Login</Link></a></div>
               <div className = 'nav3'><a><Link to="/register">Register</Link></a></div>
+              
 
 
               {/*
@@ -484,6 +486,9 @@ class App extends React.Component {
               */}
               <Switch>
                 <Route exact path="/">
+                </Route>
+                <Route path="/login">
+                <Login updateUser = {this.updateUser}/>
                 </Route>
                 <Route path="/register">
                   <Register updatePage = {this.updatePage} />
@@ -501,9 +506,6 @@ class App extends React.Component {
               <br></br>
             Welcome to Interstellar, a class comparison website for MIT students to share your classes and see what classes your friends are taking!             
             <body>
-              <div class = "login-zoom">
-            <Login updateUser = {this.updateUser}/>
-            </div>
               <br></br>
             <img src="Complete_graph_K9.jpg"  width="200"
               height="200"></img>
