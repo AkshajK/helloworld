@@ -86,7 +86,7 @@ class App extends React.Component {
 
     // this function is passed to login
     this.updateUser = (data) => {
-      let mit_email = firebase.auth().currentUser['email']
+      let mit_email = data['kerb'] +'@mit.edu'
       this.setState({
         user: data['name'], 
         usertag: data['name']+" ("+data['kerb']+")", 
@@ -458,7 +458,7 @@ class App extends React.Component {
         
         <div id='addclass'>
           {/* {addClass} */}
-          {this.state.class.length>0 ? addClass : "Easter Egg 2"}
+          {this.state.class.length>0 ? addClass : "Search for Classes above to start!"}
         </div>
         </div>
         </div>
