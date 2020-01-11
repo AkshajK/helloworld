@@ -471,7 +471,7 @@ class App extends React.Component {
 
           <Router>
             <div className = "topnav">
-              <div className = 'nav1'><a><Link to="/">Home</Link></a></div>
+              <div className = 'nav1'><Link to="/">Home</Link></div>
               <Switch>
                 <Route exact path="/">
                 </Route>
