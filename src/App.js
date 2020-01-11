@@ -423,7 +423,7 @@ class App extends React.Component {
 
         <Router>
           <div className = "topnav">
-            <div className = 'nav2'><a><Link><Logout logout = {this.logout} /></Link></a></div>
+            <Link className = 'nav2'><Logout logout = {this.logout} /></Link>
             <div id="logo">Welcome {self.state.user}!</div>
           </div>
         </Router>
