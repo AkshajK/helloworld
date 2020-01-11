@@ -43,7 +43,7 @@ export default class SearchExampleStandard extends Component {
          results: []
         })
     }
-    
+
   };
 
   handleSearchChange = (e, { value }) => {

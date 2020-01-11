@@ -119,7 +119,7 @@ export default function Register(props) {
   }
 
   return (
-    <div className="Login">
+    <div className="Register">
       <form onSubmit={handleSubmit}>
         <FormGroup controlId="name" bsSize="large">
           <FormLabel>Full Name </FormLabel>

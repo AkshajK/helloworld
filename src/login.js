@@ -83,11 +83,12 @@ export default function Login(props) {
 
   return (
     <div className="Login">
-      Sign in Below!
+      <h1>Sign in Below!</h1>
   
       <form onSubmit={handleSubmit}>
+        <div className="right">
         <FormGroup controlId="email" bsSize="large">
-          <FormLabel>Email </FormLabel>
+          <FormLabel>Email: &nbsp; &nbsp; &nbsp;</FormLabel>
           <FormControl
             autoFocus
             type="email"
@@ -96,13 +97,15 @@ export default function Login(props) {
           />
         </FormGroup>
         <FormGroup controlId="password" bsSize="large">
-          <FormLabel>Password </FormLabel>
+          <FormLabel>Password: </FormLabel>
           <FormControl
             value={password}
             onChange={e => setPassword(e.target.value)}
             type="password"
           />
         </FormGroup>
+        </div>
+        <br></br>
         <Button block bsSize="large" disabled={!validateForm()} type="submit">
           Login
         </Button>

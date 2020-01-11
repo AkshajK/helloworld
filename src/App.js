@@ -69,7 +69,7 @@ class App extends React.Component {
       user: "Guest", // name of user
       usertag: "Guest (guest1314234@mit.edu)", // usertag of user (usertag is "name (kerb)"). 
       classesUserIsIn: [], // classes that the user is in
-      email: 'guest1314234@mit.edu' // email of the user
+      email: 'guest1314234@mit.edu', // email of the user
     }
 
 
@@ -357,6 +357,8 @@ class App extends React.Component {
       return <option value={name}>{name}</option>
     })
 
+    
+
     // <h2>Your classes: {this.state.classesUserIsIn.toString()}</h2>
     // <div>
     //<button class='removeenroll' onClick={() => handleExit(this.state.class)}>Remove {this.state.class}</button>
@@ -439,7 +441,7 @@ class App extends React.Component {
             </div>
           </Router>
           <div className ='head1'>
-              <h1 id="title">Interstellar</h1>
+              <h1 id="title">interstellar</h1>
               <h1 id="emojis"> </h1>
           </div>
           </div>
