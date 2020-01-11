@@ -47,18 +47,18 @@ export default function Register(props) {
         }
         
         // If password not entered 
-        if (password == '') {
+        if (password === '') {
             alert ("Please enter Password"); 
             return; 
         }
               
         // If confirm password not entered 
-        else if (password2 == '') {
+        else if (password2 === '') {
             alert ("Please enter confirm password"); 
             return; 
         }
         // If Not same return False.     
-        else if (password != password2) { 
+        else if (password !== password2) { 
             alert ("\nPassword did not match: Please try again...") 
             return; 
         } 

@@ -95,7 +95,7 @@ class App extends React.Component {
       }, () => {
         this.userIsUpdated()
       })
-      alert("userUpdate")
+
     };
 
     this.updatePage = () => {
@@ -146,39 +146,62 @@ class App extends React.Component {
     })
     let kerb = this.state.email.substring(0, this.state.email.indexOf('@'))
     
-    this.db.collection("classes").doc(this.state.class).collection("ListOfPeople").doc(randomStr(20, "0123456789QWERTYUIOPLKJHGFDSAZXCVBNMqwertyuioplkjhgfdsazxcvbnm")).set({
+    this.db.collection("classes").doc(this.state.class).collection("ListOfPeople").doc(kerb).set({
       name: this.state.user, kerb: kerb
     })
 
-    this.db.collection("users").doc(kerb).get().then(function(doc) {
-      if (doc.exists) {
-        let data = doc.data()
-        let newClasses = data['classes']
-        newClasses.push(self.state.class)
-        self.db.collection('users').doc(kerb).update({
-          classes: newClasses
-        })
-      }
-      }).catch(function(error) {
-        console.log("Error getting document:", error);
+    // this.db.collection("users").doc(kerb).get().then(function(doc) {
+    //   if (doc.exists) {
+    //     let data = doc.data()
+    //     let newClasses = data['classes']
+    //     newClasses.push(self.state.class)
+    //     self.db.collection('users').doc(kerb).update({
+    //       classes: newClasses
+    //     })
+    //   }
+    //   }).catch(function(error) {
+    //     console.log("Error getting document:", error);
+    // })
+    // .then(function() {
+    //     console.log("Added " + this.state.user + " to " + this.state.class)
+    //     var newclassesuserisin = this.state.classesUserIsIn.slice()
+    //     newclassesuserisin.push(this.state.class)
+    //     var newpeople = this.state.people
+    //     var newclasspeoplelist = this.state.people[this.state.class]
+    //     newclasspeoplelist.push(this.state.usertag)
+    //     newpeople[this.state.class] = newclasspeoplelist
+    //     this.setState({
+    //       classesUserIsIn: newclassesuserisin,
+    //       people: newpeople
+
+    //     })
+    // }.bind(this))
+    // .catch(function(error) {
+    //     console.error("Error writing document: ", error);
+    // });
+
+    //updates this.state for classesUserIsIn and people, and writes new classes to firebase
+    let newClasses = self.state.classesUserIsIn.slice()
+    newClasses.push(this.state.class)
+    this.db.collection('users').doc(kerb).update({
+      classes: newClasses
     })
     .then(function() {
-        console.log("Added " + this.state.user + " to " + this.state.class)
-        var newclassesuserisin = this.state.classesUserIsIn.slice()
-        newclassesuserisin.push(this.state.class)
-        var newpeople = this.state.people
-        var newclasspeoplelist = this.state.people[this.state.class]
-        newclasspeoplelist.push(this.state.usertag)
-        newpeople[this.state.class] = newclasspeoplelist
-        this.setState({
-          classesUserIsIn: newclassesuserisin,
-          people: newpeople
+          console.log("Added " + this.state.user + " to " + this.state.class)
+          var newpeople = this.state.people
+          var newclasspeoplelist = this.state.people[this.state.class]
+          newclasspeoplelist.push(this.state.usertag)
+          newpeople[this.state.class] = newclasspeoplelist
+          this.setState({
+            classesUserIsIn: newClasses,
+            people: newpeople
+  
+          })
+      }.bind(this))
+      .catch(function(error) {
+          console.error("Error writing document: ", error);
+      });
 
-        })
-    }.bind(this))
-    .catch(function(error) {
-        console.error("Error writing document: ", error);
-    });
   }
 
   //when you unenroll in a class
@@ -186,37 +209,58 @@ class App extends React.Component {
     //alert('You have removed a class' );
     let self = this
     let kerb = this.state.email.substring(0,this.state.email.indexOf('@'))
-    this.db.collection("classes").doc(this.state.class).collection("ListOfPeople").where('kerb','==',kerb).get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc){
-          doc.ref.delete();
-        });
-        console.log("Removed " + this.state.user + " from " + this.state.class)
-        var newpeople = this.state.people
-        newpeople[this.state.class] = arrayRemove(this.state.people[this.state.class], this.state.usertag)
+    // this.db.collection("classes").doc(this.state.class).collection("ListOfPeople").where('kerb','==',kerb).get()
+    // .then(function(querySnapshot) {
+    //     querySnapshot.forEach(function(doc){
+    //       doc.ref.delete();
+    //     });
+    //     console.log("Removed " + this.state.user + " from " + this.state.class)
+    //     var newpeople = this.state.people
+    //     newpeople[this.state.class] = arrayRemove(this.state.people[this.state.class], this.state.usertag)
 
-        this.setState({
-          classesUserIsIn: arrayRemove(this.state.classesUserIsIn, this.state.class),
-          people: newpeople
-        })
-    }.bind(this))
-    .catch(function(error) {
+    //     this.setState({
+    //       classesUserIsIn: arrayRemove(this.state.classesUserIsIn, this.state.class),
+    //       people: newpeople
+    //     })
+    // }.bind(this))
+    // .catch(function(error) {
+    //     console.error("Error removing document: ", error);
+    // });
+
+    this.db.collection('classes').doc(this.state.class).collection("ListOfPeople").doc(kerb).delete().then(function() {
+      console.log("Document successfully deleted!");
+    }).catch(function(error) {
+        console.error("Error removing document: ", error);
+    });
+    var newpeople = this.state.people
+    newpeople[this.state.class] = arrayRemove(this.state.people[this.state.class], this.state.usertag)
+
+    this.setState({
+      classesUserIsIn: arrayRemove(this.state.classesUserIsIn, this.state.class),
+      people: newpeople
+    })
+    
+
+    // this.db.collection("users").doc(kerb).get().then(function(doc) {
+    //   if (doc.exists) {
+    //       let classes = doc.data()['classes']
+    //       self.db.collection("users").doc(kerb).update({
+    //         classes: arrayRemove(classes, self.state.class)
+    //       })
+    //       .catch(function(error) {
+    //           console.error("Error removing document: ", error);
+    //       });
+    //   }       
+    // }).catch(function(error) {
+    //     console.log("Error getting document:", error);
+    // });
+
+    this.db.collection('users').doc(kerb).update({
+      classes: arrayRemove(this.state.classesUserIsIn, self.state.class)
+    }).catch(function(error) {
         console.error("Error removing document: ", error);
     });
 
-    this.db.collection("users").doc(kerb).get().then(function(doc) {
-      if (doc.exists) {
-          let classes = doc.data()['classes']
-          self.db.collection("users").doc(kerb).update({
-            classes: arrayRemove(classes, self.state.class)
-          })
-          .catch(function(error) {
-              console.error("Error removing document: ", error);
-          });
-      }       
-    }).catch(function(error) {
-        console.log("Error getting document:", error);
-    });
 
   }
   //////////////////////////////////////////////////////////
