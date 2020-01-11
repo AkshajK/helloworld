@@ -43,24 +43,28 @@ export default function Register(props) {
   function handleSubmit(event) {
         if (email.indexOf("@mit.edu") <= 0){
             alert("Email needs to be @mit.edu");
-            return;
+            setEmail("");
         }
         
         // If password not entered 
-        if (password === '') {
-            alert ("Please enter Password"); 
-            return; 
+        else if (password === '') {
+            alert ("Please enter password"); 
+            setPassword("")
+            setPassword2("")  
         }
               
         // If confirm password not entered 
         else if (password2 === '') {
             alert ("Please enter confirm password"); 
+            setPassword("") 
+            setPassword2("") 
             return; 
         }
         // If Not same return False.     
         else if (password !== password2) { 
             alert ("\nPassword did not match: Please try again...") 
-            return; 
+            setPassword("") 
+            setPassword2("") 
         } 
 
         // If same return True. 
@@ -72,7 +76,6 @@ export default function Register(props) {
                 var errorMessage = error.message;
                 alert(errorMessage)
                 path=1
-                return;
                 // ...
               }).then(() => {
                 if (path<0.5) {
@@ -100,7 +103,7 @@ export default function Register(props) {
                                 setPassword2("")
                                 setName("")
                                 setLastName("")
-                                alert('email sent')
+                                alert('Email Sent to '+kerb+'@mit.edu')
 
 
                             }).catch(function(error) {
