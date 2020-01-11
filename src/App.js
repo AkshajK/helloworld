@@ -439,7 +439,7 @@ class App extends React.Component {
             </div>
           </Router>
           <div className ='head1'>
-              <h1 id="title">Interstellar</h1>
+              <h1 id="title">interstellar</h1>
               <h1 id="emojis"> </h1>
           </div>
           </div>
