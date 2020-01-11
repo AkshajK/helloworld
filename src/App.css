@@ -223,6 +223,10 @@
 #addclass {
 }
 
+#sb {
+  text-align: left;
+}
+
 .nav2 {
   right: 0px;
   position: absolute;
@@ -230,4 +234,3 @@
 
 .nav1 {
   display: none;
-}
