@@ -37,6 +37,7 @@
 #logo {
   margin-left: 30px;
   margin-top: 30px;
+  margin-bottom: 5px;
   text-align: left;
   color: white;
   font-size: 20px;
@@ -46,7 +47,7 @@
 #logo1 {
   position: absolute;
   right: 100px;
-  top: 150px;
+  top: 200px;
   text-align: right;
 }
 
@@ -70,7 +71,7 @@
 #classbubbles {
   margin-left: 50px;
   margin-top: 10px;
-  margin-right: 50px;
+  margin-right: 350px;
 }
 
 #body {
@@ -213,9 +214,9 @@
   color: black;
   font-size: 20px;
   line-height: 30px;
-  columns: 3;
-  -webkit-columns: 3;
-  -moz-columns: 3;
+  columns: 5;
+  -webkit-columns: 5;
+  -moz-columns: 5;
 }
 
 #intro {
