@@ -363,6 +363,9 @@ class App extends React.Component {
    // </div>
     const privateContent = ( 
       <div>
+        <head>
+          <title>interstellar</title>
+      </head>
         <div id="header"> 
 
         <Router>
