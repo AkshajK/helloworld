@@ -423,7 +423,7 @@ class App extends React.Component {
 
         <Router>
           <div className = "topnav">
-            <div className = 'nav2'><a><Link><Logout logout = {this.logout} /></Link></a></div>
+            <div className="nav2"><Link><Logout logout = {this.logout} /></Link></div>
             <div id="logo">Welcome {self.state.user}!</div>
           </div>
         </Router>
@@ -472,16 +472,6 @@ class App extends React.Component {
           <Router>
             <div className = "topnav">
               <div className = 'nav1'><a><Link to="/">Home</Link></a></div>
-              
-
-
-              {/*
-                A <Switch> looks through all its children <Route>
-                elements and renders the first one whose path
-                matches the current URL. Use a <Switch> any time
-                you have multiple routes, but you want only one
-                of them to render at a time
-              */}
               <Switch>
                 <Route exact path="/">
                 </Route>
