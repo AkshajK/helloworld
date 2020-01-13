@@ -543,22 +543,25 @@ class App extends React.Component {
       </div>
       <div id="body">
         
-        <hr />
         <div id="classheader"> 
-        <ul id="listofpeople"> 
-          {listOfPeopleLi}
-        </ul>
-        
-        
-        
-          {/* {addClass} */}
-        <div id='addclass'>
+
+         {/* {addClass} */}
+         <div id='addclass'>
           {this.state.class.length>0 ? (batchEnroll) : ""}
           {this.state.class.length>0 ? (addClass) : ""}
         </div>
         <div id='dummytext'>
           {this.state.class.length>0 ? "" : "Search for Classes above to start!"}
         </div>
+        <br></br>
+        <hr />
+
+        <ul id="listofpeople"> 
+          {listOfPeopleLi}
+        </ul>
+        
+        
+      
         </div>
         </div>
         </div>
