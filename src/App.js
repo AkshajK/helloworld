@@ -155,9 +155,10 @@ class App extends React.Component {
       people: []
     })
     
-    
+    let newPeople = self.state.people[this.state.classes[index]]
+    newPeople.push(self.state.user + " ("+ kerb+"@mit.edu)")
     this.db.collection("classes").doc(this.state.classes[index]).set({
-      people: this.state.people.push(this.state.user + " ("+ kerb+"@mit.edu)")
+      people: newPeople
     })
     }
 
@@ -183,7 +184,7 @@ class App extends React.Component {
               continue;
             }
           var newclasspeoplelist = this.state.people[this.state.classes[index]].slice()
-          newclasspeoplelist.push(this.state.usertag)
+          // newclasspeoplelist.push(this.state.usertag)
           newpeople[this.state.classes[index]] = newclasspeoplelist.slice()
           }
           this.setState({
@@ -205,13 +206,14 @@ class App extends React.Component {
     //alert('You have added a class' );
     //don't delete any of these fucking lines please
     const self=this
-    this.db.collection("classes").doc(this.state.class).set({
-      people: []
-    })
+
     let kerb = this.state.email.substring(0, this.state.email.indexOf('@'))
     
+    let newPeople = self.state.people[self.state.class]
+    newPeople.push(self.state.usertag)
+    // alert(JSON.stringify(newPeople))
     this.db.collection("classes").doc(this.state.class).set({
-      people: self.state.people[self.state.class].push(self.state.usertag)
+      people: newPeople
     })
 
     // this.db.collection("users").doc(kerb).get().then(function(doc) {
@@ -254,11 +256,12 @@ class App extends React.Component {
           console.log("Added " + this.state.user + " to " + this.state.class)
           var newpeople = this.state.people
           var newclasspeoplelist = this.state.people[this.state.class]
-          newclasspeoplelist.push(this.state.usertag)
+          // newclasspeoplelist.push(this.state.usertag)
           newpeople[this.state.class] = newclasspeoplelist
+          // alert(JSON.stringify(newpeople))
           this.setState({
             classesUserIsIn: newClasses,
-            people: newpeople
+            people: self.state.people
   
           })
       }.bind(this))
@@ -290,8 +293,9 @@ class App extends React.Component {
     // .catch(function(error) {
     //     console.error("Error removing document: ", error);
     // });
-
-    this.db.collection('classes').doc(this.state.class).collection("ListOfPeople").doc(kerb).delete().then(function() {
+    this.db.collection('classes').doc(this.state.class).update( {
+      people: arrayRemove(self.state.people[self.state.class], self.usertag)
+    }).then(function() {
       console.log("Document successfully deleted!");
     }).catch(function(error) {
         console.error("Error removing document: ", error);
@@ -383,7 +387,6 @@ class App extends React.Component {
         // people will map eg { "6.006": ["bgu", "jimbob"] }
         const people = {}
         classes.forEach(doc => {
-          console.log(doc)
           people[doc.id] = doc.data()['people']
         })
         self.setState({
@@ -476,8 +479,13 @@ class App extends React.Component {
     var addClass = <button class="removeenroll" onClick={() => this.handleAddClass()}>Enroll in {self.state.class}</button>
 
     if (self.state.class.length>0) {
-      alert(self.state.class)
-      alert(JSON.stringify(self.state.people))
+      if (!self.state.people[self.state.class]) {
+        let newPeople = self.state.people
+        newPeople[self.state.class] = []
+        self.setState({
+          people: newPeople
+        })
+      }
       listOfPeopleLi = self.state.people[self.state.class].map(function (name) { 
       return <li class="peoplelist" id={name}>{shortenTag(name)}</li>
       })
