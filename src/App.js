@@ -293,8 +293,10 @@ class App extends React.Component {
     // .catch(function(error) {
     //     console.error("Error removing document: ", error);
     // });
+    // alert(self.state.usertag)
+    // alert(JSON.stringify(self.state.people[self.state.class]))
     this.db.collection('classes').doc(this.state.class).update( {
-      people: arrayRemove(self.state.people[self.state.class], self.usertag)
+      people: arrayRemove(self.state.people[self.state.class], self.state.usertag)
     }).then(function() {
       console.log("Document successfully deleted!");
     }).catch(function(error) {
@@ -338,7 +340,8 @@ class App extends React.Component {
     var classesUserIsIn = []
     var i;
     for(i=0; i<this.state.classeslist.length; i++) {
-      if(this.state.people[this.state.classeslist[i]].includes(this.state.usertag)) {
+
+      if(this.state.people[this.state.classeslist[i]] && this.state.people[this.state.classeslist[i]].includes(this.state.usertag)) {
         classesUserIsIn.push(this.state.classeslist[i])
       }
     }
