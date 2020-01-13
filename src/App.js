@@ -492,7 +492,10 @@ class App extends React.Component {
       listOfPeopleLi = self.state.people[self.state.class].map(function (name) { 
       return <li class="peoplelist" id={name}>{shortenTag(name)}</li>
       })
-      if (self.state.people[self.state.class].includes(self.state.usertag)){
+      console.log(self.state.people[self.state.class])
+      console.log(self.state.usertag)
+      const userTagWithEmail = self.state.usertag.slice(0, -1) + "@mit.edu)"
+      if (self.state.people[self.state.class].includes(userTagWithEmail)){
         addClass = <button class="removeenroll" onClick={() => this.handleRemoveClass()}>Unenroll from {self.state.class}</button>
       }
     } 
