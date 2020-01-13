@@ -152,14 +152,13 @@ class App extends React.Component {
       
     
     this.db.collection("classes").doc(this.state.classes[index]).set({
+      people: []
     })
     
     
-    this.db.collection("classes").doc(this.state.classes[index]).collection("ListOfPeople").doc(kerb).set({
-      name: this.state.user, kerb: kerb
+    this.db.collection("classes").doc(this.state.classes[index]).set({
+      people: this.state.people.push(this.state.user + " ("+ kerb+"@mit.edu)")
     })
-
-    
     }
 
 
@@ -192,6 +191,7 @@ class App extends React.Component {
             people: newpeople
   
           })
+
       }.bind(this))
       .catch(function(error) {
           console.error("Error writing document: ", error);
@@ -206,11 +206,12 @@ class App extends React.Component {
     //don't delete any of these fucking lines please
     const self=this
     this.db.collection("classes").doc(this.state.class).set({
+      people: []
     })
     let kerb = this.state.email.substring(0, this.state.email.indexOf('@'))
     
-    this.db.collection("classes").doc(this.state.class).collection("ListOfPeople").doc(kerb).set({
-      name: this.state.user, kerb: kerb
+    this.db.collection("classes").doc(this.state.class).set({
+      people: self.state.people[self.state.class].push(self.state.usertag)
     })
 
     // this.db.collection("users").doc(kerb).get().then(function(doc) {
@@ -376,9 +377,22 @@ class App extends React.Component {
         // No user is signed in.
       }
     });
-    var newPeople = this.state.people
+    // var newPeople = this.state.people
     this.db.collection("classes").get()
-      .then((querySnapshot) => {
+      .then((classes => {
+        // people will map eg { "6.006": ["bgu", "jimbob"] }
+        const people = {}
+        classes.forEach(doc => {
+          console.log(doc)
+          people[doc.id] = doc.data()['people']
+        })
+        self.setState({
+          people: people
+        })
+      }))
+      /*.then((querySnapshot) => {
+        this.db.collectionGroup('ListOfPeople')
+        .where()
         var listOfPeoplePromises = []
         querySnapshot.forEach((doc) => {
           listclasses.push(doc.id)
@@ -389,7 +403,8 @@ class App extends React.Component {
           .get()
           listOfPeoplePromises.push(listOfPeoplePromise);
         })
-        return Promise.all(listOfPeoplePromises)
+        return Promise.all(listOfPeoplePromises) 
+
       })
       .then((listsOfPeople) => {   
         var newListsOfPeople = listsOfPeople.map((person) => {
@@ -407,7 +422,7 @@ class App extends React.Component {
           people: newPeople,
         })
         this.userIsUpdated()
-      })
+      })*/
   }
   
   // Runs whenever setState is called
@@ -461,6 +476,8 @@ class App extends React.Component {
     var addClass = <button class="removeenroll" onClick={() => this.handleAddClass()}>Enroll in {self.state.class}</button>
 
     if (self.state.class.length>0) {
+      alert(self.state.class)
+      alert(JSON.stringify(self.state.people))
       listOfPeopleLi = self.state.people[self.state.class].map(function (name) { 
       return <li class="peoplelist" id={name}>{shortenTag(name)}</li>
       })
