@@ -67,7 +67,7 @@ class App extends React.Component {
       class: "", // Class whos roster is being shown
       people: blankPeople, // object that has classes as keys and takes class -> list of usertags of users in the class
       user: "Guest", // name of user
-      usertag: "Guest (guest1314234@mit.edu)", // usertag of user (usertag is "name (kerb)"). 
+      usertag: "Guest (guest1314234@mit.edu)", // usertag of user (usertag is "name (email)"). 
       classesUserIsIn: [], // classes that the user is in
       email: 'guest1314234@mit.edu', // email of the user, 
       isPrivate: false
@@ -89,7 +89,7 @@ class App extends React.Component {
       let mit_email = data['kerb'] +'@mit.edu'
       this.setState({
         user: data['name'], 
-        usertag: data['name']+" ("+data['kerb']+")", 
+        usertag: data['name']+" ("+data['kerb']+"@mit.edu)", 
         email: mit_email,
         isPrivate: true
       }, () => {
@@ -184,7 +184,7 @@ class App extends React.Component {
               continue;
             }
           var newclasspeoplelist = this.state.people[this.state.classes[index]].slice()
-          // newclasspeoplelist.push(this.state.usertag)
+          
           newpeople[this.state.classes[index]] = newclasspeoplelist.slice()
           }
           this.setState({
@@ -276,25 +276,7 @@ class App extends React.Component {
     //alert('You have removed a class' );
     let self = this
     let kerb = this.state.email.substring(0,this.state.email.indexOf('@'))
-    // this.db.collection("classes").doc(this.state.class).collection("ListOfPeople").where('kerb','==',kerb).get()
-    // .then(function(querySnapshot) {
-    //     querySnapshot.forEach(function(doc){
-    //       doc.ref.delete();
-    //     });
-    //     console.log("Removed " + this.state.user + " from " + this.state.class)
-    //     var newpeople = this.state.people
-    //     newpeople[this.state.class] = arrayRemove(this.state.people[this.state.class], this.state.usertag)
-
-    //     this.setState({
-    //       classesUserIsIn: arrayRemove(this.state.classesUserIsIn, this.state.class),
-    //       people: newpeople
-    //     })
-    // }.bind(this))
-    // .catch(function(error) {
-    //     console.error("Error removing document: ", error);
-    // });
-    // alert(self.state.usertag)
-    // alert(JSON.stringify(self.state.people[self.state.class]))
+   
     this.db.collection('classes').doc(this.state.class).update( {
       people: arrayRemove(self.state.people[self.state.class], self.state.usertag)
     }).then(function() {
@@ -371,7 +353,7 @@ class App extends React.Component {
                 classes: data['classes'], // Array of classes for which buttons are showing
                 class: data['classes'].length >0 ? data['classes'][0] : "", // Class whos roster is being shown
                 user: data['name'], // name of user
-                usertag: data['name']+" ("+data['kerb']+")", // usertag of user (usertag is "name (kerb)"). 
+                usertag: data['name']+" ("+data['kerb']+"@mit.edu)", // usertag of user (usertag is "name (kerb)"). 
                 classesUserIsIn: data['classes'], // classes that the user is in
                 email: email, // email of the user
                 isPrivate: (firebase.auth().currentUser && firebase.auth().currentUser.emailVerified)
@@ -492,10 +474,9 @@ class App extends React.Component {
       listOfPeopleLi = self.state.people[self.state.class].map(function (name) { 
       return <li class="peoplelist" id={name}>{shortenTag(name)}</li>
       })
-      console.log(self.state.people[self.state.class])
-      console.log(self.state.usertag)
-      const userTagWithEmail = self.state.usertag.slice(0, -1) + "@mit.edu)"
-      if (self.state.people[self.state.class].includes(userTagWithEmail)){
+      
+     
+      if (self.state.people[self.state.class].includes(self.state.usertag)){
         addClass = <button class="removeenroll" onClick={() => this.handleRemoveClass()}>Unenroll from {self.state.class}</button>
       }
     } 
