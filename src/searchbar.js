@@ -70,8 +70,8 @@ export default class SearchExampleStandard extends Component {
 
           <Grid>
             <Grid.Column width={16}>
-              <div id="searchbar">
-                <Search id="actualsearchbar" icon="search"
+              
+                <Search id="actualsearchbar" fluid icon="search"
                   loading={isLoading}
                   onResultSelect={this.handleResultSelect}
                   onSearchChange={_.debounce(this.handleSearchChange, 500, {
@@ -82,9 +82,10 @@ export default class SearchExampleStandard extends Component {
                   onKeyPress={this.handleKeyPress}
                   {...this.props}
                   size="massive"
-                  fluid="true"
+                  
+                  
                 />
-              </div>
+             
               
             </Grid.Column>
           

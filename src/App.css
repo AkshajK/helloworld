@@ -11,6 +11,10 @@
     text-shadow: 3px 3px gray;
   }
 
+  .results {
+    max-width: 1000px !important;
+    zoom: 70%;
+  }
   #logo {
     margin-left: 10px;
     margin-top: 10px;
@@ -21,16 +25,19 @@
   }
 
   #body {
-    margin-left: 40px;
-    margin-right: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 
   #classbubbles {
-    margin-left: 0px;
+    margin-left: -20px;
     margin-top: 10px;
-    margin-right: 40px;
+    margin-right: 20px;
   }
-
+  #addclass {
+    margin-bottom: -10px;
+  }
+  
   #thesearchbar {
     display: inline-block;
     margin: 0 auto;
@@ -38,6 +45,23 @@
     border: 3px solid black;
     font-size: 20px;
     font-weight: bold;
+    
+  }
+
+  .greenbutton {
+    zoom: 50%
+  }
+  .biggergreenbutton {
+    zoom: 50%
+  }
+  .removeenroll {
+    zoom: 50%
+  }
+
+  .peoplelist {
+    list-style-type: none;
+    font-size: 18px;
+    line-height: 1.6;
   }
 
   #listofpeople {
@@ -113,6 +137,7 @@
       border: 3px solid black;
       font-size: 32px;
       font-weight: bold;
+      
   }
 
   #listofpeople {
@@ -123,6 +148,12 @@
     -webkit-columns: 5;
     -moz-columns: 5;
     padding-inline-start: 0px;
+  }
+
+  .peoplelist {
+    list-style-type: none;
+    font-size: 25px;
+    line-height: 1.6;
   }
 
   Form{
@@ -250,11 +281,7 @@ body {
   zoom: 120%;
 }
 
-.peoplelist {
-  list-style-type: none;
-  font-size: 25px;
-  line-height: 1.6;
-}
+
 
 /* Change the color of links on hover */
 .topnav a:hover {
