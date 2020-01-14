@@ -129,7 +129,7 @@ export default function Register(props) {
       <h1> Register</h1>
       <div className="right">
         <FormGroup controlId="name" bsSize="large">
-          <FormLabel>First Name </FormLabel>
+          <FormLabel>First Name: </FormLabel>
           <FormControl
             autoFocus
             type="name"
@@ -138,7 +138,7 @@ export default function Register(props) {
           />
         </FormGroup>
         <FormGroup controlId="name" bsSize="large">
-          <FormLabel>Last Name </FormLabel>
+          <FormLabel>Last Name: </FormLabel>
           <FormControl
             autoFocus
             type="name"
@@ -147,7 +147,7 @@ export default function Register(props) {
           />
         </FormGroup>
         <FormGroup controlId="email" bsSize="large">
-          <FormLabel>Email </FormLabel>
+          <FormLabel>Email: </FormLabel>
           <FormControl
             autoFocus
             type="email"
@@ -156,7 +156,7 @@ export default function Register(props) {
           />
         </FormGroup>
         <FormGroup controlId="password" bsSize="large">
-          <FormLabel>Password </FormLabel>
+          <FormLabel>Password: </FormLabel>
           <FormControl
             value={password}
             onChange={e => setPassword(e.target.value)}
@@ -164,7 +164,7 @@ export default function Register(props) {
           />
         </FormGroup>
         <FormGroup controlId="password" bsSize="large">
-          <FormLabel>Repeat Password </FormLabel>
+          <FormLabel>Repeat Password: </FormLabel>
           <FormControl
             value={password2}
             onChange={e => setPassword2(e.target.value)}
