@@ -511,7 +511,7 @@ class App extends React.Component {
         </div>
         </div>
       
-      
+      <div className="sidebar"> 
       <div id='sb'>
         <Searchbar id="thesearchbar" updateclass={this.updateClass} showNoResults={false} />
       </div>
@@ -519,13 +519,14 @@ class App extends React.Component {
         {/* <img src="search.png"  width="50" height="50"></img> */}
       </div>
       
-      <div id="classbubbles">
+      <div id="enrolled">
         
         <ul>
           {classesList}
         </ul>
       </div>
-      <div id="body">
+      </div>
+      <div className="body">
         
         <div id="classheader"> 
 
@@ -537,6 +538,7 @@ class App extends React.Component {
         <div id='dummytext'>
           {this.state.class.length>0 ? "" : "Search for Classes above to start!"}
         </div>
+
         <br></br>
         <hr />
 

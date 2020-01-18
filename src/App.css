@@ -29,8 +29,7 @@
     margin-right: 20px;
   }
 
-  #classbubbles {
-    margin-left: -20px;
+  #enrolled {
     margin-top: 10px;
     margin-right: 20px;
   }
@@ -43,7 +42,7 @@
     margin: 0 auto;
     background-color: #dddddd;
     border: 3px solid black;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     
   }
@@ -188,7 +187,8 @@ body {
 }
 
 .body{
-  zoom: 80%
+  width:76%;
+  float: right;
 }
 
 .login-zoom {
@@ -245,7 +245,10 @@ body {
 
 
 
-
+.sidebar{
+  float: left;
+  width: 24%;
+}
 
 .App-header {
   background-color: #282c34;
